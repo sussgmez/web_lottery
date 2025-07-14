@@ -1,0 +1,5 @@
+{% for lottery in lottery_list %}
+
+    <a href="{% url 'lottery' lottery.pk %}">{{ lottery }}</a>
+
+{% endfor %}

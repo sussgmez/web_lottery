@@ -1,0 +1,8 @@
+{% extends "core/base.html" %}
+
+{% block content %} 
+<a href="{% url 'logout' %}">Cerrar sesión</a>
+
+<div id="id_lotteries" hx-get="{% url 'lotteries' %}" hx-trigger="load"></div>
+
+{% endblock content %}

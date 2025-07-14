@@ -1,0 +1,23 @@
+<form action="{% url 'order-create' %}" method="post">
+    {% csrf_token %}
+
+    <input type="hidden" name="lottery" value="{{ lottery }}">
+
+    <input type="hidden" name="user" value="{{ request.user.pk }}">
+
+    <select name="quantity" id="id_quantity">
+        {% for num in numbers %}
+            <option value="{{ num }}">{{ num }}</option>
+        {% endfor %}
+    </select>
+
+    <button hx-on:click="event.preventDefault();htmx.toggleClass('#id_modal', 'hidden')">Comprar</button>
+
+    <div id="id_modal">
+        {{ form.reference }}
+        <button>
+            Enviar
+        </button>
+    </div>
+    
+</form>

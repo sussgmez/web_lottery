@@ -1,0 +1,21 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+    {{ object }}
+
+    
+    <div id="check"></div>
+
+    {% if not orders %}
+        <div class="id_order_create" hx-get="{% url 'order-create' %}?lottery={{ object.pk }}" hx-trigger="load"></div>
+    {% else %}
+        <p>Tienes una orden pendiente de revisión</p>
+    {% endif %}
+
+    <div id="id_lotteries" hx-get="{% url 'lotteries' %}" hx-trigger="load"></div>
+
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+        
+{% endblock  %}
