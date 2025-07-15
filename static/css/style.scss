@@ -1,0 +1,29 @@
+@forward './pages/home';
+@forward './pages/login';
+@forward './components/header';
+@use 'variables' as v;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+}
+
+body {
+    background-color: v.$color-1;
+    min-height: 100vh;
+}
+
+.page {
+    min-height: 100vh;
+}
+
+.btn { 
+    cursor: pointer;
+    background-color: v.$info-color;
+    border: none;
+    border-radius: 2px;
+    padding: 0.25rem;
+    font-weight: 600;
+}
