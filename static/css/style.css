@@ -1,32 +1,73 @@
 #id_login_page {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
+  background-color: rgba(255, 255, 255, 0.025);
 }
-#id_login_page .login-page__container {
-  padding: 0.5rem;
+
+#id_header {
+  position: relative;
+  background-color: #010C12;
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-#id_login_page .login-page__container .login-form {
+#id_header .header__logo img {
+  width: 80px;
+}
+#id_header .header__menu-btn {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  display: flex;
+  cursor: pointer;
+  transition: all 0.1s;
+  border-radius: 0.25rem;
+  width: 28px;
+  height: 28px;
+}
+#id_header .header__menu-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+#id_header .header__navbar {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
+}
+#id_header .navbar__link {
+  background-color: #081924;
+  text-decoration: none;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.625rem 0.5rem;
+  display: flex;
+  align-items: center;
   gap: 0.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
-#id_login_page .login-page__container .login-form__input {
-  width: 100%;
-  padding: 0.5rem;
-  border: none;
-  border-radius: 2px;
+#id_header .navbar__link img {
+  width: 20px;
+  height: 20px;
 }
-#id_login_page .login-page__image {
-  background-color: #fff;
+@media (min-width: 458px) {
+  #id_header .header__menu-btn {
+    display: none;
+  }
+  #id_header .header__navbar {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+  }
+  #id_header .header__navbar .navbar__link {
+    background-color: transparent;
+    border-bottom: none;
+  }
 }
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  color: #fff;
   font-family: "Open Sans", sans-serif;
   font-optical-sizing: auto;
-  font-style: normal;
 }
 
 body {
@@ -34,17 +75,26 @@ body {
   min-height: 100vh;
 }
 
-.page {
-  min-height: 100vh;
+.hidden {
+  display: none !important;
 }
 
-.btn {
-  cursor: pointer;
-  background-color: #035BBF;
-  border: none;
-  border-radius: 2px;
-  padding: 0.25rem;
-  font-weight: 600;
+img {
+  width: 100%;
+  object-fit: cover;
+}
+
+a {
+  color: #fff;
+}
+
+h1, h2, h3, h4, p {
+  color: #fff;
+  margin: 0;
+}
+
+.page {
+  min-height: 100vh;
 }
 
 /*# sourceMappingURL=style.css.map */

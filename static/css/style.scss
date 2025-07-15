@@ -1,29 +1,39 @@
-@forward './pages/home';
 @forward './pages/login';
 @forward './components/header';
 @use 'variables' as v;
+@use 'responsive' as r;
+
 
 * {
     box-sizing: border-box;
-    margin: 0;
     font-family: "Open Sans", sans-serif;
     font-optical-sizing: auto;
 }
 
 body {
-    background-color: v.$color-1;
+    background-color: v.$primary-color;
+    
     min-height: 100vh;
+}
+
+.hidden {
+    display: none !important;
+}
+
+img {
+    width: 100%;
+    object-fit: cover;
+}
+
+a {
+    color: v.$white;
+}
+
+h1, h2, h3, h4, p {
+    color: v.$white;
+    margin: 0;
 }
 
 .page {
     min-height: 100vh;
-}
-
-.btn { 
-    cursor: pointer;
-    background-color: v.$info-color;
-    border: none;
-    border-radius: 2px;
-    padding: 0.25rem;
-    font-weight: 600;
 }

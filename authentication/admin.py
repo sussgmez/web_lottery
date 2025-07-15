@@ -8,7 +8,7 @@ class CustomUserAdmin(UserAdmin):
         (None, {'fields':('phone_number',)}),
     )
     add_fieldsets = UserAdmin.add_fieldsets + (
-        (None, {'fields':('phone_number',)}),
+        (None, {'fields':('email', 'phone_number',)}),
     )
 
 
