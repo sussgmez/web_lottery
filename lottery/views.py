@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView
-from .models import Lottery, Order
+from .models import Lottery, Order, DollarExchangeRate
 from .forms import OrderForm, OrderUpdateForm
 
 # Create your views here.
@@ -36,6 +36,7 @@ class OrderCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         if self.request.method == 'GET':
             context["lottery"] = self.request.GET['lottery']
+            context["dollar_exchange_rate"] = DollarExchangeRate.objects.get(pk=1).exchange_rate
         context["numbers"] = range(1, 11)
         return context
 

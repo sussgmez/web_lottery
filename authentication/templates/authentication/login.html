@@ -1,16 +1,22 @@
 {% extends "core/base.html" %}
 
-{% load static %}
-
 {% block title %}Iniciar Sesión{% endblock title %}
 
 {% block content %}
+<div id="id_login_page" class="page">
+    <div class="login-page__container">
+        <h1>todosorteos</h1>
+        <p>Prepárate para ganar increíbles premios</p>
+        <form method="post" class="login-form">
+            {% csrf_token %}
+            {{ form.email }}
+            {{ form.password }}
+            <button class="btn">Iniciar sesión</button>
+            <p>¿No tienes una cuenta? <a href="{% url 'signup' %}">Regístrate</a></p>
+        </form>
+    </div>
+    <div class="login-page__image">
 
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_div }}
-    <button>Iniciar sesión</button>
-</form>
-
-
+    </div>
+</div>
 {% endblock content %}

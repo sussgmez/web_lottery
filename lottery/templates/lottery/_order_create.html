@@ -5,11 +5,17 @@
 
     <input type="hidden" name="user" value="{{ request.user.pk }}">
 
-    <select name="quantity" id="id_quantity">
+    <select name="quantity" id="id_quantity" 
+        hx-on:change='htmx.swap("#id_amount", String(htmx.find("#id_quantity").value * {{ dollar_exchange_rate }}) , {swapStyle: "innerHTML"})'
+    >
         {% for num in numbers %}
             <option value="{{ num }}">{{ num }}</option>
         {% endfor %}
     </select>
+
+    <button hx-on:click='event.preventDefault();console.log(htmx.find("#id_quantity").value * {{ dollar_exchange_rate }})'>get</button>
+
+    <p id="id_amount">0</p>
 
     <button hx-on:click="event.preventDefault();htmx.toggleClass('#id_modal', 'hidden')">Comprar</button>
 

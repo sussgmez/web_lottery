@@ -5,8 +5,15 @@ from .models import CustomUser
 
 
 class LoginForm(forms.Form):
-    email = forms.EmailField(widget=forms.TextInput(attrs={'class':'login-form__input', 'placeholder':'Email', 'autofocus':''}), max_length=150, required=True)
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'login-form__input', 'placeholder':'Contraseña'}), required=True)
+    email = forms.EmailField(
+        widget=forms.TextInput(attrs={'class':'login-form__input', 'autofocus':''}), 
+        max_length=150, 
+        required=True
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={'class':'login-form__input'}), 
+        required=True
+    )
 
     def clean(self):
         email = self.cleaned_data.get('email')
@@ -24,11 +31,22 @@ class LoginForm(forms.Form):
 
   
 class SignUpForm(forms.Form):
-    first_name = forms.CharField(widget=forms.TextInput(attrs={'class':'singup-form__input', 'placeholder':'Alejandro'}), max_length=100, required=True)
-    last_name = forms.CharField(widget=forms.TextInput(attrs={'class':'singup-form__input', 'placeholder':'Gómez'}), max_length=100, required=True)
-    email = forms.EmailField(widget=forms.TextInput(attrs={'type':'email', 'class':'singup-form__input', 'placeholder':'email@example.com'}), required=True)
-    password1 = forms.CharField(widget=forms.PasswordInput())
-    password2 = forms.CharField(widget=forms.PasswordInput())
+    first_name = forms.CharField(
+        widget=forms.TextInput(attrs={'class':'singup-form__input'}), 
+        max_length=100, 
+        required=True
+    )
+    last_name = forms.CharField(
+        widget=forms.TextInput(attrs={'class':'singup-form__input'}), 
+        max_length=100, 
+        required=True
+    )
+    email = forms.EmailField(
+        widget=forms.TextInput(attrs={'type':'email', 'class':'singup-form__input'}), 
+        required=True
+    )
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'signup-form__input'}))
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'signup-form__input'}))
     phone_number = PhoneNumberField()
     
     class Meta:

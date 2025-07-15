@@ -8,6 +8,9 @@ class DollarExchangeRate(models.Model):
     history = HistoricalRecords()
     updated = models.DateTimeField(_("Última modificación"), auto_now=True)
 
+    def __str__(self):
+        return f'{self.exchange_rate}'
+
 
 class Lottery(models.Model):
     description = models.CharField(_("Descripción"), max_length=200)
@@ -37,7 +40,7 @@ class Order(models.Model):
     quantity = models.PositiveIntegerField(_("Cantidad"))
     status = models.IntegerField(_("Status"), choices=STATUS, default=0)
     reference = models.IntegerField(_("Referencia"), blank=True, null=True)
-    dollar_exchange_rate = models.ForeignKey("lottery.DollarExchangeRate", verbose_name=_("Tasa del dolar"), on_delete=models.CASCADE)
+    dollar_exchange_rate = models.ForeignKey("lottery.DollarExchangeRate", verbose_name=_("Tasa del dolar"), on_delete=models.CASCADE, default=1)
     created = models.DateTimeField(_("Fecha de creación"), auto_now_add=True)
-    
+
 
