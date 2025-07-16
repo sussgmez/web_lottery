@@ -1,27 +1,28 @@
 {% load django_htmx %}
-{% load static %}   
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% htmx_script %}
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<<<<<<< HEAD
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
-=======
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
->>>>>>> a02c3dbeb53c356859b1d51e9f85ce85cee64070
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>todosorteos | {% block title %}{% endblock title %}</title>
-</head>
-<body>
-    {% include "./header.html" %}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <title>
+      todosorteos |{% block title %}
 
-    {% block content %}{% endblock content %}
+      {% endblock %}
+    </title>
+  </head>
+  <body>
+    {% include './header.html' %}
+
+    {% block content %}
+
+    {% endblock %}
     <script src="{% static 'js/main.js' %}"></script>
-</body>
+  </body>
 </html>

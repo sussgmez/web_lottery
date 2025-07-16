@@ -6,12 +6,12 @@ from .models import CustomUser
 
 class LoginForm(forms.Form):
     email = forms.EmailField(
-        widget=forms.TextInput(attrs={'class':'login-form__input', 'autofocus':''}), 
+        widget=forms.TextInput(attrs={'class':'input', 'autofocus':''}), 
         max_length=150, 
         required=True
     )
     password = forms.CharField(
-        widget=forms.PasswordInput(attrs={'class':'login-form__input'}), 
+        widget=forms.PasswordInput(attrs={'class':'input'}), 
         required=True
     )
 

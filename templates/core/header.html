@@ -1,20 +1,20 @@
 {% load static %}
 
-<header id="id_header" class="header">
-    <a class="header__logo" href="">
-        <img src="{% static 'img/logo.png' %}" alt="">
-    </a>
-    <button class="header__menu-btn" hx-on:click='htmx.toggleClass("#id_navbar","hidden")'>
-        <img src="{% static 'img/menu-btn.png' %}" alt="">
-    </button>
-    <div class="header__navbar hidden" id="id_navbar">
-        <a class="navbar__link" href="">
-            <img src="{% static 'img/login.png' %}" alt="">
-            Iniciar sesión
-        </a>
-        <a class="navbar__link" href="">
-            <img src="{% static 'img/team.png' %}" alt="">
-            Sobre nosotros
-        </a>
+<header>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <div class="navbar-item d-flex">
+        <a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt=""></a>
+      </div>
     </div>
+    <div class="navbar-end">
+      <div class="navbar-item has-dropdown" id="id_navbar_dropdown">
+        <a class="navbar-link" hx-on:click="htmx.toggleClass('#id_navbar_dropdown', 'is-active');htmx.toggleClass('#id_navbar_menu', 'is-active');">Menú</a>
+        <div class="navbar-dropdown navbar-menu is-right" id="id_navbar_menu">
+          <a href="" class="navbar-item">Iniciar sesión</a>
+          <a href="" class="navbar-item">Sobre nosotros</a>
+        </div>
+      </div>
+    </div>
+  </nav>
 </header>

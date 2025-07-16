@@ -1,31 +1,46 @@
-{% extends "core/base.html" %}
+{% extends 'core/base.html' %}
 
-{% block title %}Iniciar Sesión{% endblock title %}
+{% load static %}
+
+{% block title %}
+  Iniciar Sesión
+{% endblock %}
 
 {% block content %}
-<div id="id_login_page" class="login-page page">
-    <div class="login-page__container">
-        <h4>Bienvenido a todosorteos</h4>
-    </div>
-</div>
+  <section class="section">
+    <form>
+      <div class="field">
+        <label class="label" for="">Email</label>
+        <input class="input" type="email" name="" id="" />
+      </div>
+      <div class="field">
+        <label class="label" for="">Contraseña</label>
+        <input class="input" type="password" name="" id="" />
+      </div>
+    </form>
+  </section>
 
-{% comment %} 
+  {% comment %}
+  <div class="">
+    <div class="">
+      <section class="">
+        <form class="">
+          <h1 class="is-size-5 mb-1 has-text-weight-bold">Bienvenido a todosorteos!</h1>
+          <p class="is-italic mb-5">Prepárate para ganar increíbles premios</p>
+          <p class="has-text-weight-bold mb-2">Iniciar sesión</p>
+          <div class="field">
+            <label class="label" for="">Email</label>
+            <input class="input" type="email" name="" id="" />
+          </div>
+          <div class="field">
+            <label class="label" for="">Contraseña</label>
+            <input class="input" type="password" name="" id="" />
+          </div>
 
-<div id="id_login_page" class="page">
-    <div class="login-page__container">
-        <h1>todosorteos</h1>
-        <p>Prepárate para ganar increíbles premios</p>
-        <form method="post" class="login-form">
-            {% csrf_token %}
-            {{ form.email }}
-            {{ form.password }}
-            <button class="btn">Iniciar sesión</button>
-            <p>¿No tienes una cuenta? <a href="{% url 'signup' %}">Regístrate</a></p>
+          <button class="button is-primary">Ingresar</button>
         </form>
+      </section>
     </div>
-    <div class="login-page__image">
-
-    </div>
-</div>
-{% endcomment %}
-{% endblock content %}
+  </div>
+  {% endcomment %}
+{% endblock %}

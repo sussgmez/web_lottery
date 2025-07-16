@@ -1,1 +1,1 @@
-sass -w static/css/style.scss static/css/style.css
+npm run sass --load-path=node_modules static/css/style.scss static/css/style.css -- --watch
