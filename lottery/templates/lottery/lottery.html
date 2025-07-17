@@ -1,21 +1,47 @@
-{% extends "core/base.html" %}
+{% extends 'core/base.html' %}
 
 {% block content %}
-    {{ object }}
+  <main class="container">
+    <div class="grid lottery">
+      <div class="lottery-image">
+        <img src="{{ object.image.url }}" alt="" />
+      </div>
+      <div class="lottery-info">
+        <h1 class="lottery-description">{{ object.description }}</h1>
+        <p>
+          <b>Cierre del sorteo: </b>{{ object.closing_date|date:'d/m/Y' }}
+        </p>
+        <p>
+          <b>Precio del ticket: </b>{{ object.price }}$
+        </p>
+        <hr />
+        {% if not orders %}
+          <div class="id_order_create" hx-get="{% url 'order-create' %}?lottery={{ object.pk }}" hx-trigger="load"></div>
+        {% else %}
+          <p>Tienes una orden pendiente de revisión</p>
+        {% endif %}
+      </div>
+    </div>
+    <div class="container container-lotteries">
+      <h2>Sorteos disponibles</h2>
+      <div hx-get="{% url 'lotteries' %}" hx-trigger="load" class="grid grid-lottery"></div>
+    </div>
+  </main>
+{% endblock %}
 
+{% block extra_js %}
+  <script>
+    function clean_value(value) {
+      return parseFloat(value.replace(',', '.'))
+    }
     
-    <div id="check"></div>
-
-    {% if not orders %}
-        <div class="id_order_create" hx-get="{% url 'order-create' %}?lottery={{ object.pk }}" hx-trigger="load"></div>
-    {% else %}
-        <p>Tienes una orden pendiente de revisión</p>
-    {% endif %}
-
-    <div id="id_lotteries" hx-get="{% url 'lotteries' %}" hx-trigger="load"></div>
-
-    {% for message in messages %}
-        {{ message }}
-    {% endfor %}
-        
-{% endblock  %}
+    function refresh_amount(quantity = 1, price = clean_value('{{ lottery.price }}'), dollar = clean_value('{{ dollar.exchange_rate }}')) {
+      htmx.swap('#id_amount_dollar', String((quantity * price).toFixed(2)), { swapStyle: 'innerHTML' })
+      htmx.swap('#id_amount_bs', String((quantity * price * dollar).toFixed(2)), { swapStyle: 'innerHTML' })
+    }
+    
+    window.onload = () => {
+      refresh_amount()
+    }
+  </script>
+{% endblock %}

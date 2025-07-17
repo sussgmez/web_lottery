@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView
-from .models import Lottery, Order, DollarExchangeRate
+from .models import Lottery, Order, Dollar
 from .forms import OrderForm, OrderUpdateForm
 
 # Create your views here.
@@ -24,6 +24,7 @@ class LotteryDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["orders"] = Order.objects.filter(lottery=self.get_object().pk, user=self.request.user, status=0)
+        context["dollar"] = Dollar.objects.get(pk=1)
         return context
     
 
@@ -35,15 +36,20 @@ class OrderCreateView(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         if self.request.method == 'GET':
-            context["lottery"] = self.request.GET['lottery']
-            context["dollar_exchange_rate"] = DollarExchangeRate.objects.get(pk=1).exchange_rate
-        context["numbers"] = range(1, 11)
+            context["lottery"] = Lottery.objects.get(pk=self.request.GET['lottery'])
+            context["dollar"] = Dollar.objects.get(pk=1)
+        context["max_number"] = range(1, 11)
         return context
 
     def form_valid(self, form):
-        self.object = form.save()
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        print(self.args)
+
         messages.success(self.request, 'Pendiente de revisión')
         return redirect('lottery', self.request.POST['lottery'][0])
+
 
     
 class OrderUpdateView(UpdateView):

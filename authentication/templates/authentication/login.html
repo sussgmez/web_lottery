@@ -7,18 +7,37 @@
 {% endblock %}
 
 {% block content %}
-  <section class="section">
-    <form>
+<div class="container container-login">
+  <form method="post">
+    {% csrf_token %}
+    {{ form.errors }}
+    <fieldset>
+      <label for="id_email">Email<input type="email" placeholder="Correo electrónico" name="email" id="id_email"/></label>
+      <label for="id_password">Contraseña<input type="password" placeholder="Contraseña" name="password" id="id_password"/></label>
+      <button class="outline">Ingresar</button>
+    </fieldset>
+  </form>
+</div>
+
+  {% comment %}
+
+  <section class="">
+    <form class="">
+      <p class="">Bienvenido a todosorteos</p>
+      <p class="is-italic">Inicia sesión para descubrir que increíbles sorteos te esperan</p>
+      <p class="is-size-5 has-text-weight-bold">Iniciar sesión</p>
       <div class="field">
-        <label class="label" for="">Email</label>
+        <label class="label is-size-6" for="">Email</label>
         <input class="input" type="email" name="" id="" />
       </div>
       <div class="field">
-        <label class="label" for="">Contraseña</label>
+        <label class="label is-size-6" for="">Contraseña</label>
         <input class="input" type="password" name="" id="" />
       </div>
+      <button class="button" role="button">Ingresar</button>
     </form>
   </section>
+  {% endcomment %}
 
   {% comment %}
   <div class="">

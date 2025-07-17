@@ -1,8 +1,15 @@
-{% extends "core/base.html" %}
+{% extends 'core/base.html' %}
 
-{% block content %} 
-<a href="{% url 'logout' %}">Cerrar sesión</a>
+{% load static %}
 
-<div id="id_lotteries" hx-get="{% url 'lotteries' %}" hx-trigger="load"></div>
-
-{% endblock content %}
+{% block content %}
+  <main class="home-page">
+    <div class="home-image">
+        <img src="{% static 'img/background.png' %}" alt="">
+    </div>
+    <div class="container container-lotteries">
+      <h2>Sorteos disponibles</h2>
+      <div hx-get="{% url 'lotteries' %}" hx-trigger="load" class="grid grid-lottery"></div>
+    </div>
+  </main>
+{% endblock %}

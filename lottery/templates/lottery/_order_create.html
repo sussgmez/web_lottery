@@ -1,29 +1,23 @@
+{{ form.errors }}
+
 <form action="{% url 'order-create' %}" method="post">
-    {% csrf_token %}
+  {% csrf_token %}
+  <h3>Comprar tickets</h3>
 
-    <input type="hidden" name="lottery" value="{{ lottery }}">
+  <input type="hidden" name="user" value="{{ user.pk }}" />
+  <input type="hidden" name="lottery" value="{{ lottery.pk }}" />
+  <input type="hidden" name="dollar" value="{{ dollar.pk }}" />
 
-    <input type="hidden" name="user" value="{{ request.user.pk }}">
-
-    <select name="quantity" id="id_quantity" 
-        hx-on:change='htmx.swap("#id_amount", String(htmx.find("#id_quantity").value * {{ dollar_exchange_rate }}) , {swapStyle: "innerHTML"})'
-    >
-        {% for num in numbers %}
-            <option value="{{ num }}">{{ num }}</option>
-        {% endfor %}
+  <div class="grid grid-order-create">
+    <select hx-on:change="refresh_amount(quantity=this.value)" name="quantity">
+      {% for num in max_number %}
+        <option value="{{ num }}">{{ num }}</option>
+      {% endfor %}
     </select>
-
-    <button hx-on:click='event.preventDefault();console.log(htmx.find("#id_quantity").value * {{ dollar_exchange_rate }})'>get</button>
-
-    <p id="id_amount">0</p>
-
-    <button hx-on:click="event.preventDefault();htmx.toggleClass('#id_modal', 'hidden')">Comprar</button>
-
-    <div id="id_modal">
-        {{ form.reference }}
-        <button>
-            Enviar
-        </button>
-    </div>
-    
+    <input type="number" placeholder="Nro. de referencia" name="reference" />
+    <button>Comprar</button>
+  </div>
+  <h4><b>Monto total $: </b><span id="id_amount_dollar"></span></h4>
+  <h4><b>Moton total Bs.: </b><span id="id_amount_bs"></span></h4>
+  <p>Tasa de cambio: {{ dollar.exchange_rate|floatformat:2 }} Bs.</p>
 </form>

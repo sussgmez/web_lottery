@@ -1,10 +1,12 @@
 {
   "dependencies": {
-    "bulma": "^1.0.4",
+    "@picocss/pico": "^2.1.1",
+    "package.json": "^0.0.0",
+    "pico": "^0.1.17",
     "sass": "^1.72.0"
   },
   "scripts": {
-    "build-bulma": "sass --load-path=node_modules static/css/style.scss static/css/style.css",
-    "start": "npm run build-bulma -- --watch"
+    "build-pico": "sass --load-path=node_modules static/css/style.scss static/css/style.css",
+    "start": "npm run build-pico -- --watch"
   }
 }

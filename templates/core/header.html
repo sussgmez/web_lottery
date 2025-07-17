@@ -1,20 +1,26 @@
 {% load static %}
 
-<header>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <div class="navbar-item d-flex">
-        <a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt=""></a>
-      </div>
-    </div>
-    <div class="navbar-end">
-      <div class="navbar-item has-dropdown" id="id_navbar_dropdown">
-        <a class="navbar-link" hx-on:click="htmx.toggleClass('#id_navbar_dropdown', 'is-active');htmx.toggleClass('#id_navbar_menu', 'is-active');">Menú</a>
-        <div class="navbar-dropdown navbar-menu is-right" id="id_navbar_menu">
-          <a href="" class="navbar-item">Iniciar sesión</a>
-          <a href="" class="navbar-item">Sobre nosotros</a>
-        </div>
-      </div>
-    </div>
+<header class="container-fluid">
+  <nav>
+    <ul>
+      <li><a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt=""></a></li>
+    </ul>
+    <ul>
+      <li>
+        <details class="dropdown">
+          <summary>
+            Menú
+          </summary>
+          <ul dir="rtl">
+            <li><a href="">Sobre nosotros</a></li>
+            {% if user.is_authenticated %}
+              <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
+            {% else %}
+              <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
+            {% endif %}
+          </ul>
+        </details>
+      </li>
+    </ul>
   </nav>
 </header>

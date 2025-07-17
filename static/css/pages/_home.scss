@@ -1,0 +1,92 @@
+@use "../../../node_modules/@picocss/pico/scss/colors" as *;
+@use "../variables" as *;
+
+
+.home-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-height: 400px;
+    overflow: hidden;
+}
+
+.container-lotteries {
+    padding: 3rem 1rem;
+}
+
+.grid-lottery {
+    $lottery-size: 240px;
+
+    .lottery {
+        display: grid;
+        grid-template-rows: $lottery-size 1fr;
+        max-width: $lottery-size;
+        border-radius: 4px;
+        overflow: hidden;
+        cursor: pointer;
+        text-decoration: none;
+
+        background-color: $slate-900;
+
+        .lottery-image {
+            max-width: $lottery-size;
+            max-height: $lottery-size;
+            height: 100%;
+            width: 100%;
+
+            img {
+                object-fit: cover;
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+
+    .lottery-info {
+        padding: 1rem 0.75rem;
+
+        p,
+        h6 {
+            margin-bottom: 4px;
+        }
+
+        .lottery-description {
+            height: 3rem;
+        }
+
+        .ticket-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .button {
+            padding: 0.25rem 0.5rem 0.5rem 0.5rem;
+        }
+    }
+
+    .empty {
+        grid-column: span 5;
+    }
+
+    @include xs {
+        max-width: 400px;
+    }
+
+    @include sm {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include md {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include lg {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include xl {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}

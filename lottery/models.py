@@ -3,7 +3,7 @@ from django.utils.translation import gettext_lazy as _
 from simple_history.models import HistoricalRecords
 
 
-class DollarExchangeRate(models.Model):
+class Dollar(models.Model):
     exchange_rate = models.FloatField(_("Tasa de cambio"))
     history = HistoricalRecords()
     updated = models.DateTimeField(_("Última modificación"), auto_now=True)
@@ -40,7 +40,7 @@ class Order(models.Model):
     quantity = models.PositiveIntegerField(_("Cantidad"))
     status = models.IntegerField(_("Status"), choices=STATUS, default=0)
     reference = models.IntegerField(_("Referencia"), blank=True, null=True)
-    dollar_exchange_rate = models.ForeignKey("lottery.DollarExchangeRate", verbose_name=_("Tasa del dolar"), on_delete=models.CASCADE, default=1)
+    dollar = models.ForeignKey("lottery.Dollar", verbose_name=_("Tasa del dolar"), on_delete=models.CASCADE, default=1)
     created = models.DateTimeField(_("Fecha de creación"), auto_now_add=True)
 
 

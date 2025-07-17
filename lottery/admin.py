@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Lottery, Order, DollarExchangeRate
+from .models import Lottery, Order, Dollar
 
 
 @admin.register(Lottery)
@@ -19,6 +19,6 @@ class OrderAdmin(admin.ModelAdmin):
         return obj.dollar_exchange_rate.history.as_of(obj.created).exchange_rate * obj.quantity
 
 
-@admin.register(DollarExchangeRate)
-class DollarExchangeRateAdmin(admin.ModelAdmin):
+@admin.register(Dollar)
+class DollarAdmin(admin.ModelAdmin):
     readonly_fields = ['updated']

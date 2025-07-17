@@ -1,7 +1,49 @@
-// Path to Bulma's sass folder
-@use "bulma/sass" with ($family-primary: '"Open Sans", sans-serif',
-  $primary: #003D83,
-  $scheme-h: 219,
-  $scheme-s: 30%,
+@use "../../node_modules/@picocss/pico/scss/pico" with ($theme-color: "cyan",
 
 );
+@use "../../node_modules/@picocss/pico/scss/colors" as *;
+@use "variables" as *;
+
+@forward 'pages/home';
+@forward 'pages/lottery';
+
+
+:root {
+    font-size: 80%;
+}
+
+html {
+    background-color: $slate-950;
+}
+
+.home-page {
+    padding: 0 !important;
+}
+
+img {
+    width: 100%;
+    object-fit: cover;
+}
+
+header {
+    background-color: $slate-900;
+}
+
+.container-login {
+    max-width: 320px;
+    padding: 4rem 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0;
+    /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    /* Firefox */
+    appearance: textfield;
+}
