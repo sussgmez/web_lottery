@@ -1,68 +1,42 @@
-@use "../../node_modules/@picocss/pico/scss/pico" with ($theme-color: "slate",
+@use 'responsive' as *;
+@use 'variables' as *;
 
-);
-@use "../../node_modules/@picocss/pico/scss/colors" as *;
-@use "variables" as *;
 
 @forward 'components/header';
+@forward 'components/form';
 @forward 'pages/login';
-@forward 'pages/home';
-@forward 'pages/lottery';
 
-
-:root {
-    font-size: 100%;
+* {
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    color: $white;
 }
 
-html {
-    background-color: $slate-950;
+body {
+    background-color: $background-color;
 }
 
-.home-page {
-    padding: 0 !important;
+.d-flex {
+    display: flex;
+    align-items: center;
+}
+
+.container-image {
+    display: flex;
+}
+
+.hidden {
+    display: none;
 }
 
 img {
     width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
-header {
-    background-color: $slate-900;
-}
 
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
-    -webkit-appearance: none;
+h1,h2,h3,h4,h5,p{
     margin: 0;
-    /* <-- Apparently some margin are still there even though it's hidden */
-}
-
-input[type=number] {
-    -moz-appearance: textfield;
-    /* Firefox */
-    appearance: textfield;
-}
-
-.hidden {
-    display: none !important;
-}
-
-input {
-    background-color: transparent;
-    border: 1px solid $slate-100;
-    height: fit-content;
-    padding: 0.75rem;
-    font-size: 0.875rem;
-    margin-top: 0.5rem;
-}
-
-.btn {
-    font-size: 0.875rem;
-    padding: 0.5rem 1rem;
-    background-color: $blue-550;
-    border: none;
-    margin-bottom: 0.5rem;
 }

@@ -1,0 +1,35 @@
+@use '../variables' as *;
+@use '../responsive' as *;
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    max-width: $sm;
+    padding: 2rem;
+    border-radius: 0.25rem;
+    background-color: $background-color;
+
+    label {
+        margin-bottom: 0.25rem;
+    }
+
+    input {
+        background-color: transparent !important;
+        border: 1px solid $border-color;
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+        margin-bottom: 1rem;
+    }
+    button {
+        cursor: pointer;
+        padding: 0.5rem 1.5rem;
+        width: fit-content;
+        background-color: $primary-color;
+        font-weight: 500;
+        border: none;
+        border-radius: 0.25rem;
+        font-size: 0.875rem;
+        margin-bottom: 1rem;
+    }
+}

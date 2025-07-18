@@ -1,39 +1,7 @@
-@mixin xs {
-    @media (max-width: 576px) {
-        @content
-    }
-}
-
-;
-
-@mixin sm {
-    @media (min-width: 576px) {
-        @content
-    }
-}
-
-;
-
-@mixin md {
-    @media (min-width: 768px) {
-        @content
-    }
-}
-
-;
-
-@mixin lg {
-    @media (min-width: 1024px) {
-        @content
-    }
-}
-
-;
-
-@mixin xl {
-    @media (min-width: 1280px) {
-        @content
-    }
-}
-
-;
+$white: #FFFFFF;
+$gray: #FFFFFF;
+$primary-color: #5772A3;
+$secondary-color: #192A41;
+$background-color: #10151E;
+$background-color-2: #222C3F;
+$border-color: #2B3850;

@@ -7,18 +7,23 @@
 {% endblock %}
 
 {% block content %}
-  <div class="container container-form">
-    <form method="post">
-      {% csrf_token %}
-      <h5>Bienvenido a todosorteos</h5>
+  <div class="login">
+    <form method="post" class="form">
+      <h4>Bienvenido a todosorteos</h4>
       <p>
         <i>Inicia sesión para descubrir que increíbles sorteos te esperan</i>
       </p>
-      <h4>Iniciar sesión</h4>
-      <label for="id_email">Email<input type="email" placeholder="Correo electrónico" name="email" id="id_email" /></label>
-      <label for="id_password">Contraseña<input type="password" placeholder="Contraseña" name="password" id="id_password" /></label>
-      <button class="btn">Ingresar</button>
-      <p class="login-signup">¿No tienes una cuenta?, <a href="{% url 'signup' %}"><b>regístrate</b></a></p>
+      <h3>Iniciar sesión</h3>
+      <label for="id_email">Email</label>
+      <input type="email" name="" id="id_email">
+      <label for="id_password">Contraseña</label>
+      <input type="password" name="password" id="id_passsword">
+      <button>Ingresar</button>
+      <small>¿No tienes una cuenta?, <a href="{% url "signup" %}"><b>regístrate</b></a></small>
     </form>
+    <div class="background-login">
+      <img src="{% static 'img/background-login.png' %}" alt="">
+    </div>
   </div>
+
 {% endblock %}

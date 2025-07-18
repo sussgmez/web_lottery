@@ -1,37 +1,22 @@
 {% load static %}
 
-<header class="container-fluid header">
-  <nav>
-    <ul>
-      <li>
-        <a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt="" /></a>
-      </li>
-    </ul>
-    <div class="nav-btn-menu" onclick="htmx.toggleClass('#id_nav_links', 'hidden')">
-      <img src="{% static 'img/menu-btn.png' %}" alt="" />
-    </div>
-    <ul class="nav-links hidden" id="id_nav_links">
-      <li>
-        <a class="nav-link" href="">
-          <img src="{% static 'img/team.png' %}" alt="" />
-          Sobre nosotros
-        </a>
-      </li>
-      {% if user.is_authenticated %}
-        <li>
-          <a class="nav-link" href="{% url 'logout' %}">
-            <img src="{% static 'img/logout.png' %}" alt="" />
-            Cerrar sesión
-          </a>
-        </li>
-      {% else %}
-        <li>
-          <a class="nav-link" href="{% url 'login' %}">
-            <img src="{% static 'img/login.png' %}" alt="" />
-            Iniciar sesión
-          </a>
-        </li>
-      {% endif %}
-    </ul>
+<header class="d-flex">
+  <div class="brand">
+    <a href="">
+      <img src="{% static 'img/logo.png' %}" alt="">
+    </a>
+  </div>
+  <div class="btn-menu container-image" hx-on:click='htmx.toggleClass("#id_nav_header", "hidden")'>
+    <img src="{% static 'img/btn-menu.png' %}" alt="">
+  </div>
+  <nav class="d-flex hidden" id="id_nav_header">
+    <a class="d-flex" href="">
+      <img src="{% static 'img/login.png' %}" alt="">
+      Iniciar sesión
+    </a>
+    <a class="d-flex" href="">
+      <img src="{% static 'img/team.png' %}" alt="">
+      Sobre nosotros
+    </a>
   </nav>
 </header>
