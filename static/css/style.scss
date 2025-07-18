@@ -1,15 +1,17 @@
-@use "../../node_modules/@picocss/pico/scss/pico" with ($theme-color: "cyan",
+@use "../../node_modules/@picocss/pico/scss/pico" with ($theme-color: "slate",
 
 );
 @use "../../node_modules/@picocss/pico/scss/colors" as *;
 @use "variables" as *;
 
+@forward 'components/header';
+@forward 'pages/login';
 @forward 'pages/home';
 @forward 'pages/lottery';
 
 
 :root {
-    font-size: 80%;
+    font-size: 100%;
 }
 
 html {

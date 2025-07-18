@@ -1,25 +1,27 @@
 {% load static %}
 
-<header class="container-fluid">
+<header class="container-fluid header">
   <nav>
     <ul>
-      <li><a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt=""></a></li>
-    </ul>
-    <ul>
       <li>
-        <details class="dropdown">
-          <summary>
-            Menú
-          </summary>
-          <ul dir="rtl">
-            <li><a href="">Sobre nosotros</a></li>
-            {% if user.is_authenticated %}
-              <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
-            {% else %}
-              <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
-            {% endif %}
-          </ul>
-        </details>
+        <a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt="" /></a>
+      </li>
+    </ul>
+    <div class="nav-btn-menu">
+      <img src="{% static 'img/menu-btn.png' %}" alt="" />
+    </div>
+    <ul class="nav-links">
+      <li>
+        <a class="nav-link" href="">
+          <img src="{% static 'img/login.png' %}" alt="" />
+          Iniciar sesión
+        </a>
+      </li>
+      <li>
+        <a class="nav-link" href="">
+          <img src="{% static 'img/team.png' %}" alt="" />
+          Sobre nosotros
+        </a>
       </li>
     </ul>
   </nav>
