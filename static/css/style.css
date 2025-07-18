@@ -2811,13 +2811,31 @@ textarea,
   background-color: #0e1118;
   border-bottom: 1px solid #202632;
   position: relative;
+  align-items: center;
+}
+.header nav {
+  display: flex;
+  align-items: center;
+}
+.header .nav-btn-menu {
+  display: flex;
+  padding: 0.25rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.header .nav-btn-menu:hover {
+  background-color: rgba(223, 227, 235, 0.05);
 }
 .header .nav-links {
   gap: 1rem;
 }
+.header .nav-links li {
+  padding: 0;
+}
 .header .nav-links .nav-link {
   font-size: 0.875rem;
   display: flex;
+  margin: 0;
   align-items: center;
   gap: 0.25rem;
   text-wrap: nowrap;
@@ -2836,6 +2854,9 @@ textarea,
   .header .nav-btn-menu {
     display: none;
   }
+  .header .nav-links {
+    display: flex !important;
+  }
 }
 @media (max-width: 576px) {
   .header .nav-links {
@@ -2847,6 +2868,7 @@ textarea,
     margin: 0;
     gap: 0;
     background-color: #181c25;
+    border-top: 1px solid #202632;
     /*
 
     width: 100%;
@@ -2876,13 +2898,22 @@ textarea,
   }
   .header .nav-links li {
     width: 100%;
-    padding: 0;
   }
   .header .nav-links li .nav-link {
     border-radius: 0;
     padding: 0.75rem 0.5rem;
     margin: 0;
+    border-bottom: 1px solid #202632;
   }
+}
+
+.container-form {
+  max-width: 480px;
+  margin: 3rem auto;
+}
+
+.login .login-signup {
+  font-size: 0.8125rem;
 }
 
 .home-image {
@@ -3004,11 +3035,6 @@ header {
   background-color: #181c25;
 }
 
-.container-login {
-  max-width: 320px;
-  padding: 4rem 0;
-}
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   /* display: none; <- Crashes Chrome on hover */
@@ -3021,6 +3047,27 @@ input[type=number] {
   -moz-appearance: textfield;
   /* Firefox */
   appearance: textfield;
+}
+
+.hidden {
+  display: none !important;
+}
+
+input {
+  background-color: transparent;
+  border: 1px solid #dfe3eb;
+  height: fit-content;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.btn {
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  background-color: #2060df;
+  border: none;
+  margin-bottom: 0.5rem;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -7,22 +7,31 @@
         <a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt="" /></a>
       </li>
     </ul>
-    <div class="nav-btn-menu">
+    <div class="nav-btn-menu" onclick="htmx.toggleClass('#id_nav_links', 'hidden')">
       <img src="{% static 'img/menu-btn.png' %}" alt="" />
     </div>
-    <ul class="nav-links">
-      <li>
-        <a class="nav-link" href="">
-          <img src="{% static 'img/login.png' %}" alt="" />
-          Iniciar sesión
-        </a>
-      </li>
+    <ul class="nav-links hidden" id="id_nav_links">
       <li>
         <a class="nav-link" href="">
           <img src="{% static 'img/team.png' %}" alt="" />
           Sobre nosotros
         </a>
       </li>
+      {% if user.is_authenticated %}
+        <li>
+          <a class="nav-link" href="{% url 'logout' %}">
+            <img src="{% static 'img/logout.png' %}" alt="" />
+            Cerrar sesión
+          </a>
+        </li>
+      {% else %}
+        <li>
+          <a class="nav-link" href="{% url 'login' %}">
+            <img src="{% static 'img/login.png' %}" alt="" />
+            Iniciar sesión
+          </a>
+        </li>
+      {% endif %}
     </ul>
   </nav>
 </header>

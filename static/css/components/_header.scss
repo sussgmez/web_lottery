@@ -2,27 +2,49 @@
 @use "../variables" as *;
 
 
-
 .header {
     padding: 0 1.5rem;
     background-color: $slate-950;
     border-bottom: 1px solid $slate-850;
     position: relative;
+    align-items: center;
 
-    .nav-btn-menu {}
+    nav {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-btn-menu {
+        display: flex;
+        padding: 0.25rem;
+        cursor: pointer;
+        border-radius: 4px;
+
+        &:hover {
+            background-color: rgba($slate-100, $alpha: 0.05);
+        }
+    }
 
     .nav-links {
         gap: 1rem;
 
+
+        li {
+
+            padding: 0;
+        }
+
         .nav-link {
             font-size: 0.875rem;
             display: flex;
+            margin: 0;
             align-items: center;
             gap: 0.25rem;
             text-wrap: nowrap;
             text-decoration: none;
             color: $slate-200;
             font-weight: 400;
+
 
             img {
                 width: 18px;
@@ -42,6 +64,9 @@
 
         }
 
+        .nav-links {
+            display: flex !important;
+        }
 
 
     }
@@ -56,13 +81,17 @@
             margin: 0;
             gap: 0;
             background-color: $slate-900;
+            border-top: 1px solid $slate-850;
+
             li {
                 width: 100%;
-                padding: 0;
+
                 .nav-link {
                     border-radius: 0;
                     padding: .75rem 0.5rem;
                     margin: 0;
+
+                    border-bottom: 1px solid $slate-850;
                 }
             }
 

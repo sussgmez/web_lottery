@@ -1,16 +1,30 @@
-{% extends "core/base.html" %}
+{% extends 'core/base.html' %}
 
 {% load static %}
 
-{% block title %}Añadir usuarios{% endblock title %}
+{% block title %}
+  Añadir usuarios
+{% endblock %}
 
 {% block content %}
-
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_div }}
-    <button>Crear</button>
-</form>
-
-{% endblock content %} 
-
+  <div class="container container-form">
+    <form method="post">
+      {% csrf_token %}
+      <h5>Bienvenido a todosorteos</h5>
+      <p>
+        <i>Prepárate para ganar increíbles premios.</i>
+      </p>
+      <h4>Registrarse</h4>
+      <label for="id_email">Email<input type="email" placeholder="Correo electrónico" name="email" id="id_email" /></label>
+      <label for="id_first_name">Nombre<input type="text" placeholder="Nombre" name="first_name" id="id_first_name" /></label>
+      <label for="id_last_name">Apellido<input type="text" placeholder="Apellido" name="last_name" id="id_last_name" /></label>
+      <label for="id_password1">Contraseña<input type="password" placeholder="Contraseña" name="password1" id="id_password1" /></label>
+      <label for="id_password2">Confirmar contraseña<input type="password" placeholder="Confirmar contraseña" name="password2" id="id_password2" /></label>
+      <label for="id_phone_number">Nro. de teléfono<input type="text" placeholder="Nro. de teléfono" name="phone_number" id="id_phone_number" /></label>
+      <button class="btn">Registrarse</button>
+      <p class="login-signup">
+        Ya tienes una cuenta?, <a href="{% url 'login' %}"><b>inicia sesión</b></a>
+      </p>
+    </form>
+  </div>
+{% endblock %}
