@@ -73,6 +73,7 @@ header .btn-menu {
 }
 .form label {
   margin-bottom: 0.25rem;
+  font-size: 0.875rem;
 }
 .form input {
   background-color: transparent !important;
@@ -80,6 +81,9 @@ header .btn-menu {
   padding: 0.5rem;
   border-radius: 0.25rem;
   margin-bottom: 1rem;
+}
+.form input:last-of-type {
+  margin-bottom: 0.5rem;
 }
 .form button {
   cursor: pointer;
@@ -91,6 +95,25 @@ header .btn-menu {
   border-radius: 0.25rem;
   font-size: 0.875rem;
   margin-bottom: 1rem;
+  margin-top: 1rem;
+  border: 1px solid #5772A3;
+  transition: all 0.1s;
+}
+.form button:hover {
+  background-color: #2B3850;
+}
+.form .errors {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.form .errors p {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #D93526;
+}
+.form:has(.error) input {
+  outline: 1px solid #AF291D;
 }
 
 .login {
@@ -120,9 +143,48 @@ header .btn-menu {
 }
 .login .form {
   padding: 4rem 2rem;
+  max-width: 480px;
+  width: 100%;
 }
 @media (max-width: 768px) {
   .login .form {
+    width: 100%;
+    border-right: none;
+  }
+}
+
+.signup {
+  display: flex;
+  position: relative;
+  min-height: calc(100vh - 68px);
+}
+.signup form {
+  border-right: 1px solid #2B3850;
+}
+.signup h4 {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.signup h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.signup .background-login {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+.signup .form {
+  padding: 4rem 2rem;
+  max-width: 480px;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .signup .form {
     width: 100%;
     border-right: none;
   }

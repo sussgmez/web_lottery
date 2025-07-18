@@ -1,7 +1,7 @@
 @use '../variables' as *;
 @use '../responsive' as *;
 
-.login {
+.signup {
     display: flex;
     position: relative;
     min-height: calc(100vh - 68px);
