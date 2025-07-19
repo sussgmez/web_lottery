@@ -6,20 +6,58 @@
     position: relative;
     min-height: calc(100vh - 68px);
 
-    form {
-        border-right: 1px solid $border-color;
+    .form {
+        padding: 0;
+        border: 3px solid rgba($white, $alpha: 0.05);
+        border-radius: 0.5rem;
+        background-color: $background-color;
+        margin: 1rem;
+        max-width: 480px;
+        width: 100%;
+        height: fit-content;
+
+        &>div {
+            border-bottom: 1px solid rgba($white, $alpha: 0.05);
+            padding: 2rem;
+
+            &:last-child {
+                border: none;
+            }
+        }
+
+        .form-fields {
+            display: flex;
+            flex-direction: column;
+        }
     }
 
-    h4 {
-        font-weight: 600;
-        margin-bottom: 0.5rem;
+    h2 {
+        font-weight: 300;
+        margin-bottom: 0.75rem;
+        color: $secondary-color;
+        font-size: 1.25rem;
+    }
+
+    hr {
+        width: calc(100% + 4rem);
+        border: none;
+        border-bottom: 1px solid rgba($white, $alpha: 0.1);
+        margin: 1.5rem -2rem;
     }
 
     h3 {
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        font-weight: 600;
+        margin-bottom: 1.25rem;
+        font-size: 1.125rem;
+        font-weight: 300;
+        color: rgba($white, $alpha: 0.9);
     }
+
+    h4 {
+        font-weight: 500;
+        line-height: 1.5rem;
+        font-size: 0.875rem;
+    }
+
 
     .background-login {
         position: absolute;
@@ -30,16 +68,28 @@
         z-index: -1;
     }
 
-    .form {
-        padding: 4rem 2rem;
-        max-width: 480px;
-        width: 100%;
+    small {
+        font-size: 0.875rem;
+
+        a,
+        b {
+            color: $secondary-color;
+        }
     }
 
     @include xs {
         .form {
             width: 100%;
+            max-width: none;
             border-right: none;
+            margin: 0;
+            border: none;
+            border-radius: 0;
+            height: auto;
+
+            &>div {
+                padding: 1rem;
+            }
         }
     }
 }

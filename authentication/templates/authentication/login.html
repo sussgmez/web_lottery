@@ -10,26 +10,28 @@
   <div class="login">
     <form method="post" class="form">
       {% csrf_token %}
-      <h4>Bienvenido a todosorteos</h4>
-      <p>
-        <i>Inicia sesión para descubrir que increíbles sorteos te esperan</i>
-      </p>
-      <h3>Iniciar sesión</h3>
-      <label for="id_email">Email</label>
-      <input type="email" name="email" id="id_email" />
-      <label for="id_password">Contraseña</label>
-      <input type="password" name="password" id="id_passsword" />
-      {% if form.non_field_errors %}
-        <div class="errors">
-          {% for error in form.non_field_errors %}
-            <div class="error">
-              <p>{{ error }}</p>
-            </div>
-          {% endfor %}
-        </div>
-      {% endif %}
-      <button>Ingresar</button>
-      <small>¿No tienes una cuenta?, <a href="{% url 'signup' %}"><b>regístrate</b></a></small>
+      <div>
+        <h2>¡Bienvenido a todosorteos!</h2>
+        <h4>Inicia sesión para descubrir que increíbles premios te esperan 🥇</h4>
+      </div>
+      <div class="form-fields">
+        <h3>Iniciar sesión</h3>
+        <label for="id_email">Email</label>
+        <input type="email" name="email" id="id_email" />
+        <label for="id_password">Contraseña</label>
+        <input type="password" name="password" id="id_passsword" />
+        {% if form.non_field_errors %}
+          <div class="errors">
+            {% for error in form.non_field_errors %}
+              <div class="error">
+                <p>{{ error }}</p>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+        <button>Ingresar</button>
+        <small>¿No tienes una cuenta?, <a href="{% url 'signup' %}"><b>regístrate</b></a></small>
+      </div>
     </form>
     <div class="background-login">
       <img src="{% static 'img/background-login.png' %}" alt="" />

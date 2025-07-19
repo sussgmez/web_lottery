@@ -1,27 +1,30 @@
 header {
   padding: 0.75rem 1.5rem;
-  border-bottom: 1px solid #2B3850;
   justify-content: space-between;
   position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 header nav {
   gap: 0.25rem;
+  z-index: 10;
 }
 header nav a {
   font-size: 0.875rem;
-  font-weight: 300;
+  font-weight: 700;
   text-decoration: none;
   gap: 0.25rem;
   padding: 0.75rem;
   border-radius: 4px;
   transition: all 0.1s;
+  color: #FFFFFF;
+  align-items: end !important;
 }
 header nav a img {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
 }
 header nav a:hover {
-  background-color: #2B3850;
+  background-color: #001D3D;
 }
 header .btn-menu {
   display: none !important;
@@ -35,23 +38,24 @@ header .btn-menu {
     transition: all 0.1s;
   }
   header .btn-menu:hover {
-    background-color: #222C3F;
+    background-color: #0A1323;
   }
   header nav {
     display: none;
     position: absolute;
     top: calc(100% + 0.25rem);
-    background-color: #222C3F;
+    background-color: #0A1323;
     left: 0.25rem;
     right: 0.25rem;
     flex-direction: column;
     border-radius: 0.25rem;
-    border: 1px solid #2B3850;
+    border: 1px solid #001D3D;
     gap: 0;
   }
   header nav a {
     width: 100%;
-    border-bottom: 1px solid #2B3850;
+    border-bottom: 1px solid #001D3D;
+    padding: 1rem;
   }
   header nav a:last-of-type {
     border-bottom: none;
@@ -68,8 +72,7 @@ header .btn-menu {
   flex-direction: column;
   max-width: 768px;
   padding: 2rem;
-  border-radius: 0.25rem;
-  background-color: #10151E;
+  background-color: #0B1019;
 }
 .form label {
   margin-bottom: 0.25rem;
@@ -77,7 +80,7 @@ header .btn-menu {
 }
 .form input {
   background-color: transparent !important;
-  border: 1px solid #2B3850;
+  border: 1px solid #001D3D;
   padding: 0.5rem;
   border-radius: 0.25rem;
   margin-bottom: 1rem;
@@ -89,18 +92,18 @@ header .btn-menu {
   cursor: pointer;
   padding: 0.5rem 1.5rem;
   width: fit-content;
-  background-color: #5772A3;
+  background-color: #003566;
   font-weight: 500;
   border: none;
   border-radius: 0.25rem;
   font-size: 0.875rem;
   margin-bottom: 1rem;
   margin-top: 1rem;
-  border: 1px solid #5772A3;
+  border: 1px solid #003566;
   transition: all 0.1s;
 }
 .form button:hover {
-  background-color: #2B3850;
+  background-color: #001D3D;
 }
 .form .errors {
   display: flex;
@@ -121,17 +124,49 @@ header .btn-menu {
   position: relative;
   min-height: calc(100vh - 68px);
 }
-.login form {
-  border-right: 1px solid #2B3850;
+.login .form {
+  padding: 0;
+  border: 3px solid rgba(255, 255, 255, 0.05);
+  border-radius: 0.5rem;
+  background-color: #0B1019;
+  margin: 1rem;
+  max-width: 480px;
+  width: 100%;
+  height: fit-content;
 }
-.login h4 {
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+.login .form > div {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+}
+.login .form > div:last-child {
+  border: none;
+}
+.login .form .form-fields {
+  display: flex;
+  flex-direction: column;
+}
+.login h2 {
+  font-weight: 300;
+  margin-bottom: 0.75rem;
+  color: #FFC300;
+  font-size: 1.25rem;
+}
+.login hr {
+  width: calc(100% + 4rem);
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 1.5rem -2rem;
 }
 .login h3 {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
+  margin-bottom: 1.25rem;
+  font-size: 1.125rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.9);
+}
+.login h4 {
+  font-weight: 500;
+  line-height: 1.5rem;
+  font-size: 0.875rem;
 }
 .login .background-login {
   position: absolute;
@@ -141,15 +176,25 @@ header .btn-menu {
   bottom: 0;
   z-index: -1;
 }
-.login .form {
-  padding: 4rem 2rem;
-  max-width: 480px;
-  width: 100%;
+.login small {
+  font-size: 0.875rem;
+}
+.login small a,
+.login small b {
+  color: #FFC300;
 }
 @media (max-width: 768px) {
   .login .form {
     width: 100%;
+    max-width: none;
     border-right: none;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    height: auto;
+  }
+  .login .form > div {
+    padding: 1rem;
   }
 }
 
@@ -158,17 +203,49 @@ header .btn-menu {
   position: relative;
   min-height: calc(100vh - 68px);
 }
-.signup form {
-  border-right: 1px solid #2B3850;
+.signup .form {
+  padding: 0;
+  border: 3px solid rgba(255, 255, 255, 0.05);
+  border-radius: 0.5rem;
+  background-color: #0B1019;
+  margin: 1rem;
+  max-width: 480px;
+  width: 100%;
+  height: fit-content;
 }
-.signup h4 {
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+.signup .form > div {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+}
+.signup .form > div:last-child {
+  border: none;
+}
+.signup .form .form-fields {
+  display: flex;
+  flex-direction: column;
+}
+.signup h2 {
+  font-weight: 300;
+  margin-bottom: 0.75rem;
+  color: #FFC300;
+  font-size: 1.25rem;
+}
+.signup hr {
+  width: calc(100% + 4rem);
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 1.5rem -2rem;
 }
 .signup h3 {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
+  margin-bottom: 1.25rem;
+  font-size: 1.125rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.9);
+}
+.signup h4 {
+  font-weight: 500;
+  line-height: 1.5rem;
+  font-size: 0.875rem;
 }
 .signup .background-login {
   position: absolute;
@@ -178,15 +255,116 @@ header .btn-menu {
   bottom: 0;
   z-index: -1;
 }
-.signup .form {
-  padding: 4rem 2rem;
-  max-width: 480px;
-  width: 100%;
+.signup small {
+  font-size: 0.875rem;
+}
+.signup small a,
+.signup small b {
+  color: #FFC300;
 }
 @media (max-width: 768px) {
   .signup .form {
     width: 100%;
+    max-width: none;
     border-right: none;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    height: auto;
+  }
+  .signup .form > div {
+    padding: 1rem;
+  }
+}
+
+.section-lotteries {
+  padding: 4rem 2rem;
+  max-width: 1280px;
+  width: fit-content;
+  margin: auto;
+}
+.section-lotteries h2 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.section-lotteries .lotteries {
+  display: grid;
+  grid-template-columns: 280px;
+  gap: 1.5rem;
+}
+.section-lotteries .lotteries .lottery {
+  background-color: #0A1323;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.section-lotteries .lotteries .lottery .lottery-image {
+  max-width: 280px;
+  width: 100%;
+  max-height: 280px;
+  height: 100%;
+  position: relative;
+}
+.section-lotteries .lotteries .lottery .lottery-image .button-ticket {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(10, 19, 35, 0.5);
+  backdrop-filter: blur(1px);
+}
+.section-lotteries .lotteries .lottery .lottery-image .button-ticket a {
+  background-color: rgba(255, 195, 0, 0.8);
+  color: #0B1019;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+.section-lotteries .lotteries .lottery .lottery-info {
+  padding: 0.75rem;
+}
+.section-lotteries .lotteries .lottery .lottery-info h4 {
+  font-weight: 500;
+  line-height: 1.25rem;
+  font-size: 0.875rem;
+  height: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.section-lotteries .lotteries .lottery .lottery-info p,
+.section-lotteries .lotteries .lottery .lottery-info b {
+  font-size: 0.8125rem;
+  color: #FFC300;
+  margin-bottom: 0.25rem;
+}
+.section-lotteries .lotteries .lottery:hover .button-ticket {
+  display: flex;
+}
+.section-lotteries .lotteries .empty {
+  grid-column: span 4;
+  background-color: rgba(81, 180, 255, 0.05);
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+.section-lotteries .lotteries .empty p {
+  color: #51B4FF;
+}
+@media (min-width: 768px) {
+  .section-lotteries .lotteries {
+    grid-template-columns: repeat(2, minmax(0, 280px));
+  }
+}
+@media (min-width: 1024px) {
+  .section-lotteries .lotteries {
+    grid-template-columns: repeat(3, minmax(0, 280px));
+  }
+}
+@media (min-width: 1280px) {
+  .section-lotteries .lotteries {
+    grid-template-columns: repeat(4, minmax(0, 280px));
   }
 }
 
@@ -198,7 +376,7 @@ header .btn-menu {
 }
 
 body {
-  background-color: #10151E;
+  background-color: #0B1019;
 }
 
 .d-flex {

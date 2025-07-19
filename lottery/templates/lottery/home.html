@@ -3,13 +3,20 @@
 {% load static %}
 
 {% block content %}
-  <main class="home-page">
+  <section class="section-lotteries">
+    <div>
+      <h2>Sorteos disponibles</h2>
+      <div class="lotteries" hx-get="{% url 'lotteries' %}" hx-trigger="load"></div>
+    </div>
+  </section>
+
+
+  {% comment %} <main class="home-page">
     <div class="home-image">
         <img src="{% static 'img/background.png' %}" alt="">
     </div>
     <div class="container container-lotteries">
       <h2>Sorteos disponibles</h2>
-      <div hx-get="{% url 'lotteries' %}" hx-trigger="load" class="grid grid-lottery"></div>
     </div>
-  </main>
+  </main> {% endcomment %}
 {% endblock %}
