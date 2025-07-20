@@ -485,6 +485,7 @@
 .section-lottery .lottery-info .form .form-fields {
   display: flex;
   gap: 0.25rem;
+  flex-wrap: wrap;
 }
 .section-lottery .lottery-info .form .form-field {
   background-color: #0A1523;
