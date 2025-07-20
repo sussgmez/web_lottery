@@ -31,6 +31,28 @@
                     height: calc(100vw - 5rem);
                     max-width: 480px;
                     max-height: 480px;
+                    position: relative;
+
+                    .closed {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        left: 0;
+                        bottom: 0;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: rgba($black, $alpha: 0.5);
+                        backdrop-filter: blur(1px);
+
+                        p {
+                            background-color: $danger;
+                            font-weight: 700;
+                            color: $white;
+                            padding: 0.5rem 2rem;
+                            border-radius: 2px;
+                        }
+                    }
                 }
 
                 .lottery-info {
@@ -54,6 +76,13 @@
 
                 &:hover {
                     background-color: $border-color;
+                }
+
+                &:has(.closed) {
+                    border: 1px solid $danger;
+                    &:hover {
+                        background-color: $background-color-2;
+                    }
                 }
             }
 

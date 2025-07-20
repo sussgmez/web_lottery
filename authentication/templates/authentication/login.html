@@ -17,9 +17,9 @@
       <div class="form-fields">
         <h3>Iniciar sesión</h3>
         <label class="label" for="id_email">Email</label>
-        <input class="input" type="email" name="email" id="id_email" />
+        <input class="input" type="email" name="email" id="id_email" placeholder="Correo electrónico" />
         <label class="label" for="id_password">Contraseña</label>
-        <input class="input" type="password" name="password" id="id_passsword" />
+        <input class="input" type="password" name="password" id="id_passsword" placeholder="Contraseña" />
         {% if form.non_field_errors %}
           <div class="errors">
             {% for error in form.non_field_errors %}

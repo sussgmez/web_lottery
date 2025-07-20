@@ -47,7 +47,7 @@ class SignUpForm(forms.Form):
     )
     password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'signup-form__input'}))
     password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'signup-form__input'}))
-    phone_number = PhoneNumberField()
+    phone_number = forms.TextInput(attrs={'type':'number'})
     
     class Meta:
         model = CustomUser
@@ -68,17 +68,15 @@ class SignUpForm(forms.Form):
         last_name = self.cleaned_data.get('last_name')
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')
-        phone_number = self.cleaned_data.get('phone_number')
-        
 
         if password1 == password2:
 
             user = CustomUser.objects.create(
                 email=email,
-                username=email.split("@")[0],
+                username=email,
                 first_name=first_name,
                 last_name=last_name,
-                phone_number=phone_number
+                phone_number=request.POST['code']+request.POST['phone_number']
             )
             user.set_password(password1)
             user.save()

@@ -33,6 +33,7 @@
   z-index: 10;
 }
 .header .nav .nav-link {
+  display: flex;
   font-size: 0.875rem;
   font-weight: 700;
   text-decoration: none;
@@ -109,6 +110,7 @@
   border-radius: 0.25rem;
   margin-bottom: 1rem;
   color: #FFFFFF;
+  font-size: 0.875rem;
 }
 .login .form .input:last-of-type {
   margin-bottom: 0.5rem;
@@ -234,6 +236,7 @@
   border-radius: 0.25rem;
   margin-bottom: 1rem;
   color: #FFFFFF;
+  font-size: 0.875rem;
 }
 .signup .form .input:last-of-type {
   margin-bottom: 0.5rem;
@@ -302,6 +305,17 @@
   line-height: 1.5rem;
   font-size: 0.875rem;
 }
+.signup .input-phone-number {
+  display: flex;
+  gap: 0.25rem;
+}
+.signup .input-phone-number .input {
+  appearance: none;
+  width: 20%;
+}
+.signup .input-phone-number #id_phone_number {
+  width: 80%;
+}
 .signup .background-login {
   position: absolute;
   top: 0;
@@ -350,6 +364,26 @@
   height: calc(100vw - 5rem);
   max-width: 480px;
   max-height: 480px;
+  position: relative;
+}
+.home .section-lotteries .lotteries .lottery .lottery-image .closed {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1px);
+}
+.home .section-lotteries .lotteries .lottery .lottery-image .closed p {
+  background-color: #AF291D;
+  font-weight: 700;
+  color: #FFFFFF;
+  padding: 0.5rem 2rem;
+  border-radius: 2px;
 }
 .home .section-lotteries .lotteries .lottery .lottery-info {
   padding: 1rem 0.75rem;
@@ -368,6 +402,12 @@
 }
 .home .section-lotteries .lotteries .lottery:hover {
   background-color: #001D3D;
+}
+.home .section-lotteries .lotteries .lottery:has(.closed) {
+  border: 1px solid #AF291D;
+}
+.home .section-lotteries .lotteries .lottery:has(.closed):hover {
+  background-color: #0A1523;
 }
 .home .section-lotteries .lotteries .empty {
   grid-column: span 4;
@@ -551,6 +591,29 @@
 }
 .section-lottery .payment-info .payment-data .data-name {
   font-weight: 600;
+}
+.section-lottery .no-login {
+  border: 2px dashed #FFC300;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  margin-top: 2rem;
+  font-size: 0.875rem;
+}
+.section-lottery .no-login a {
+  color: #FFC300;
+  font-weight: 600;
+}
+.section-lottery .empty {
+  background-color: rgba(0, 29, 61, 0.8);
+  padding: 1rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+}
+.section-lottery .closed {
+  padding: 0.75rem;
+  font-weight: 600;
+  background-color: rgba(175, 41, 29, 0.6);
+  border-radius: 2px;
 }
 .section-lottery .pending {
   padding: 1rem;

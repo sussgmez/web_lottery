@@ -10,6 +10,8 @@ class SignUpView(View):
     form_class = SignUpForm
     
     def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('home')
         form = self.form_class
         return render(request, self.template_name,{'form':form})
     
@@ -17,7 +19,7 @@ class SignUpView(View):
         form = self.form_class(request.POST)
         if form.is_valid():
             form.signup(request)
-            return redirect('signup')
+            return redirect('login')
         else:
             return render(request, self.template_name, {'form':form})
 

@@ -40,6 +40,7 @@
             border-radius: 0.25rem;
             margin-bottom: 1rem;
             color: $white;
+            font-size: 0.875rem;
 
             &:last-of-type {
                 margin-bottom: 0.5rem;
@@ -122,6 +123,20 @@
             font-weight: 500;
             line-height: 1.5rem;
             font-size: 0.875rem;
+        }
+    }
+
+    .input-phone-number {
+        display: flex;
+        gap: 0.25rem;
+
+        .input {
+            appearance: none;
+            width: 20%;
+        }
+
+        #id_phone_number {
+            width: 80%;
         }
     }
 

@@ -13,8 +13,6 @@ class LotteryListView(ListView):
     model = Lottery
     template_name = "lottery/_lotteries.html"
 
-    def get_queryset(self):
-        return Lottery.objects.filter(closed=False)
     
 
 class LotteryDetailView(DetailView):
@@ -23,8 +21,9 @@ class LotteryDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["orders"] = Order.objects.filter(lottery=self.get_object().pk, user=self.request.user)
-        context["pending_order"] = Order.objects.filter(lottery=self.get_object().pk, user=self.request.user, status=0)
+        if self.request.user.is_authenticated:
+            context["orders"] = Order.objects.filter(lottery=self.get_object().pk, user=self.request.user)
+            context["pending_order"] = Order.objects.filter(lottery=self.get_object().pk, user=self.request.user, status=0)
         context["dollar"] = Dollar.objects.get(pk=1)
         return context
     
@@ -80,6 +79,6 @@ class OrderDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["dollar"] = Dollar.objects.get(pk=1)
+        context["dollar"] = Dollar.objects.get(pk=1).history.as_of(self.get_object().created)
         return context
     

@@ -201,7 +201,30 @@
         }
     }
 
+    .no-login {
+        border: 2px dashed $secondary-color;
+        padding: 1rem;
+        border-radius: 0.25rem;
+        margin-top: 2rem;
+        font-size: 0.875rem;
+        a {
+            color: $secondary-color;
+            font-weight: 600;
+        }
+    }
 
+    .empty {
+        background-color: rgba($border-color, $alpha: 0.8);
+        padding: 1rem;
+        border-radius: 0.25rem;
+        font-size: 0.875rem;
+    }
+    .closed {
+        padding: 0.75rem;
+        font-weight: 600;
+        background-color: rgba($danger, $alpha: 0.6);
+        border-radius: 2px;
+    }
 
     .pending {
         padding: 1rem;

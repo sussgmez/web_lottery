@@ -16,47 +16,52 @@
         <p class="lottery-data">
           <b>Ticket:</b>{{ lottery.price|floatformat_dot }}$
         </p>
+        {% if user.is_authenticated %}
         <hr />
-        {% if not pending_order %}
-          <div class="id_order_create" hx-get="{% url 'order-create' %}?lottery={{ object.pk }}" hx-trigger="load"></div>
-          <div class="order-info">
-            <div class="exchange-rate">
-              <img src="{% static 'img/info.png' %}" alt="" />
-              <p>
-                <b>Tasa de cambio:</b> {{ dollar.exchange_rate|floatformat_dot }} Bs.
-              </p>
-            </div>
-            <hr />
-            <div class="order-data order-data-dollar">
-              <p class="data-name">Monto total $:</p>
-              <p id="id_amount_dollar" class="data"></p>
-            </div>
-            <div class="order-data">
-              <p class="data-name">Monto total Bs.:</p>
-              <p id="id_amount_bs" class="data"></p>
-            </div>
-            <hr />
+          {% if lottery.closed %}
+          <div class="closed">
+            <p>Sorteo finalizado.</p>
           </div>
-          <div class="payment-info">
-            <h4>Información de pago</h4>
-            <hr />
-            <h5>Pago móvil</h5>
-            <div class="payment-data">
-              <p class="data-name">Cédula</p>
-              <p>12.345.678</p>
+          {% elif not pending_order %}
+            <div class="id_order_create" hx-get="{% url 'order-create' %}?lottery={{ object.pk }}" hx-trigger="load"></div>
+            <div class="order-info">
+              <div class="exchange-rate">
+                <img src="{% static 'img/info.png' %}" alt="" />
+                <p>
+                  <b>Tasa de cambio:</b> {{ dollar.exchange_rate|floatformat_dot }} Bs.
+                </p>
+              </div>
+              <hr />
+              <div class="order-data order-data-dollar">
+                <p class="data-name">Monto total $:</p>
+                <p id="id_amount_dollar" class="data"></p>
+              </div>
+              <div class="order-data">
+                <p class="data-name">Monto total Bs.:</p>
+                <p id="id_amount_bs" class="data"></p>
+              </div>
+              <hr />
             </div>
-            <div class="payment-data">
-              <p class="data-name">Teléfono</p>
-              <p>0412-345-6789</p>
+            <div class="payment-info">
+              <h4>Información de pago</h4>
+              <hr />
+              <h5>Pago móvil</h5>
+              <div class="payment-data">
+                <p class="data-name">Cédula</p>
+                <p>12.345.678</p>
+              </div>
+              <div class="payment-data">
+                <p class="data-name">Teléfono</p>
+                <p>0412-345-6789</p>
+              </div>
+              <div class="payment-data">
+                <p class="data-name">Banco</p>
+                <p>Banco de Venezuela (0102)</p>
+              </div>
             </div>
-            <div class="payment-data">
-              <p class="data-name">Banco</p>
-              <p>Banco de Venezuela (0102)</p>
-            </div>
-          </div>
-        {% else %}
-          <p class="pending">Tienes una orden pendiente de revisión</p>
-        {% endif %}
+          {% else %}
+            <p class="pending">Tienes una orden pendiente de revisión</p>
+          {% endif %}
         <div class="orders">
           <h3>Ticket comprados</h3>
           {% for order in orders %}
@@ -65,9 +70,14 @@
               <p class="status status-{{ order.status }}">{{ order.get_status_display }}</p>
             </div>
           {% empty %}
-            <p class="empty">Aún no ha comprado tickets</p>
+            <p class="empty">Compra tus primeros tickets para participar en el sorteo</p>
           {% endfor %}
         </div>
+        {% else %}
+        <div class="no-login">
+          <p><a href="{% url "login" %}">Inicia sesión</a> o <a href="{% url "signup" %}">regístrate</a> para participar en los sorteos.</p>
+        </div>
+        {% endif %}
       </div>
       <div id="id_order_detail" class="order-detail hidden"></div>
       <div id="id_confirm" class="confirm hidden">

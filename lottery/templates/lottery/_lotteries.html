@@ -2,6 +2,11 @@
   <a class="lottery" href="{% url 'lottery' lottery.pk %}">
     <div class="lottery-image">
       <img src="{{ lottery.image.url }}" alt="" />
+      {% if lottery.closed %}
+        <div class="closed">
+          <p>Finalizada</p>
+        </div>
+      {% endif %}
     </div>
     <div class="lottery-info">
       <h4>{{ lottery.description }}</h4>
