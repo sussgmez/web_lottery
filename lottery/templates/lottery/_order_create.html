@@ -10,14 +10,14 @@
 
   <h3>Comprar tickets</h3>
   <div class="form-fields">
-    <select name="quantity" hx-on:change="set_amount({{ dollar.exchange_rate|floatformat_dot }}, {{ lottery.price|floatformat_dot }}, this.value)">
+    <select id="id_quantity" name="quantity" hx-on:change="set_amount(this.value)">
       <button><selectedcontent></selectedcontent></button>
       {% for num in select_number %}
         <option value="{{ num }}">{{ num }}</option>
       {% endfor %}
     </select>
     <input id="id_reference" name="reference" type="number" placeholder="Nro. de referencia" required />
-    <button onclick="event.preventDefault();show_confirm();">Comprar</button>
+    <button onclick="event.preventDefault();show_confirm(htmx.find('#id_quantity').value);">Comprar</button>
   </div>
   <p>
     <b>Monto total:</b><span id="id_amount_dollar">{{ lottery.price|floatformat_dot }}</span>$
@@ -29,23 +29,25 @@
     <b>Tasa de cambio:</b>{{ dollar.exchange_rate|floatformat_dot }} Bs.
   </p>
 
-  <div id="id_confirm" style="display: none;" class="confirm">
+  <div id="id_confirm" class="confirm hidden">
     <div>
       <h3>Confirmar pago</h3>
       <div class="field">
         <p><b>Tickets:</b></p>
-        <p>1</p>
+        <p id="id_check_quantity">1</p>
       </div>
       <div class="field">
         <p><b>Monto total:</b></p>
-        <p>{{ lottery.price|multiply:dollar.exchange_rate }}</p>
+        <p><span id="id_check_amount_bs">{{ lottery.price|multiply:dollar.exchange_rate }}</span> Bs.</p>
       </div>
       <div class="field">
         <p><b>Nro. de referencia:</b></p>
         <p>12345</p>
       </div>
-      <button>Enviar</button>
-      <button onclick="event.preventDefault();">Enviar</button>
+      <div>
+        <button hx-on:click="event.preventDefault();htmx.toggleClass('#id_confirm', 'hidden');">Cancelar</button>
+        <button>Enviar</button>
+      </div>
     </div>
   </div>
 </form>

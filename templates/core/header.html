@@ -1,25 +1,25 @@
 {% load static %}
 
-<header class="d-flex">
+<header class="header">
   <div class="brand">
-    <a href="{% url "home" %}"><img src="{% static 'img/logo.png' %}" alt="" /></a>
+    <a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt="" /></a>
   </div>
-  <div class="btn-menu container-image" hx-on:click="htmx.toggleClass('#id_nav_header', 'hidden')">
+  <div class="btn-menu" hx-on:click="htmx.toggleClass('#id_nav_header', 'hidden')">
     <img src="{% static 'img/btn-menu.png' %}" alt="" />
   </div>
-  <nav class="d-flex hidden" id="id_nav_header">
+  <nav id="id_nav_header" class="nav hidden">
     {% if not user.is_authenticated %}
-      <a class="d-flex" href="{% url 'login' %}">
+      <a class="nav-link" href="{% url 'login' %}">
         <img src="{% static 'img/login.png' %}" alt="" />
         Iniciar sesión
       </a>
     {% endif %}
-    <a class="d-flex" href="">
+    <a class="nav-link" href="">
       <img src="{% static 'img/team.png' %}" alt="" />
       Sobre nosotros
     </a>
     {% if user.is_authenticated %}
-      <a class="d-flex" href="{% url 'logout' %}">
+      <a class="nav-link" href="{% url 'logout' %}">
         <img src="{% static 'img/logout.png' %}" alt="" />
         Cerrar sesión
       </a>

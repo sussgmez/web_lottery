@@ -1,63 +1,19 @@
-@use '../variables' as *;
+/*@use '../variables' as *;
 @use '../responsive' as *;
 
 
-.form {
-    display: flex;
-    flex-direction: column;
+.form-aux {
+    
     max-width: $sm;
     padding: 2rem;
     background-color: $background-color;
 
-    label {
-        margin-bottom: 0.25rem;
-        font-size: 0.875rem;
-    }
 
-    input, select {
-        background-color: transparent !important;
-        border: 1px solid $primary-color;
-        padding: 0.5rem;
-        border-radius: 0.25rem;
-        margin-bottom: 1rem;
-        color: $white;
-        &:last-of-type {
-            margin-bottom: 0.5rem;
-        }
-    }
+    
 
-    button {
-        cursor: pointer;
-        padding: 0.5rem 1.5rem;
-        width: fit-content;
-        background-color: $primary-color;
-        font-weight: 500;
-        border: none;
-        border-radius: 0.25rem;
-        font-size: 0.875rem;
-        margin-bottom: 1rem;
-        margin-top: 1rem;
-        border: 1px solid $primary-color;
-        transition: all 0.1s;
-        &:hover {
-            background-color: $border-color;
-        }
-    }
+    
 
-    .errors {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        p {
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: $red-500;
-        }
-    }
+    
 
-    &:has(.error) {
-        input {
-            outline: 1px solid $red-600;
-        }
-    }
-}
+   
+}*/

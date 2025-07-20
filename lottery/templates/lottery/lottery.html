@@ -8,7 +8,7 @@
         <img src="{{ lottery.image.url }}" alt="" />
       </div>
       <div class="lottery-info">
-        <h2>{{ lottery.description }}{{ lottery.description }}{{ lottery.description }}</h2>
+        <h2>{{ lottery.description }}</h2>
         <p class="lottery-data">
           <b>Cierre del sorteo:</b>{{ lottery.closing_date|date:'d/m/Y' }}
         </p>
@@ -28,11 +28,11 @@
 
 {% block extra_js %}
   <script>
-    function set_amount(exchange_rate, price, quantity) {
-      htmx.find('#id_amount_dollar').innerHTML = parseFloat(quantity * price).toFixed(2)
-      htmx.find('#id_amount_bs').innerHTML = parseFloat(exchange_rate * quantity * price).toFixed(2)
+    function set_amount(quantity) {
+      htmx.find('#id_amount_dollar').innerHTML = parseFloat(quantity * {{ lottery.price|floatformat_dot }}).toFixed(2)
+      htmx.find('#id_amount_bs').innerHTML = parseFloat(quantity * {{ dollar.exchange_rate|floatformat_dot }} *{{ lottery.price|floatformat_dot }}).toFixed(2)
     }
-    function show_confirm() {
+    function show_confirm(quantity) {
       let isReferenceValidity = htmx.find('#id_reference').checkValidity()
       if (isReferenceValidity) {
         htmx.find('#id_confirm').style.display = 'flex'
@@ -40,10 +40,12 @@
         htmx.find('#id_reference').reportValidity()
       }
     }
-    function show_confirm() {
+    function show_confirm(quantity) {
       let isReferenceValidity = htmx.find('#id_reference').checkValidity()
       if (isReferenceValidity) {
-        htmx.find('#id_confirm').style.display = 'flex'
+        htmx.find('#id_check_quantity').innerHTML = quantity
+        htmx.find('#id_check_amount_bs').innerHTML = parseFloat(quantity * {{ dollar.exchange_rate|floatformat_dot }} *{{ lottery.price|floatformat_dot }}).toFixed(2)
+        htmx.toggleClass('#id_confirm', 'hidden')
       } else {
         htmx.find('#id_reference').reportValidity()
       }

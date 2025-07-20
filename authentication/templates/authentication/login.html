@@ -16,10 +16,10 @@
       </div>
       <div class="form-fields">
         <h3>Iniciar sesión</h3>
-        <label for="id_email">Email</label>
-        <input type="email" name="email" id="id_email" />
-        <label for="id_password">Contraseña</label>
-        <input type="password" name="password" id="id_passsword" />
+        <label class="label" for="id_email">Email</label>
+        <input class="input" type="email" name="email" id="id_email" />
+        <label class="label" for="id_password">Contraseña</label>
+        <input class="input" type="password" name="password" id="id_passsword" />
         {% if form.non_field_errors %}
           <div class="errors">
             {% for error in form.non_field_errors %}
@@ -29,7 +29,7 @@
             {% endfor %}
           </div>
         {% endif %}
-        <button>Ingresar</button>
+        <button class="button">Ingresar</button>
         <small>¿No tienes una cuenta?, <a href="{% url 'signup' %}"><b>regístrate</b></a></small>
       </div>
     </form>

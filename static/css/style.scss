@@ -20,17 +20,8 @@ body {
     background-color: $background-color;
 }
 
-.d-flex {
-    display: flex;
-    align-items: center;
-}
-
-.container-image {
-    display: flex;
-}
-
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 img {

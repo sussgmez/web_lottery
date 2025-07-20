@@ -13,6 +13,12 @@
         border-radius: 8px;
         overflow: hidden;
         display: flex;
+        width: calc(100vw - 3rem);
+        height: calc(100vw - 3rem);
+
+        max-width: calc($sm - 2rem);
+
+        max-height: calc($sm - 2rem);
     }
 
     .lottery-info {
@@ -66,14 +72,14 @@
                 border: 1px solid $border-color !important;
 
                 &:focus,
-                &:sele {
+                &:select {
                     outline: 1px solid $white;
                 }
             }
 
             select,
             select::picker(select) {
-                appearance: base-select;
+                appearance: base-select !important;
             }
 
             select::picker(select) {
@@ -139,11 +145,12 @@
         z-index: 20;
         background-color: rgba($black, $alpha: 0.5);
         backdrop-filter: blur(4px);
-        display: flex !important;
+        display: flex;
         align-items: center;
         justify-content: center;
         padding: 0.75rem;
-        & > div {
+
+        &>div {
             background-color: $background-color-2;
             padding: 1.5rem;
             border-radius: 0.5rem;
@@ -153,16 +160,19 @@
             flex-direction: column;
             gap: 0.25rem;
         }
+
         h3 {
             margin-bottom: 1.5rem;
         }
+
         .field {
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 1rem;
-            padding: 0.75rem 0.5rem ;
+            padding: 0.75rem 0.5rem;
             border-bottom: 1px solid $border-color;
+
             p {
                 margin: 0;
             }
@@ -172,5 +182,14 @@
     @include md {
         grid-template-columns: 1fr 1fr;
         max-width: $lg;
+
+        .lottery-image {
+
+            margin-left: auto;
+            width: 50vw;
+            height: 50vw;
+            max-width: $lg/2;
+            max-height: $lg/2;
+        }
     }
 }
