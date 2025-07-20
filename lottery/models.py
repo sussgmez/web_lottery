@@ -32,7 +32,7 @@ class Order(models.Model):
     STATUS = [
         (0, 'Por confimar'),
         (1, 'Confirmada'),
-        (2, 'Cancelada'),
+        (2, 'Rechazada'),
     ]
 
     lottery = models.ForeignKey("lottery.Lottery", verbose_name=_("Sorteo"), on_delete=models.CASCADE)

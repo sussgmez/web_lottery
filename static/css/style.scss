@@ -3,7 +3,6 @@
 
 
 @forward 'components/header';
-@forward 'components/form';
 @forward 'pages/login';
 @forward 'pages/signup';
 @forward 'pages/home';
@@ -15,6 +14,7 @@
     font-optical-sizing: auto;
     color: $white;
 }
+
 
 body {
     background-color: $background-color;

@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load static %}
 {% load lottery_extras %}
 
 {% block content %}
@@ -16,11 +17,87 @@
           <b>Ticket:</b>{{ lottery.price|floatformat_dot }}$
         </p>
         <hr />
-        {% if not orders %}
+        {% if not pending_order %}
           <div class="id_order_create" hx-get="{% url 'order-create' %}?lottery={{ object.pk }}" hx-trigger="load"></div>
+          <div class="order-info">
+            <div class="exchange-rate">
+              <img src="{% static 'img/info.png' %}" alt="" />
+              <p>
+                <b>Tasa de cambio:</b> {{ dollar.exchange_rate|floatformat_dot }} Bs.
+              </p>
+            </div>
+            <hr />
+            <div class="order-data order-data-dollar">
+              <p class="data-name">Monto total $:</p>
+              <p id="id_amount_dollar" class="data"></p>
+            </div>
+            <div class="order-data">
+              <p class="data-name">Monto total Bs.:</p>
+              <p id="id_amount_bs" class="data"></p>
+            </div>
+            <hr />
+          </div>
+          <div class="payment-info">
+            <h4>Información de pago</h4>
+            <hr />
+            <h5>Pago móvil</h5>
+            <div class="payment-data">
+              <p class="data-name">Cédula</p>
+              <p>12.345.678</p>
+            </div>
+            <div class="payment-data">
+              <p class="data-name">Teléfono</p>
+              <p>0412-345-6789</p>
+            </div>
+            <div class="payment-data">
+              <p class="data-name">Banco</p>
+              <p>Banco de Venezuela (0102)</p>
+            </div>
+          </div>
         {% else %}
           <p class="pending">Tienes una orden pendiente de revisión</p>
         {% endif %}
+        <div class="orders">
+          <h3>Ticket comprados</h3>
+          {% for order in orders %}
+            <div class="order">
+              <a hx-get="{% url 'order-detail' order.pk %}" hx-target="#id_order_detail" hx-on:click="htmx.toggleClass('#id_order_detail', 'hidden')" >Cantidad de tickets: {{ order.quantity }} - Nro. de referencia: {{ order.reference }}</a>
+              <p class="status status-{{ order.status }}">{{ order.get_status_display }}</p>
+            </div>
+          {% empty %}
+            <p class="empty">Aún no ha comprado tickets</p>
+          {% endfor %}
+        </div>
+      </div>
+      <div id="id_order_detail" class="order-detail hidden"></div>
+      <div id="id_confirm" class="confirm hidden">
+        <div>
+          <h3>Confirmar pago móvil</h3>
+          <h4>{{ lottery.description }} <span class="quantity">x 1</span></h4>
+          <div class="field">
+            <p>Cantidad tickets:</p>
+            <p>
+              <span id="id_check_quantity">1</span>
+            </p>
+          </div>
+          <div class="field">
+            <p>Referencia:</p>
+            <p>
+              <span id="id_check_reference">12345</span>
+            </p>
+          </div>
+          <div class="field">
+            <p>Monto total Bs.:</p>
+            <p>
+              <span id="id_check_amount_bs">{{ lottery.price|multiply:dollar.exchange_rate }}</span>
+            </p>
+          </div>
+          <hr />
+          <div>
+            <button class="button button-cancel" hx-on:click="event.preventDefault();htmx.toggleClass('#id_confirm', 'hidden');">Cancelar</button>
+            <button class="button" hx-on:click="htmx.find('#id_form_order_create').submit();">Enviar</button>
+          </div>
+        </div>
       </div>
     </section>
   </div>
@@ -28,28 +105,28 @@
 
 {% block extra_js %}
   <script>
-    function set_amount(quantity) {
-      htmx.find('#id_amount_dollar').innerHTML = parseFloat(quantity * {{ lottery.price|floatformat_dot }}).toFixed(2)
-      htmx.find('#id_amount_bs').innerHTML = parseFloat(quantity * {{ dollar.exchange_rate|floatformat_dot }} *{{ lottery.price|floatformat_dot }}).toFixed(2)
+    function set_amount(quantity=1) {
+      htmx.find('#id_amount_dollar').innerHTML = Intl.NumberFormat("en-US", {style:"currency", currency:"USD"}).format(parseFloat(quantity * {{ lottery.price|floatformat_dot }}).toFixed(2)) 
+      htmx.find('#id_amount_bs').innerHTML = Intl.NumberFormat("ve-VE", {style:"currency", currency:"VES"}).format(parseFloat(quantity * {{ dollar.exchange_rate|floatformat_dot }} *{{ lottery.price|floatformat_dot }}).toFixed(2)) 
+      
     }
     function show_confirm(quantity) {
-      let isReferenceValidity = htmx.find('#id_reference').checkValidity()
-      if (isReferenceValidity) {
-        htmx.find('#id_confirm').style.display = 'flex'
-      } else {
-        htmx.find('#id_reference').reportValidity()
-      }
-    }
-    function show_confirm(quantity) {
-      let isReferenceValidity = htmx.find('#id_reference').checkValidity()
-      if (isReferenceValidity) {
+      let reference = htmx.find('#id_reference')
+      if (reference.checkValidity()) {
         htmx.find('#id_check_quantity').innerHTML = quantity
-        htmx.find('#id_check_amount_bs').innerHTML = parseFloat(quantity * {{ dollar.exchange_rate|floatformat_dot }} *{{ lottery.price|floatformat_dot }}).toFixed(2)
+        htmx.find('#id_check_reference').innerHTML = reference.value
+        htmx.find('#id_check_amount_bs').innerHTML = Intl.NumberFormat("ve-VE", {style:"currency", currency:"VES"}).format(parseFloat(quantity * {{ dollar.exchange_rate|floatformat_dot }} *{{ lottery.price|floatformat_dot }}).toFixed(2))
+        
         htmx.toggleClass('#id_confirm', 'hidden')
       } else {
         htmx.find('#id_reference').reportValidity()
       }
     }
-    
+    function set_amount_order(amount) {
+      htmx.find('#id_order_amount_bs').innerHTML = Intl.NumberFormat("ve-VE", {style:"currency", currency:"VES"}).format(amount)
+    }
+    window.onload = () => {
+      set_amount()
+    }
   </script>
 {% endblock %}

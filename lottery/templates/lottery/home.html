@@ -5,12 +5,10 @@
 {% block title %}Inicio{% endblock title %}
 
 {% block content %}
-<div>
+<div class="home">
   <section class="section-lotteries">
-    <div>
-      <h2>Sorteos</h2>
+      <h2 class="header-section">Sorteos</h2>
       <div class="lotteries" hx-get="{% url 'lotteries' %}" hx-trigger="load"></div>
-    </div>
   </section>
 </div>
 {% endblock %}

@@ -74,25 +74,6 @@
   }
 }
 
-/*@use '../variables' as *;
-@use '../responsive' as *;
-
-
-.form-aux {
-
-    max-width: $sm;
-    padding: 2rem;
-    background-color: $background-color;
-
-
-
-
-
-
-
-
-
-}*/
 .login {
   display: flex;
   position: relative;
@@ -157,7 +138,7 @@
 .login .form .errors p {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #D93526;
+  color: rgba(175, 41, 29, 0.8);
 }
 .login .form:has(.error) .input {
   outline: 1px solid #AF291D;
@@ -282,7 +263,7 @@
 .signup .form .errors p {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #D93526;
+  color: rgba(175, 41, 29, 0.8);
 }
 .signup .form:has(.error) .input {
   outline: 1px solid #AF291D;
@@ -343,20 +324,20 @@
   }
 }
 
-.section-lotteries {
+.home .section-lotteries {
   padding: 4rem 2rem;
   width: fit-content;
   margin: auto;
 }
-.section-lotteries h2 {
+.home .section-lotteries .header-section {
   font-weight: 600;
   margin-bottom: 2rem;
 }
-.section-lotteries .lotteries {
+.home .section-lotteries .lotteries {
   display: grid;
   gap: 0.75rem;
 }
-.section-lotteries .lotteries .lottery {
+.home .section-lotteries .lotteries .lottery {
   box-shadow: 0 0 8px #000000;
   border-radius: 8px;
   overflow: hidden;
@@ -364,62 +345,57 @@
   height: fit-content;
   background-color: #0A1523;
 }
-.section-lotteries .lotteries .lottery .lottery-image {
-  width: 280px;
-  height: 280px;
+.home .section-lotteries .lotteries .lottery .lottery-image {
+  width: calc(100vw - 5rem);
+  height: calc(100vw - 5rem);
+  max-width: 480px;
+  max-height: 480px;
 }
-.section-lotteries .lotteries .lottery .lottery-info {
+.home .section-lotteries .lotteries .lottery .lottery-info {
   padding: 1rem 0.75rem;
 }
-.section-lotteries .lotteries .lottery .lottery-info h4 {
+.home .section-lotteries .lotteries .lottery .lottery-info h4 {
   font-weight: 600;
   line-height: 1.25rem;
   font-size: 1rem;
   height: 2.5rem;
   margin-bottom: 0.5rem;
 }
-.section-lotteries .lotteries .lottery .lottery-info p,
-.section-lotteries .lotteries .lottery .lottery-info b {
+.home .section-lotteries .lotteries .lottery .lottery-info p,
+.home .section-lotteries .lotteries .lottery .lottery-info b {
   font-size: 0.8125rem;
   margin-bottom: 0.5rem;
 }
-.section-lotteries .lotteries .lottery:hover {
+.home .section-lotteries .lotteries .lottery:hover {
   background-color: #001D3D;
 }
-.section-lotteries .lotteries .empty {
+.home .section-lotteries .lotteries .empty {
   grid-column: span 4;
   background-color: rgba(81, 180, 255, 0.05);
   padding: 1rem;
   border-radius: 0.25rem;
 }
-.section-lotteries .lotteries .empty p {
+.home .section-lotteries .lotteries .empty p {
   color: #51B4FF;
   font-size: 0.875rem;
 }
 @media (min-width: 768px) {
-  .section-lotteries .lotteries {
+  .home .section-lotteries .lotteries {
     grid-template-columns: repeat(2, minmax(0, 280px));
+  }
+  .home .section-lotteries .lotteries .lottery-image {
+    width: 280px !important;
+    height: 280px !important;
   }
 }
 @media (min-width: 1024px) {
-  .section-lotteries .lotteries {
+  .home .section-lotteries .lotteries {
     grid-template-columns: repeat(3, minmax(0, 280px));
   }
 }
 @media (min-width: 1280px) {
-  .section-lotteries .lotteries {
+  .home .section-lotteries .lotteries {
     grid-template-columns: repeat(4, minmax(0, 280px));
-  }
-}
-@media (max-width: 768px) {
-  .section-lotteries .lotteries {
-    grid-template-columns: 1fr;
-  }
-  .section-lotteries .lotteries .lottery-image {
-    width: calc(100vw - 5rem) !important;
-    height: calc(100vw - 5rem) !important;
-    max-width: 480px;
-    max-height: 480px;
   }
 }
 
@@ -464,61 +440,116 @@
   font-weight: 600;
 }
 .section-lottery .lottery-info .form {
-  padding: 0;
+  margin-bottom: 1rem;
 }
 .section-lottery .lottery-info .form .form-fields {
   display: flex;
   gap: 0.25rem;
-  margin-bottom: 1rem;
 }
-.section-lottery .lottery-info .form .form-fields button {
-  margin: 0;
+.section-lottery .lottery-info .form .form-field {
+  background-color: #0A1523;
+  border: none;
+  appearance: none;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  min-width: 80px;
 }
-.section-lottery .lottery-info .form input,
-.section-lottery .lottery-info .form select {
-  padding: 0.75rem;
-  margin: 0;
-  background-color: #0A1523 !important;
-  border: 1px solid #001D3D !important;
+.section-lottery .lottery-info .form .form-field:focus {
+  outline: 1px solid #003566;
 }
-.section-lottery .lottery-info .form input:focus, .section-lottery .lottery-info .form input:select,
-.section-lottery .lottery-info .form select:focus,
-.section-lottery .lottery-info .form select:select {
-  outline: 1px solid #FFFFFF;
+.section-lottery .lottery-info .form .form-field-select,
+.section-lottery .lottery-info .form .form-field-select::picker(select) {
+  appearance: base-select;
 }
-.section-lottery .lottery-info .form select,
-.section-lottery .lottery-info .form select::picker(select) {
-  appearance: base-select !important;
-}
-.section-lottery .lottery-info .form select::picker(select) {
+.section-lottery .lottery-info .form .form-field-select::picker(select) {
   margin-top: 0.25rem;
   border-radius: 4px;
   border: 1px solid #003566;
 }
-.section-lottery .lottery-info .form select {
-  min-width: 80px;
-}
-.section-lottery .lottery-info .form option {
+.section-lottery .lottery-info .form .option {
   padding: 0.5rem;
-}
-.section-lottery .lottery-info .form option:nth-of-type(odd) {
-  background: #0B1019;
-}
-.section-lottery .lottery-info .form option:hover,
-.section-lottery .lottery-info .form option:focus {
-  background: #003566;
-}
-.section-lottery .lottery-info .form option::checkmark {
-  display: none;
-}
-.section-lottery .lottery-info .form option {
   background-color: #0A1523;
 }
-.section-lottery .lottery-info .form p {
-  font-size: 0.875rem;
-  margin-bottom: 0.75rem;
+.section-lottery .lottery-info .form .option:hover, .section-lottery .lottery-info .form .option:focus {
+  background: #003566;
 }
-.section-lottery .lottery-info .form p b {
+.section-lottery .lottery-info .form .option::checkmark {
+  display: none;
+}
+.section-lottery .lottery-info .form .button {
+  cursor: pointer;
+  background-color: #003566;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  transition: all 0.1s;
+}
+.section-lottery .lottery-info .form .button:hover {
+  background-color: #001D3D;
+}
+.section-lottery .lottery-info .form .exchange-rate {
+  display: flex;
+}
+.section-lottery .order-info .order-data {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding: 0 0.5rem;
+}
+.section-lottery .order-info .order-data .data-name {
+  font-weight: 700;
+}
+.section-lottery .order-info .order-data .data {
+  font-size: 1.5rem;
+}
+.section-lottery .order-info .order-data-dollar .data-name {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+.section-lottery .order-info .order-data-dollar .data {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+.section-lottery .order-info .exchange-rate {
+  padding: 1rem 0.75rem;
+  background-color: rgba(0, 29, 61, 0.8);
+  border: 1px solid #001D3D;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  width: fit-content;
+  margin-bottom: 1rem;
+}
+.section-lottery .order-info .exchange-rate img {
+  width: 16px;
+  height: 16px;
+}
+.section-lottery .order-info .exchange-rate b {
+  font-weight: 600;
+}
+.section-lottery .payment-info {
+  background-color: rgba(10, 21, 35, 0.8);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+.section-lottery .payment-info h4 {
+  margin-bottom: 1.25rem;
+}
+.section-lottery .payment-info h5 {
+  font-weight: 700;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+.section-lottery .payment-info .payment-data {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0.5rem 0;
+  font-size: 0.875rem;
+}
+.section-lottery .payment-info .payment-data .data-name {
   font-weight: 600;
 }
 .section-lottery .pending {
@@ -528,7 +559,8 @@
   font-size: 0.875rem;
   font-weight: 600;
 }
-.section-lottery .confirm {
+.section-lottery .confirm,
+.section-lottery .order-detail {
   position: absolute;
   top: 0;
   right: 0;
@@ -542,29 +574,96 @@
   justify-content: center;
   padding: 0.75rem;
 }
-.section-lottery .confirm > div {
+.section-lottery .confirm > div,
+.section-lottery .order-detail > div {
   background-color: #0A1523;
   padding: 1.5rem;
-  border-radius: 0.5rem;
-  max-width: 480px;
+  border-radius: 0.25rem;
+  max-width: 520px;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
 }
-.section-lottery .confirm h3 {
+.section-lottery .confirm > div h3,
+.section-lottery .order-detail > div h3 {
+  font-weight: 500;
   margin-bottom: 1.5rem;
 }
-.section-lottery .confirm .field {
+.section-lottery .confirm > div h4,
+.section-lottery .order-detail > div h4 {
+  font-family: 600;
+  margin-bottom: 1rem;
+}
+.section-lottery .confirm > div .quantity,
+.section-lottery .order-detail > div .quantity {
+  font-weight: 400;
+  font-size: 0.875rem;
+}
+.section-lottery .confirm > div .field,
+.section-lottery .order-detail > div .field {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.75rem 0.5rem;
-  border-bottom: 1px solid #001D3D;
+  margin-bottom: 0.75rem;
 }
-.section-lottery .confirm .field p {
-  margin: 0;
+.section-lottery .confirm > div hr,
+.section-lottery .order-detail > div hr {
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  margin: 1rem 0;
+}
+.section-lottery .confirm > div .button,
+.section-lottery .order-detail > div .button {
+  cursor: pointer;
+  background-color: #003566;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  transition: all 0.1s;
+}
+.section-lottery .confirm > div .button:hover,
+.section-lottery .order-detail > div .button:hover {
+  background-color: #001D3D;
+}
+.section-lottery .confirm > div .button-cancel,
+.section-lottery .order-detail > div .button-cancel {
+  background-color: #AF291D;
+}
+.section-lottery .confirm > div .button-cancel:hover,
+.section-lottery .order-detail > div .button-cancel:hover {
+  background-color: rgba(175, 41, 29, 0.8);
+}
+.section-lottery .orders h3 {
+  margin: 1rem 0;
+}
+.section-lottery .orders .order {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.section-lottery .orders .order a {
+  cursor: pointer;
+  color: #51B4FF;
+  text-decoration: underline;
+  font-size: 0.875rem;
+}
+.section-lottery .orders .order a:hover {
+  color: rgba(81, 180, 255, 0.8);
+}
+.section-lottery .orders .order .status {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  padding: 0.25rem;
+  border-radius: 2px;
+  text-wrap: nowrap;
+}
+.section-lottery .orders .order .status-0 {
+  background-color: #967300;
+}
+.section-lottery .orders .order .status-1 {
+  background-color: #008a2e;
+}
+.section-lottery .orders .order .status-2 {
+  background-color: #AF291D;
 }
 @media (min-width: 1024px) {
   .section-lottery {

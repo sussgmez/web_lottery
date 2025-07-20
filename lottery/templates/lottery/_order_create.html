@@ -1,6 +1,7 @@
+{% load static %}
 {% load lottery_extras %}
 
-<form class="form" action="{% url 'order-create' %}" method="post">
+<form id="id_form_order_create" class="form" action="{% url 'order-create' %}" method="post">
   {% csrf_token %}
   <input type="hidden" name="dollar" value="{{ dollar }}" />
 
@@ -10,44 +11,14 @@
 
   <h3>Comprar tickets</h3>
   <div class="form-fields">
-    <select id="id_quantity" name="quantity" hx-on:change="set_amount(this.value)">
+    <select id="id_quantity" class="form-field form-field-select" name="quantity" hx-on:change="set_amount(this.value)">
       <button><selectedcontent></selectedcontent></button>
       {% for num in select_number %}
-        <option value="{{ num }}">{{ num }}</option>
+        <option class="option" value="{{ num }}">{{ num }}</option>
       {% endfor %}
     </select>
-    <input id="id_reference" name="reference" type="number" placeholder="Nro. de referencia" required />
-    <button onclick="event.preventDefault();show_confirm(htmx.find('#id_quantity').value);">Comprar</button>
+    <input id="id_reference" class="form-field" name="reference" type="number" placeholder="Nro. de referencia" required />
+    <button class="button" onclick="event.preventDefault();show_confirm(htmx.find('#id_quantity').value);">Comprar</button>
   </div>
-  <p>
-    <b>Monto total:</b><span id="id_amount_dollar">{{ lottery.price|floatformat_dot }}</span>$
-  </p>
-  <p>
-    <b>Moton total:</b><span id="id_amount_bs">{{ lottery.price|multiply:dollar.exchange_rate }}</span>Bs.
-  </p>
-  <p>
-    <b>Tasa de cambio:</b>{{ dollar.exchange_rate|floatformat_dot }} Bs.
-  </p>
 
-  <div id="id_confirm" class="confirm hidden">
-    <div>
-      <h3>Confirmar pago</h3>
-      <div class="field">
-        <p><b>Tickets:</b></p>
-        <p id="id_check_quantity">1</p>
-      </div>
-      <div class="field">
-        <p><b>Monto total:</b></p>
-        <p><span id="id_check_amount_bs">{{ lottery.price|multiply:dollar.exchange_rate }}</span> Bs.</p>
-      </div>
-      <div class="field">
-        <p><b>Nro. de referencia:</b></p>
-        <p>12345</p>
-      </div>
-      <div>
-        <button hx-on:click="event.preventDefault();htmx.toggleClass('#id_confirm', 'hidden');">Cancelar</button>
-        <button>Enviar</button>
-      </div>
-    </div>
-  </div>
 </form>

@@ -23,7 +23,8 @@ class LotteryDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["orders"] = Order.objects.filter(lottery=self.get_object().pk, user=self.request.user, status=0)
+        context["orders"] = Order.objects.filter(lottery=self.get_object().pk, user=self.request.user)
+        context["pending_order"] = Order.objects.filter(lottery=self.get_object().pk, user=self.request.user, status=0)
         context["dollar"] = Dollar.objects.get(pk=1)
         return context
     
@@ -73,5 +74,12 @@ class OrderListView(ListView):
     
 
     
+class OrderDetailView(DetailView):
+    model = Order
+    template_name = "lottery/_order_detail.html"
 
-
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["dollar"] = Dollar.objects.get(pk=1)
+        return context
+    

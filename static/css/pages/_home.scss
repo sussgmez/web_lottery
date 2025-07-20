@@ -2,95 +2,94 @@
 @use '../responsive' as *;
 
 
-.section-lotteries {
-    padding: 4rem 2rem;
-    width: fit-content;
-    margin: auto;
+.home {
+    .section-lotteries {
+        padding: 4rem 2rem;
+        width: fit-content;
+        margin: auto;
 
-    h2 {
-        font-weight: 600;
-        margin-bottom: 2rem;
-    }
+        .header-section {
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
 
-    .lotteries {
-        $lottery-size: 280px;
-        display: grid;
-        gap: 0.75rem;
+        .lotteries {
+            display: grid;
+            gap: 0.75rem;
 
-        .lottery {
-            box-shadow: 0 0 8px $black;
-            border-radius: 8px;
-            overflow: hidden;
-            text-decoration: none;
-            height: fit-content;
-            background-color: $background-color-2;
+            .lottery {
+                box-shadow: 0 0 8px $black;
+                border-radius: 8px;
+                overflow: hidden;
+                text-decoration: none;
+                height: fit-content;
+                background-color: $background-color-2;
 
 
-            .lottery-image {
-                width: $lottery-size;
-                height: $lottery-size;
-            }
-
-            .lottery-info {
-                padding: 1rem 0.75rem;
-
-                h4 {
-
-                    font-weight: 600;
-                    line-height: 1.25rem;
-                    font-size: 1rem;
-                    height: 2.5rem;
-                    margin-bottom: 0.5rem;
+                .lottery-image {
+                    width: calc(100vw - 5rem);
+                    height: calc(100vw - 5rem);
+                    max-width: 480px;
+                    max-height: 480px;
                 }
 
-                p,
-                b {
-                    font-size: 0.8125rem;
-                    margin-bottom: 0.5rem;
+                .lottery-info {
+                    padding: 1rem 0.75rem;
+
+                    h4 {
+
+                        font-weight: 600;
+                        line-height: 1.25rem;
+                        font-size: 1rem;
+                        height: 2.5rem;
+                        margin-bottom: 0.5rem;
+                    }
+
+                    p,
+                    b {
+                        font-size: 0.8125rem;
+                        margin-bottom: 0.5rem;
+                    }
+                }
+
+                &:hover {
+                    background-color: $border-color;
                 }
             }
 
-            &:hover {
-                background-color: $border-color;
+            .empty {
+                grid-column: span 4;
+                background-color: rgba($tertiary-color, $alpha: 0.05);
+                padding: 1rem;
+                border-radius: 0.25rem;
+
+                p {
+                    color: $tertiary-color;
+                    font-size: 0.875rem;
+                }
             }
-        }
 
-        .empty {
-            grid-column: span 4;
-            background-color: rgba($tertiary-color, $alpha: 0.05);
-            padding: 1rem;
-            border-radius: 0.25rem;
+            @include sm {
+                $lottery-size: 280px;
+                grid-template-columns: repeat(2, minmax(0, $lottery-size));
 
-            p {
-                color: $tertiary-color;
-                font-size: 0.875rem;
+                .lottery-image {
+                    width: $lottery-size !important;
+                    height: $lottery-size !important;
+                }
+
             }
-        }
 
-        @include sm {
-            grid-template-columns: repeat(2, minmax(0, $lottery-size));
-            ;
-        }
+            @include md {
+                $lottery-size: 280px;
+                grid-template-columns: repeat(3, minmax(0, $lottery-size));
 
-        @include md {
-            grid-template-columns: repeat(3, minmax(0, $lottery-size));
-            ;
-        }
+            }
 
-        @include lg {
-            grid-template-columns: repeat(4, minmax(0, $lottery-size));
-            ;
-        }
+            @include lg {
+                $lottery-size: 280px;
+                grid-template-columns: repeat(4, minmax(0, $lottery-size));
 
-        @include xs {
-            $lottery-size: 100%;
-            grid-template-columns: 1fr;
-
-            .lottery-image {
-                width: calc(100vw - 5rem) !important;
-                height: calc(100vw - 5rem) !important;
-                max-width: 480px;
-                max-height: 480px;
             }
         }
     }

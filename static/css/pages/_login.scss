@@ -73,13 +73,13 @@
             p {
                 font-size: 0.875rem;
                 font-weight: 600;
-                color: $red-500;
+                color: rgba($danger, $alpha: 0.8);
             }
         }
 
         &:has(.error) {
             .input {
-                outline: 1px solid $red-600;
+                outline: 1px solid $danger;
             }
         }
 
@@ -96,6 +96,7 @@
                 color: $secondary-color;
             }
         }
+
 
         h2 {
             font-weight: 300;

@@ -51,82 +51,157 @@
         }
 
         .form {
-            padding: 0;
+            margin-bottom: 1rem;
 
             .form-fields {
-
                 display: flex;
                 gap: 0.25rem;
-                margin-bottom: 1rem;
 
-                button {
-                    margin: 0;
+            }
+
+            .form-field {
+                background-color: $background-color-2;
+                border: none;
+                appearance: none;
+                padding: 0.5rem;
+                border-radius: 0.25rem;
+
+                min-width: 80px;
+
+                &:focus {
+                    outline: 1px solid $primary-color;
+
                 }
             }
 
-            input,
-            select {
-                padding: 0.75rem;
-                margin: 0;
-                background-color: $background-color-2 !important;
-                border: 1px solid $border-color !important;
-
-                &:focus,
-                &:select {
-                    outline: 1px solid $white;
-                }
+            .form-field-select,
+            .form-field-select::picker(select) {
+                appearance: base-select;
             }
 
-            select,
-            select::picker(select) {
-                appearance: base-select !important;
-            }
-
-            select::picker(select) {
+            .form-field-select::picker(select) {
                 margin-top: .25rem;
                 border-radius: 4px;
                 border: 1px solid $primary-color;
             }
 
-            select {
-                min-width: 80px;
-            }
-
-            option {
+            .option {
                 padding: 0.5rem;
-            }
-
-            option:nth-of-type(odd) {
-                background: $background-color;
-            }
-
-            option:hover,
-            option:focus {
-                background: $primary-color;
-            }
-
-
-            option::checkmark {
-                display: none;
-            }
-
-
-            option {
                 background-color: $background-color-2;
 
+                &:hover,
+                &:focus {
+                    background: $primary-color;
+                }
+
+                &::checkmark {
+                    display: none;
+                }
             }
 
-            p {
-                font-size: 0.875rem;
-                margin-bottom: 0.75rem;
+            .button {
+                cursor: pointer;
+                background-color: $primary-color;
+                border: none;
+                border-radius: 0.25rem;
+                padding: 0.5rem 1rem;
+                transition: all 0.1s;
 
-                b {
-                    font-weight: 600;
+                &:hover {
+                    background-color: $border-color;
                 }
+            }
+
+
+            .exchange-rate {
+                display: flex;
             }
 
         }
     }
+
+    .order-info {
+        .order-data {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            padding: 0 0.5rem;
+
+            .data-name {
+                font-weight: 700;
+            }
+
+            .data {
+                font-size: 1.5rem;
+            }
+        }
+
+        .order-data-dollar {
+            .data-name {
+                font-size: 0.875rem;
+                color: rgba($white, $alpha: 0.6);
+            }
+
+            .data {
+                font-size: 1.25rem;
+                color: rgba($white, $alpha: 0.6);
+            }
+        }
+
+
+        .exchange-rate {
+            padding: 1rem 0.75rem;
+            background-color: rgba($border-color, $alpha: 0.8);
+            border: 1px solid $border-color;
+            border-radius: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            width: fit-content;
+            margin-bottom: 1rem;
+
+            img {
+                width: 16px;
+                height: 16px;
+            }
+
+            b {
+                font-weight: 600;
+            }
+        }
+
+    }
+
+    .payment-info {
+        background-color: rgba($background-color-2, $alpha: 0.8);
+        padding: 1rem;
+        border-radius: 0.5rem;
+
+        h4 {
+            margin-bottom: 1.25rem;
+        }
+
+        h5 {
+            font-weight: 700;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .payment-data {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 0.5rem 0;
+            font-size: 0.875rem;
+
+            .data-name {
+                font-weight: 600;
+            }
+        }
+    }
+
+
 
     .pending {
         padding: 1rem;
@@ -136,7 +211,8 @@
         font-weight: 600;
     }
 
-    .confirm {
+    .confirm,
+    .order-detail {
         position: absolute;
         top: 0;
         right: 0;
@@ -153,29 +229,104 @@
         &>div {
             background-color: $background-color-2;
             padding: 1.5rem;
-            border-radius: 0.5rem;
-            max-width: 480px;
+            border-radius: 0.25rem;
+            max-width: 520px;
             width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-        }
 
-        h3 {
-            margin-bottom: 1.5rem;
-        }
-
-        .field {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            padding: 0.75rem 0.5rem;
-            border-bottom: 1px solid $border-color;
-
-            p {
-                margin: 0;
+            h3 {
+                font-weight: 500;
+                margin-bottom: 1.5rem;
             }
+
+            h4 {
+                font-family: 600;
+                margin-bottom: 1rem;
+            }
+
+            .quantity {
+                font-weight: 400;
+                font-size: 0.875rem;
+            }
+
+            .field {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 0.75rem;
+            }
+
+            hr {
+                border: none;
+                border-bottom: 1px solid rgba($white, $alpha: 0.2);
+                margin: 1rem 0;
+
+            }
+
+            .button {
+                cursor: pointer;
+                background-color: $primary-color;
+                border: none;
+                border-radius: 0.25rem;
+                padding: 0.5rem 1rem;
+                transition: all 0.1s;
+
+                &:hover {
+                    background-color: $border-color;
+                }
+            }
+
+            .button-cancel {
+                background-color: $danger;
+
+                &:hover {
+                    background-color: rgba($danger, $alpha: 0.8);
+                }
+            }
+        }
+    }
+
+    .orders {
+        h3 {
+            margin: 1rem 0;
+        }
+
+        .order {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+
+            a {
+                cursor: pointer;
+                color: $tertiary-color;
+                text-decoration: underline;
+                font-size: 0.875rem;
+
+                &:hover {
+                    color: rgba($tertiary-color, $alpha: 0.8);
+                }
+            }
+
+            .status {
+                font-size: 0.75rem;
+                font-weight: 600;
+                color: $white;
+                padding: 0.25rem;
+                border-radius: 2px;
+                text-wrap: nowrap;
+            }
+
+            .status-0 {
+                background-color: $warning;
+            }
+
+            .status-1 {
+                background-color: $success;
+            }
+
+            .status-2 {
+                background-color: $danger;
+            }
+
         }
     }
 
@@ -188,8 +339,8 @@
             margin-left: auto;
             width: 50vw;
             height: 50vw;
-            max-width: $lg/2;
-            max-height: $lg/2;
+            max-width: calc($lg/2);
+            max-height: calc($lg/2);
         }
     }
 }
