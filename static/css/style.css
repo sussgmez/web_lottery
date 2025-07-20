@@ -2,7 +2,7 @@ header {
   padding: 0.75rem 1.5rem;
   justify-content: space-between;
   position: relative;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 }
 header nav {
   gap: 0.25rem;
@@ -38,13 +38,13 @@ header .btn-menu {
     transition: all 0.1s;
   }
   header .btn-menu:hover {
-    background-color: #0A1323;
+    background-color: #0A1523;
   }
   header nav {
     display: none;
     position: absolute;
     top: calc(100% + 0.25rem);
-    background-color: #0A1323;
+    background-color: #0A1523;
     left: 0.25rem;
     right: 0.25rem;
     flex-direction: column;
@@ -78,14 +78,15 @@ header .btn-menu {
   margin-bottom: 0.25rem;
   font-size: 0.875rem;
 }
-.form input {
+.form input, .form select {
   background-color: transparent !important;
-  border: 1px solid #001D3D;
+  border: 1px solid #003566;
   padding: 0.5rem;
   border-radius: 0.25rem;
   margin-bottom: 1rem;
+  color: #FFFFFF;
 }
-.form input:last-of-type {
+.form input:last-of-type, .form select:last-of-type {
   margin-bottom: 0.5rem;
 }
 .form button {
@@ -126,7 +127,7 @@ header .btn-menu {
 }
 .login .form {
   padding: 0;
-  border: 3px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 0.5rem;
   background-color: #0B1019;
   margin: 1rem;
@@ -135,7 +136,7 @@ header .btn-menu {
   height: fit-content;
 }
 .login .form > div {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   padding: 2rem;
 }
 .login .form > div:last-child {
@@ -205,7 +206,7 @@ header .btn-menu {
 }
 .signup .form {
   padding: 0;
-  border: 3px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 0.5rem;
   background-color: #0B1019;
   margin: 1rem;
@@ -214,7 +215,7 @@ header .btn-menu {
   height: fit-content;
 }
 .signup .form > div {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   padding: 2rem;
 }
 .signup .form > div:last-child {
@@ -279,69 +280,46 @@ header .btn-menu {
 
 .section-lotteries {
   padding: 4rem 2rem;
-  max-width: 1280px;
   width: fit-content;
   margin: auto;
 }
 .section-lotteries h2 {
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 .section-lotteries .lotteries {
   display: grid;
-  grid-template-columns: 280px;
-  gap: 1.5rem;
+  gap: 0.75rem;
 }
 .section-lotteries .lotteries .lottery {
-  background-color: #0A1323;
-  border-radius: 4px;
+  box-shadow: 0 0 8px #000000;
+  border-radius: 8px;
   overflow: hidden;
+  text-decoration: none;
+  height: fit-content;
+  background-color: #0A1523;
 }
 .section-lotteries .lotteries .lottery .lottery-image {
-  max-width: 280px;
-  width: 100%;
-  max-height: 280px;
-  height: 100%;
-  position: relative;
-}
-.section-lotteries .lotteries .lottery .lottery-image .button-ticket {
-  display: none;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(10, 19, 35, 0.5);
-  backdrop-filter: blur(1px);
-}
-.section-lotteries .lotteries .lottery .lottery-image .button-ticket a {
-  background-color: rgba(255, 195, 0, 0.8);
-  color: #0B1019;
-  text-decoration: none;
-  font-weight: 600;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
+  width: 280px;
+  height: 280px;
 }
 .section-lotteries .lotteries .lottery .lottery-info {
-  padding: 0.75rem;
+  padding: 1rem 0.75rem;
 }
 .section-lotteries .lotteries .lottery .lottery-info h4 {
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.25rem;
-  font-size: 0.875rem;
+  font-size: 1rem;
   height: 2.5rem;
   margin-bottom: 0.5rem;
 }
 .section-lotteries .lotteries .lottery .lottery-info p,
 .section-lotteries .lotteries .lottery .lottery-info b {
   font-size: 0.8125rem;
-  color: #FFC300;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
 }
-.section-lotteries .lotteries .lottery:hover .button-ticket {
-  display: flex;
+.section-lotteries .lotteries .lottery:hover {
+  background-color: #001D3D;
 }
 .section-lotteries .lotteries .empty {
   grid-column: span 4;
@@ -351,6 +329,7 @@ header .btn-menu {
 }
 .section-lotteries .lotteries .empty p {
   color: #51B4FF;
+  font-size: 0.875rem;
 }
 @media (min-width: 768px) {
   .section-lotteries .lotteries {
@@ -365,6 +344,163 @@ header .btn-menu {
 @media (min-width: 1280px) {
   .section-lotteries .lotteries {
     grid-template-columns: repeat(4, minmax(0, 280px));
+  }
+}
+@media (max-width: 768px) {
+  .section-lotteries .lotteries {
+    grid-template-columns: 1fr;
+  }
+  .section-lotteries .lotteries .lottery-image {
+    width: calc(100vw - 5rem) !important;
+    height: calc(100vw - 5rem) !important;
+    max-width: 480px;
+    max-height: 480px;
+  }
+}
+
+.section-lottery {
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+  max-width: 768px;
+  margin: auto;
+}
+.section-lottery .lottery-image {
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+}
+.section-lottery .lottery-info {
+  padding: 1rem 0;
+}
+.section-lottery .lottery-info h2 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  line-height: 1.875rem;
+}
+.section-lottery .lottery-info hr {
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  margin: 1rem 0;
+}
+.section-lottery .lottery-info h3 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.section-lottery .lottery-info .lottery-data {
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+}
+.section-lottery .lottery-info .lottery-data b {
+  font-weight: 600;
+}
+.section-lottery .lottery-info .form {
+  padding: 0;
+}
+.section-lottery .lottery-info .form .form-fields {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+.section-lottery .lottery-info .form .form-fields button {
+  margin: 0;
+}
+.section-lottery .lottery-info .form input,
+.section-lottery .lottery-info .form select {
+  padding: 0.75rem;
+  margin: 0;
+  background-color: #0A1523 !important;
+  border: 1px solid #001D3D !important;
+}
+.section-lottery .lottery-info .form input:focus, .section-lottery .lottery-info .form input:sele,
+.section-lottery .lottery-info .form select:focus,
+.section-lottery .lottery-info .form select:sele {
+  outline: 1px solid #FFFFFF;
+}
+.section-lottery .lottery-info .form select,
+.section-lottery .lottery-info .form select::picker(select) {
+  appearance: base-select;
+}
+.section-lottery .lottery-info .form select::picker(select) {
+  margin-top: 0.25rem;
+  border-radius: 4px;
+  border: 1px solid #003566;
+}
+.section-lottery .lottery-info .form select {
+  min-width: 80px;
+}
+.section-lottery .lottery-info .form option {
+  padding: 0.5rem;
+}
+.section-lottery .lottery-info .form option:nth-of-type(odd) {
+  background: #0B1019;
+}
+.section-lottery .lottery-info .form option:hover,
+.section-lottery .lottery-info .form option:focus {
+  background: #003566;
+}
+.section-lottery .lottery-info .form option::checkmark {
+  display: none;
+}
+.section-lottery .lottery-info .form option {
+  background-color: #0A1523;
+}
+.section-lottery .lottery-info .form p {
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+}
+.section-lottery .lottery-info .form p b {
+  font-weight: 600;
+}
+.section-lottery .pending {
+  padding: 1rem;
+  background-color: #001D3D;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.section-lottery .confirm {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+}
+.section-lottery .confirm > div {
+  background-color: #0A1523;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  max-width: 480px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.section-lottery .confirm h3 {
+  margin-bottom: 1.5rem;
+}
+.section-lottery .confirm .field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0.5rem;
+  border-bottom: 1px solid #001D3D;
+}
+.section-lottery .confirm .field p {
+  margin: 0;
+}
+@media (min-width: 1024px) {
+  .section-lottery {
+    grid-template-columns: 1fr 1fr;
+    max-width: 1280px;
   }
 }
 
@@ -400,6 +536,17 @@ img {
 
 h1, h2, h3, h4, h5, p {
   margin: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: none;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,23 +1,18 @@
 {% for lottery in lottery_list %}
-  <div class="lottery">
+  <a class="lottery" href="{% url 'lottery' lottery.pk %}">
     <div class="lottery-image">
       <img src="{{ lottery.image.url }}" alt="" />
-      <div class="button-ticket">
-        <a role="button" href="{% url 'lottery' lottery.pk %}">Participar</a>
-      </div>
     </div>
     <div class="lottery-info">
       <h4>{{ lottery.description }}</h4>
       <p>
         <b>Cierre del sorteo:</b> {{ lottery.closing_date|date:'d/m/Y' }}
       </p>
-      <div>
-        <p>
-          <b>Ticket:</b> {{ lottery.price }} $
-        </p>
-      </div>
+      <p>
+        <b>Ticket:</b> {{ lottery.price }} $
+      </p>
     </div>
-  </div>
+  </a>
 {% empty %}
   <div class="empty">
     <p>En estos momentos no tenemos sorteos disponibles. ¡Mantente al tanto de nuestras actualizaciones!</p>

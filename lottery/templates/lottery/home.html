@@ -2,21 +2,15 @@
 
 {% load static %}
 
+{% block title %}Inicio{% endblock title %}
+
 {% block content %}
+<div>
   <section class="section-lotteries">
     <div>
-      <h2>Sorteos disponibles</h2>
+      <h2>Sorteos</h2>
       <div class="lotteries" hx-get="{% url 'lotteries' %}" hx-trigger="load"></div>
     </div>
   </section>
-
-
-  {% comment %} <main class="home-page">
-    <div class="home-image">
-        <img src="{% static 'img/background.png' %}" alt="">
-    </div>
-    <div class="container container-lotteries">
-      <h2>Sorteos disponibles</h2>
-    </div>
-  </main> {% endcomment %}
+</div>
 {% endblock %}

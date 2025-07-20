@@ -38,7 +38,7 @@ class OrderCreateView(CreateView):
         if self.request.method == 'GET':
             context["lottery"] = Lottery.objects.get(pk=self.request.GET['lottery'])
             context["dollar"] = Dollar.objects.get(pk=1)
-        context["max_number"] = range(1, 11)
+        context["select_number"] = range(1, 11)
         return context
 
     def form_valid(self, form):

@@ -1,23 +1,51 @@
-{{ form.errors }}
+{% load lottery_extras %}
 
-<form action="{% url 'order-create' %}" method="post">
+<form class="form" action="{% url 'order-create' %}" method="post">
   {% csrf_token %}
-  <h3>Comprar tickets</h3>
+  <input type="hidden" name="dollar" value="{{ dollar }}" />
 
   <input type="hidden" name="user" value="{{ user.pk }}" />
-  <input type="hidden" name="lottery" value="{{ lottery.pk }}" />
-  <input type="hidden" name="dollar" value="{{ dollar.pk }}" />
 
-  <div class="grid grid-order-create">
-    <select hx-on:change="refresh_amount(quantity=this.value)" name="quantity">
-      {% for num in max_number %}
+  <input type="hidden" name="lottery" value="{{ lottery.pk }}" />
+
+  <h3>Comprar tickets</h3>
+  <div class="form-fields">
+    <select name="quantity" hx-on:change="set_amount({{ dollar.exchange_rate|floatformat_dot }}, {{ lottery.price|floatformat_dot }}, this.value)">
+      <button><selectedcontent></selectedcontent></button>
+      {% for num in select_number %}
         <option value="{{ num }}">{{ num }}</option>
       {% endfor %}
     </select>
-    <input type="number" placeholder="Nro. de referencia" name="reference" />
-    <button>Comprar</button>
+    <input id="id_reference" name="reference" type="number" placeholder="Nro. de referencia" required />
+    <button onclick="event.preventDefault();show_confirm();">Comprar</button>
   </div>
-  <h4><b>Monto total $: </b><span id="id_amount_dollar"></span></h4>
-  <h4><b>Moton total Bs.: </b><span id="id_amount_bs"></span></h4>
-  <p>Tasa de cambio: {{ dollar.exchange_rate|floatformat:2 }} Bs.</p>
+  <p>
+    <b>Monto total:</b><span id="id_amount_dollar">{{ lottery.price|floatformat_dot }}</span>$
+  </p>
+  <p>
+    <b>Moton total:</b><span id="id_amount_bs">{{ lottery.price|multiply:dollar.exchange_rate }}</span>Bs.
+  </p>
+  <p>
+    <b>Tasa de cambio:</b>{{ dollar.exchange_rate|floatformat_dot }} Bs.
+  </p>
+
+  <div id="id_confirm" style="display: none;" class="confirm">
+    <div>
+      <h3>Confirmar pago</h3>
+      <div class="field">
+        <p><b>Tickets:</b></p>
+        <p>1</p>
+      </div>
+      <div class="field">
+        <p><b>Monto total:</b></p>
+        <p>{{ lottery.price|multiply:dollar.exchange_rate }}</p>
+      </div>
+      <div class="field">
+        <p><b>Nro. de referencia:</b></p>
+        <p>12345</p>
+      </div>
+      <button>Enviar</button>
+      <button onclick="event.preventDefault();">Enviar</button>
+    </div>
+  </div>
 </form>

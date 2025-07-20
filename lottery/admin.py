@@ -9,14 +9,17 @@ class LotteryAdmin(admin.ModelAdmin):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    readonly_fields = ['dollar_exchange_rate_calculated', 'total_amount']
-    exclude = ['dollar_exchange_rate']
+    readonly_fields = ['lottery_price', 'exchange_rate', 'total_amount']
+    exclude = ['dollar']
 
-    def dollar_exchange_rate_calculated(self, obj):
-        return obj.dollar_exchange_rate.history.as_of(obj.created)
+    def lottery_price(self, obj):
+        return obj.lottery.price
+    
+    def exchange_rate(self, obj):
+        return f'{obj.dollar.history.as_of(obj.created)} $ - {obj.created.strftime('%d/%m/%Y')}'
     
     def total_amount(self, obj):
-        return obj.dollar_exchange_rate.history.as_of(obj.created).exchange_rate * obj.quantity
+        return f'{obj.dollar.history.as_of(obj.created).exchange_rate * obj.quantity *  obj.lottery.price} Bs'
 
 
 @admin.register(Dollar)
