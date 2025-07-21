@@ -1,6 +1,8 @@
 db.sqlite3
 .venv
 __pycache__
-migrations
-!migrations/__init__.py
+lottery/migrations/*
+!lottery/migrations/__init__.py
+authentication/migrations/*
+!authentication/migrations/__init__.py
 images
