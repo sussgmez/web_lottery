@@ -35,7 +35,7 @@
 
         .input {
             background-color: transparent !important;
-            border: 1px solid $primary-color;
+            border: 1px solid $border-color;
             padding: 0.5rem;
             border-radius: 0.25rem;
             margin-bottom: 1rem;
@@ -63,7 +63,7 @@
             transition: all 0.1s;
 
             &:hover {
-                background-color: $border-color;
+                background-color: rgba($primary-color, $alpha: 0.8);
             }
         }
 

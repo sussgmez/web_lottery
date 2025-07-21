@@ -17,18 +17,18 @@
   transition: all 0.1s;
 }
 .header .btn-menu:hover {
-  background-color: #0A1523;
+  background-color: #292929;
 }
 .header .nav {
   display: flex;
   position: absolute;
   top: calc(100% + 0.25rem);
-  background-color: #0A1523;
+  background-color: #292929;
   left: 0.25rem;
   right: 0.25rem;
   flex-direction: column;
   border-radius: 0.25rem;
-  border: 1px solid #001D3D;
+  border: 1px solid #525252;
   gap: 0;
   z-index: 10;
 }
@@ -44,14 +44,14 @@
   align-items: end !important;
   width: 100%;
   border-radius: 4px;
-  border-bottom: 1px solid #001D3D;
+  border-bottom: 1px solid #525252;
 }
 .header .nav .nav-link img {
   width: 16px;
   height: 16px;
 }
 .header .nav .nav-link:hover {
-  background-color: #001D3D;
+  background-color: #525252;
 }
 .header .nav .nav-link:last-of-type {
   border-bottom: none;
@@ -84,7 +84,7 @@
   display: flex;
   flex-direction: column;
   padding: 0;
-  background-color: #0B1019;
+  background-color: #0D0D0D;
   width: 100%;
   max-width: none;
   margin: 0;
@@ -105,7 +105,7 @@
 }
 .login .form .input {
   background-color: transparent !important;
-  border: 1px solid #003566;
+  border: 1px solid #525252;
   padding: 0.5rem;
   border-radius: 0.25rem;
   margin-bottom: 1rem;
@@ -119,18 +119,18 @@
   cursor: pointer;
   padding: 0.5rem 1.5rem;
   width: fit-content;
-  background-color: #003566;
+  background-color: #701010;
   font-weight: 500;
   border: none;
   border-radius: 0.25rem;
   font-size: 0.875rem;
   margin-bottom: 1rem;
   margin-top: 1rem;
-  border: 1px solid #003566;
+  border: 1px solid #701010;
   transition: all 0.1s;
 }
 .login .form .button:hover {
-  background-color: #001D3D;
+  background-color: rgba(112, 16, 16, 0.8);
 }
 .login .form .errors {
   display: flex;
@@ -154,12 +154,12 @@
 }
 .login .form small a,
 .login .form small b {
-  color: #FFC300;
+  color: #D21E1E;
 }
 .login .form h2 {
   font-weight: 300;
   margin-bottom: 0.75rem;
-  color: #FFC300;
+  color: #D21E1E;
   font-size: 1.25rem;
 }
 .login .form hr {
@@ -210,7 +210,7 @@
   display: flex;
   flex-direction: column;
   padding: 0;
-  background-color: #0B1019;
+  background-color: #0D0D0D;
   width: 100%;
   max-width: none;
   margin: 0;
@@ -231,7 +231,7 @@
 }
 .signup .form .input {
   background-color: transparent !important;
-  border: 1px solid #003566;
+  border: 1px solid #525252;
   padding: 0.5rem;
   border-radius: 0.25rem;
   margin-bottom: 1rem;
@@ -245,18 +245,18 @@
   cursor: pointer;
   padding: 0.5rem 1.5rem;
   width: fit-content;
-  background-color: #003566;
+  background-color: #701010;
   font-weight: 500;
   border: none;
   border-radius: 0.25rem;
   font-size: 0.875rem;
   margin-bottom: 1rem;
   margin-top: 1rem;
-  border: 1px solid #003566;
+  border: 1px solid #701010;
   transition: all 0.1s;
 }
 .signup .form .button:hover {
-  background-color: #001D3D;
+  background-color: #525252;
 }
 .signup .form .errors {
   display: flex;
@@ -280,12 +280,12 @@
 }
 .signup .form small a,
 .signup .form small b {
-  color: #FFC300;
+  color: #D21E1E;
 }
 .signup .form h2 {
   font-weight: 300;
   margin-bottom: 0.75rem;
-  color: #FFC300;
+  color: #D21E1E;
   font-size: 1.25rem;
 }
 .signup .form hr {
@@ -357,11 +357,11 @@
   overflow: hidden;
   text-decoration: none;
   height: fit-content;
-  background-color: #0A1523;
+  background-color: #292929;
 }
 .home .section-lotteries .lotteries .lottery .lottery-image {
-  width: calc(100vw - 5rem);
-  height: calc(100vw - 5rem);
+  width: calc(100vw - 4rem);
+  height: calc(100vw - 4rem);
   max-width: 480px;
   max-height: 480px;
   position: relative;
@@ -401,22 +401,22 @@
   margin-bottom: 0.5rem;
 }
 .home .section-lotteries .lotteries .lottery:hover {
-  background-color: #001D3D;
+  background-color: #525252;
 }
 .home .section-lotteries .lotteries .lottery:has(.closed) {
   border: 1px solid #AF291D;
 }
 .home .section-lotteries .lotteries .lottery:has(.closed):hover {
-  background-color: #0A1523;
+  background-color: #292929;
 }
 .home .section-lotteries .lotteries .empty {
   grid-column: span 4;
-  background-color: rgba(81, 180, 255, 0.05);
+  background-color: rgba(239, 143, 143, 0.05);
   padding: 1rem;
   border-radius: 0.25rem;
 }
 .home .section-lotteries .lotteries .empty p {
-  color: #51B4FF;
+  color: #EF8F8F;
   font-size: 0.875rem;
 }
 @media (min-width: 768px) {
@@ -488,7 +488,7 @@
   flex-wrap: wrap;
 }
 .section-lottery .lottery-info .form .form-field {
-  background-color: #0A1523;
+  background-color: #292929;
   border: none;
   appearance: none;
   padding: 0.5rem;
@@ -496,7 +496,7 @@
   min-width: 80px;
 }
 .section-lottery .lottery-info .form .form-field:focus {
-  outline: 1px solid #003566;
+  outline: 1px solid #701010;
 }
 .section-lottery .lottery-info .form .form-field-select,
 .section-lottery .lottery-info .form .form-field-select::picker(select) {
@@ -505,28 +505,28 @@
 .section-lottery .lottery-info .form .form-field-select::picker(select) {
   margin-top: 0.25rem;
   border-radius: 4px;
-  border: 1px solid #003566;
+  border: 1px solid #701010;
 }
 .section-lottery .lottery-info .form .option {
   padding: 0.5rem;
-  background-color: #0A1523;
+  background-color: #292929;
 }
 .section-lottery .lottery-info .form .option:hover, .section-lottery .lottery-info .form .option:focus {
-  background: #003566;
+  background: #701010;
 }
 .section-lottery .lottery-info .form .option::checkmark {
   display: none;
 }
 .section-lottery .lottery-info .form .button {
   cursor: pointer;
-  background-color: #003566;
+  background-color: #701010;
   border: none;
   border-radius: 0.25rem;
   padding: 0.5rem 1rem;
   transition: all 0.1s;
 }
 .section-lottery .lottery-info .form .button:hover {
-  background-color: #001D3D;
+  background-color: #525252;
 }
 .section-lottery .lottery-info .form .exchange-rate {
   display: flex;
@@ -554,8 +554,8 @@
 }
 .section-lottery .order-info .exchange-rate {
   padding: 1rem 0.75rem;
-  background-color: rgba(0, 29, 61, 0.8);
-  border: 1px solid #001D3D;
+  background-color: rgba(82, 82, 82, 0.8);
+  border: 1px solid #525252;
   border-radius: 0.25rem;
   display: flex;
   align-items: center;
@@ -572,7 +572,7 @@
   font-weight: 600;
 }
 .section-lottery .payment-info {
-  background-color: rgba(10, 21, 35, 0.8);
+  background-color: rgba(41, 41, 41, 0.8);
   padding: 1rem;
   border-radius: 0.5rem;
 }
@@ -594,18 +594,18 @@
   font-weight: 600;
 }
 .section-lottery .no-login {
-  border: 2px dashed #FFC300;
+  border: 2px dashed #D21E1E;
   padding: 1rem;
   border-radius: 0.25rem;
   margin-top: 2rem;
   font-size: 0.875rem;
 }
 .section-lottery .no-login a {
-  color: #FFC300;
+  color: #D21E1E;
   font-weight: 600;
 }
 .section-lottery .empty {
-  background-color: rgba(0, 29, 61, 0.8);
+  background-color: rgba(82, 82, 82, 0.8);
   padding: 1rem;
   border-radius: 0.25rem;
   font-size: 0.875rem;
@@ -618,7 +618,7 @@
 }
 .section-lottery .pending {
   padding: 1rem;
-  background-color: #001D3D;
+  background-color: #525252;
   border-radius: 0.25rem;
   font-size: 0.875rem;
   font-weight: 600;
@@ -640,7 +640,7 @@
 }
 .section-lottery .confirm > div,
 .section-lottery .order-detail > div {
-  background-color: #0A1523;
+  background-color: #292929;
   padding: 1.5rem;
   border-radius: 0.25rem;
   max-width: 520px;
@@ -676,7 +676,7 @@
 .section-lottery .confirm > div .button,
 .section-lottery .order-detail > div .button {
   cursor: pointer;
-  background-color: #003566;
+  background-color: #701010;
   border: none;
   border-radius: 0.25rem;
   padding: 0.5rem 1rem;
@@ -684,7 +684,7 @@
 }
 .section-lottery .confirm > div .button:hover,
 .section-lottery .order-detail > div .button:hover {
-  background-color: #001D3D;
+  background-color: #525252;
 }
 .section-lottery .confirm > div .button-cancel,
 .section-lottery .order-detail > div .button-cancel {
@@ -705,12 +705,12 @@
 }
 .section-lottery .orders .order a {
   cursor: pointer;
-  color: #51B4FF;
+  color: #EF8F8F;
   text-decoration: underline;
   font-size: 0.875rem;
 }
 .section-lottery .orders .order a:hover {
-  color: rgba(81, 180, 255, 0.8);
+  color: rgba(239, 143, 143, 0.8);
 }
 .section-lottery .orders .order .status {
   font-size: 0.75rem;
@@ -751,7 +751,7 @@
 }
 
 body {
-  background-color: #0B1019;
+  background-color: #0D0D0D;
 }
 
 .hidden {
