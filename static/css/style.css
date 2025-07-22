@@ -238,9 +238,6 @@
   color: #FFFFFF;
   font-size: 0.875rem;
 }
-.signup .form .input:last-of-type {
-  margin-bottom: 0.5rem;
-}
 .signup .form .button {
   cursor: pointer;
   padding: 0.5rem 1.5rem;

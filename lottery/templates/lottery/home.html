@@ -2,13 +2,15 @@
 
 {% load static %}
 
-{% block title %}Inicio{% endblock title %}
+{% block title %}
+  Inicio
+{% endblock %}
 
 {% block content %}
-<div class="home">
-  <section class="section-lotteries">
+  <div class="home">
+    <section class="section-lotteries">
       <h2 class="header-section">Sorteos</h2>
       <div class="lotteries" hx-get="{% url 'lotteries' %}" hx-trigger="load"></div>
-  </section>
-</div>
+    </section>
+  </div>
 {% endblock %}

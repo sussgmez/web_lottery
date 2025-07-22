@@ -17,19 +17,19 @@
       <div class="form-fields">
         <h3>Registrarse</h3>
         <label class="label" for="id_email">Email</label>
-        <input class="input" type="email" name="email" id="id_email" placeholder="Correo electrónico" required />
+        {{ form.email }}
 
         <label class="label" for="id_first_name">Nombre</label>
-        <input class="input" type="text" name="first_name" id="id_first_name" placeholder="Nombre" required />
+        {{ form.first_name }}
 
         <label class="label" for="id_last_name">Apellido</label>
-        <input class="input" type="text" name="last_name" id="id_last_name" placeholder="Apellido" required />
+        {{ form.last_name }}
 
         <label class="label" for="id_password1">Contraseña</label>
-        <input class="input" type="password" name="password1" id="id_passsword1" placeholder="Constraseña" required />
+        {{ form.password1 }}
 
         <label class="label" for="id_password2">Confirmar contraseña</label>
-        <input class="input" type="password" name="password2" id="id_passsword2" placeholder="Confirmar contraseña" required />
+        {{ form.password2 }}
 
         <label class="label" for="id_phone_number">Nro. de teléfono</label>
         <div class="input-phone-number">
