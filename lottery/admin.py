@@ -16,7 +16,7 @@ class OrderAdmin(admin.ModelAdmin):
         return obj.lottery.price
     
     def exchange_rate(self, obj):
-        return f'{obj.dollar.history.as_of(obj.created)} $ - {obj.created.strftime('%d/%m/%Y')}'
+        return f'{obj.dollar.history.as_of(obj.created)} $ - {obj.created.strftime("%d/%m/%Y")}'
     
     def total_amount(self, obj):
         return f'{obj.dollar.history.as_of(obj.created).exchange_rate * obj.quantity *  obj.lottery.price} Bs'

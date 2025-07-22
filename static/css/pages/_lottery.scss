@@ -208,6 +208,7 @@
         border-radius: 0.25rem;
         margin-top: 2rem;
         font-size: 0.875rem;
+
         a {
             color: $secondary-color;
             font-weight: 600;
@@ -220,6 +221,7 @@
         border-radius: 0.25rem;
         font-size: 0.875rem;
     }
+
     .closed {
         padding: 0.75rem;
         font-weight: 600;
@@ -352,6 +354,134 @@
             }
 
         }
+    }
+
+    #id_modal_orders_admin {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 20;
+        background-color: rgba($black, $alpha: 0.5);
+        backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem;
+
+        &>div {
+            background-color: $background-color;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            width: 100%;
+            max-width: 480px;
+
+            .modal-header {
+                margin-bottom: 1rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                h3 {}
+
+                .button-close {
+                    cursor: pointer;
+                    background: none;
+                    border: none;
+                    padding: 0;
+                }
+            }
+
+
+            .orders {
+                overflow-y: overlay;
+                max-height: calc(100vh - 16rem);
+                min-height: calc(100vh - 20rem);
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            }
+
+            .input {
+                background-color: $background-color-2;
+                margin-bottom: 0.5rem;
+                border: 1px solid $border-color;
+                border-radius: 0.25rem;
+                padding: 0.5rem;
+                font-size: 0.875rem;
+                width: 100%;
+            }
+
+            .order {
+                display: grid;
+                grid-template-columns: repeat(2, 50%);
+                gap: 0.5rem 0.25rem;
+                background-color: $background-color-2;
+                margin-bottom: 0.5rem;
+                padding: 0.75rem;
+                border-radius: 0.25rem;
+
+                p {
+                    font-size: 0.875rem;
+                }
+
+                .email {
+                    font-size: 0.875rem;
+                    font-weight: 700;
+                    grid-column: span 2;
+                }
+
+                .field-title {
+                    font-size: 0.8125rem;
+                    font-weight: 700;
+                }
+
+                .order-status-0 {
+                    font-weight: 700;
+                    color: $warning;
+                }
+
+                .order-status-1 {
+                    font-weight: 700;
+                    color: $success;
+                }
+
+                .order-status-2 {
+                    font-weight: 700;
+                    color: $danger;
+                }
+
+                .buttons {
+                    grid-column: span 2;
+                }
+
+                .button {
+                    cursor: pointer;
+                    padding: 0.25rem 0.5rem;
+                    border: none;
+                    border-radius: 0.25rem;
+                    font-size: 0.8125rem;
+                    font-weight: 600;
+                }
+
+                .button-to-be-confirmed {
+                    background-color: $border-color;
+                }
+
+                .button-confirm {
+                    background-color: $success;
+                }
+
+                .button-decline {
+                    background-color: $danger;
+                }
+            }
+
+
+        }
+
     }
 
     @include md {

@@ -1,0 +1,28 @@
+{% load lottery_extras %}
+
+<p class="email">{{ order.user.email }} x {{ order.quantity }}</p>
+<div>
+  <p class="field-title">Monto total</p>
+  <p id="id_order_amout_{{ order.pk }}"></p>
+</div>
+<div>
+  <p class="field-title">Nro. de referencia</p>
+  <p>#{{ order.reference }}</p>
+</div>
+{% if order.status == 0 %}
+  <p class="order-status-0">{{ order.get_status_display }}</p>
+  <div class="buttons">
+    <button class="button button-confirm" hx-get="{% url 'order-status' order.pk %}?status=1" hx-target="#id_order_{{ order.pk }}">Confirmar</button>
+    <button class="button button-decline" hx-get="{% url 'order-status' order.pk %}?status=2" hx-target="#id_order_{{ order.pk }}">Rechazar</button>
+  </div>
+{% elif order.status == 1 %}
+  <p class="order-status-1">{{ order.get_status_display }}</p>
+  <div class="buttons">
+    <button class="button button-to-be-confirmed" hx-get="{% url 'order-status' order.pk %}?status=0" hx-target="#id_order_{{ order.pk }}">Cancelar</button>
+  </div>
+{% elif order.status == 2 %}
+  <p class="order-status-2">{{ order.get_status_display }}</p>
+  <div class="buttons">
+    <button class="button button-to-be-confirmed" hx-get="{% url 'order-status' order.pk %}?status=0" hx-target="#id_order_{{ order.pk }}">Cancelar</button>
+  </div>
+{% endif %}

@@ -729,6 +729,109 @@
 .section-lottery .orders .order .status-2 {
   background-color: #AF291D;
 }
+.section-lottery #id_modal_orders_admin {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+}
+.section-lottery #id_modal_orders_admin > div {
+  background-color: #0D0D0D;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  width: 100%;
+  max-width: 480px;
+}
+.section-lottery #id_modal_orders_admin > div .modal-header {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.section-lottery #id_modal_orders_admin > div .modal-header .button-close {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.section-lottery #id_modal_orders_admin > div .orders {
+  overflow-y: overlay;
+  max-height: calc(100vh - 16rem);
+  min-height: calc(100vh - 20rem);
+}
+.section-lottery #id_modal_orders_admin > div .orders::-webkit-scrollbar {
+  display: none;
+}
+.section-lottery #id_modal_orders_admin > div .input {
+  background-color: #292929;
+  margin-bottom: 0.5rem;
+  border: 1px solid #525252;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  width: 100%;
+}
+.section-lottery #id_modal_orders_admin > div .order {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  gap: 0.5rem 0.25rem;
+  background-color: #292929;
+  margin-bottom: 0.5rem;
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+}
+.section-lottery #id_modal_orders_admin > div .order p {
+  font-size: 0.875rem;
+}
+.section-lottery #id_modal_orders_admin > div .order .email {
+  font-size: 0.875rem;
+  font-weight: 700;
+  grid-column: span 2;
+}
+.section-lottery #id_modal_orders_admin > div .order .field-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+.section-lottery #id_modal_orders_admin > div .order .order-status-0 {
+  font-weight: 700;
+  color: #967300;
+}
+.section-lottery #id_modal_orders_admin > div .order .order-status-1 {
+  font-weight: 700;
+  color: #008a2e;
+}
+.section-lottery #id_modal_orders_admin > div .order .order-status-2 {
+  font-weight: 700;
+  color: #AF291D;
+}
+.section-lottery #id_modal_orders_admin > div .order .buttons {
+  grid-column: span 2;
+}
+.section-lottery #id_modal_orders_admin > div .order .button {
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+.section-lottery #id_modal_orders_admin > div .order .button-to-be-confirmed {
+  background-color: #525252;
+}
+.section-lottery #id_modal_orders_admin > div .order .button-confirm {
+  background-color: #008a2e;
+}
+.section-lottery #id_modal_orders_admin > div .order .button-decline {
+  background-color: #AF291D;
+}
 @media (min-width: 1024px) {
   .section-lottery {
     grid-template-columns: 1fr 1fr;

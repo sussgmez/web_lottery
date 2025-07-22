@@ -82,3 +82,52 @@ class OrderDetailView(DetailView):
         context["dollar"] = Dollar.objects.get(pk=1).history.as_of(self.get_object().created)
         return context
     
+
+class OrderAdminListView(ListView):
+    model = Order
+    template_name = "lottery/_order_admin_list.html"
+
+    def get_queryset(self):
+        
+        return Order.objects.filter(lottery=self.kwargs['pk']).filter(reference__contains=self.request.GET['filter']).order_by('status')
+    
+
+def close_lottery(request, pk):
+    lottery = Lottery.objects.get(pk=pk)
+    lottery.closed = True
+    lottery.save()
+    
+    return redirect('lottery', pk=pk)
+    
+def open_lottery(request, pk):
+    lottery = Lottery.objects.get(pk=pk)
+    lottery.closed = False
+    lottery.save()
+    
+    return redirect('lottery', pk=pk)
+    
+    
+    
+def change_order_status(request, pk):
+    order = Order.objects.get(pk=pk)
+    order.status=request.GET['status']
+    order.save()
+
+    return render(request, 'lottery/_order_admin.html', context={'order':Order.objects.get(pk=pk)})
+
+
+def get_emails(request, pk):
+    lottery = Lottery.objects.get(pk=pk)
+    response = HttpResponse(content_type='text/plain')
+    response['Content-Disposition'] = f'attachment; filename="{lottery.description}.txt"'
+
+    text = ''
+    orders = Order.objects.filter(lottery=lottery.pk, status=1)
+
+    for order in orders:
+        for x in range(0, order.quantity):
+            text+=order.user.email+'\n'
+
+    response.write(text)
+
+    return response

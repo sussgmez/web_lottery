@@ -1,7 +1,7 @@
 
 {% load lottery_extras %}
 
-<div hx-on::after-process-node="set_amount_order({{ order.lottery.price|multiply:dollar.exchange_rate }})">
+<div hx-on::after-process-node="set_amount_order({{ order.lottery.price|multiply:dollar.exchange_rate }}, {{ order.quantity }})">
   <h3>Pago móvil</h3>
   <h4>{{ order.lottery.description }} <span class="quantity">x 1</span></h4>
   <div class="field">
