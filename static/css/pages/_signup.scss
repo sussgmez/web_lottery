@@ -130,14 +130,28 @@
         display: flex;
         gap: 0.25rem;
 
-        .input {
+        input,
+        select {
             appearance: none;
-            width: 20%;
+            background-color: transparent !important;
+            border: 1px solid $border-color;
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            margin-bottom: 1rem;
+            color: $white;
+            font-size: 0.875rem;
+            option {
+                background-color: $background-color;
+            }
         }
 
-        #id_phone_number {
-            width: 80%;
+        #id_phone_number_0 {
+            width: 40%;
         }
+        #id_phone_number_1 {
+            width: 60%;
+        }
+        
     }
 
     .background-login {

@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import authenticate, login
-from phonenumber_field.formfields import PhoneNumberField
+from phonenumber_field.formfields import PhoneNumberField, SplitPhoneNumberField
 from .models import CustomUser
 
 
@@ -47,7 +47,7 @@ class SignUpForm(forms.Form):
     )
     password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'signup-form__input'}))
     password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'signup-form__input'}))
-    phone_number = forms.TextInput(attrs={'type':'number'})
+    phone_number = SplitPhoneNumberField()
     
     class Meta:
         model = CustomUser
@@ -76,7 +76,7 @@ class SignUpForm(forms.Form):
                 username=email,
                 first_name=first_name,
                 last_name=last_name,
-                phone_number=request.POST['code']+request.POST['phone_number']
+                phone_number=request.POST['phone_number_0']+request.POST['phone_number_1']
             )
             user.set_password(password1)
             user.save()

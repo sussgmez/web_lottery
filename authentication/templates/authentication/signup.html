@@ -33,11 +33,9 @@
 
         <label class="label" for="id_phone_number">Nro. de teléfono</label>
         <div class="input-phone-number">
-          <select class="input" name="code" id="id_code">
-            <option value="+58">+58</option>
-          </select>
-          <input class="input" type="number" name="phone_number" id="id_phone_number" min="1000000000" max="9999999999" placeholder="4123456789" required />
+          {{ form.phone_number }}
         </div>
+
 
         <div class="errors">
           {% if form.non_field_errors %}

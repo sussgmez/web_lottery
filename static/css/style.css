@@ -309,12 +309,26 @@
   display: flex;
   gap: 0.25rem;
 }
-.signup .input-phone-number .input {
+.signup .input-phone-number input,
+.signup .input-phone-number select {
   appearance: none;
-  width: 20%;
+  background-color: transparent !important;
+  border: 1px solid #525252;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+  color: #FFFFFF;
+  font-size: 0.875rem;
 }
-.signup .input-phone-number #id_phone_number {
-  width: 80%;
+.signup .input-phone-number input option,
+.signup .input-phone-number select option {
+  background-color: #0D0D0D;
+}
+.signup .input-phone-number #id_phone_number_0 {
+  width: 40%;
+}
+.signup .input-phone-number #id_phone_number_1 {
+  width: 60%;
 }
 .signup .background-login {
   position: absolute;
