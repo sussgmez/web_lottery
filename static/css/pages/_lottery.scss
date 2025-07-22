@@ -227,6 +227,7 @@
         font-weight: 600;
         background-color: rgba($danger, $alpha: 0.6);
         border-radius: 2px;
+        margin-bottom: 1rem;
     }
 
     .pending {
@@ -235,6 +236,24 @@
         border-radius: 0.25rem;
         font-size: 0.875rem;
         font-weight: 600;
+    }
+
+    .staff-options {
+        .staff-options-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .button {
+            cursor: pointer;
+            padding: 0.5rem;
+            background-color: $background-color-2;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            transition: all 0.1s;
+            &:hover {
+                background-color: $border-color;
+            }
+        }
     }
 
     .confirm,

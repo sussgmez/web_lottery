@@ -615,6 +615,7 @@
   font-weight: 600;
   background-color: rgba(175, 41, 29, 0.6);
   border-radius: 2px;
+  margin-bottom: 1rem;
 }
 .section-lottery .pending {
   padding: 1rem;
@@ -622,6 +623,21 @@
   border-radius: 0.25rem;
   font-size: 0.875rem;
   font-weight: 600;
+}
+.section-lottery .staff-options .staff-options-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+.section-lottery .staff-options .button {
+  cursor: pointer;
+  padding: 0.5rem;
+  background-color: #292929;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  transition: all 0.1s;
+}
+.section-lottery .staff-options .button:hover {
+  background-color: #525252;
 }
 .section-lottery .confirm,
 .section-lottery .order-detail {
