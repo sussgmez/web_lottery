@@ -75,6 +75,25 @@
   }
 }
 
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #292929;
+  padding: 1.5rem;
+  margin-top: 3rem;
+}
+.footer .socials {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.footer .socials .social {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+
 .login {
   display: flex;
   position: relative;
@@ -451,428 +470,747 @@
 }
 
 .section-lottery {
-  padding: 1rem;
-  display: grid;
-  gap: 1rem;
-  max-width: 768px;
+  padding: 2rem 1rem;
+  max-width: 520px;
   margin: auto;
 }
 .section-lottery .lottery-image {
-  border-radius: 8px;
+  border-radius: 0.5rem;
   overflow: hidden;
   display: flex;
-  width: calc(100vw - 3rem);
-  height: calc(100vw - 3rem);
-  max-width: calc(768px - 2rem);
-  max-height: calc(768px - 2rem);
-}
-.section-lottery .lottery-info {
-  padding: 1rem 0;
-}
-.section-lottery .lottery-info h2 {
-  font-weight: 600;
   margin-bottom: 1rem;
-  line-height: 1.875rem;
-}
-.section-lottery .lottery-info hr {
-  border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  margin: 1rem 0;
 }
 .section-lottery .lottery-info h3 {
-  font-weight: 600;
   margin-bottom: 1rem;
 }
-.section-lottery .lottery-info .lottery-data {
-  font-size: 0.875rem;
+.section-lottery .lottery-info .lottery-field {
   margin-bottom: 0.75rem;
 }
-.section-lottery .lottery-info .lottery-data b {
+.section-lottery .lottery-info .lottery-field .field-name {
   font-weight: 600;
+  margin-bottom: 2px;
 }
-.section-lottery .lottery-info .form {
-  margin-bottom: 1rem;
-}
-.section-lottery .lottery-info .form .form-fields {
+.section-lottery .lottery-wrap {
   display: flex;
-  gap: 0.25rem;
   flex-wrap: wrap;
+  gap: 0 5rem;
 }
-.section-lottery .lottery-info .form .form-field {
-  background-color: #292929;
-  border: none;
-  appearance: none;
-  padding: 0.5rem;
-  border-radius: 0.25rem;
-  min-width: 80px;
-}
-.section-lottery .lottery-info .form .form-field:focus {
-  outline: 1px solid #701010;
-}
-.section-lottery .lottery-info .form .form-field-select,
-.section-lottery .lottery-info .form .form-field-select::picker(select) {
-  appearance: base-select;
-}
-.section-lottery .lottery-info .form .form-field-select::picker(select) {
-  margin-top: 0.25rem;
-  border-radius: 4px;
-  border: 1px solid #701010;
-}
-.section-lottery .lottery-info .form .option {
-  padding: 0.5rem;
-  background-color: #292929;
-}
-.section-lottery .lottery-info .form .option:hover, .section-lottery .lottery-info .form .option:focus {
-  background: #701010;
-}
-.section-lottery .lottery-info .form .option::checkmark {
-  display: none;
-}
-.section-lottery .lottery-info .form .button {
-  cursor: pointer;
-  background-color: #701010;
-  border: none;
-  border-radius: 0.25rem;
-  padding: 0.5rem 1rem;
-  transition: all 0.1s;
-}
-.section-lottery .lottery-info .form .button:hover {
-  background-color: #525252;
-}
-.section-lottery .lottery-info .form .exchange-rate {
-  display: flex;
-}
-.section-lottery .order-info .order-data {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
+.section-lottery h4 {
   margin-bottom: 0.5rem;
-  padding: 0 0.5rem;
 }
-.section-lottery .order-info .order-data .data-name {
-  font-weight: 700;
-}
-.section-lottery .order-info .order-data .data {
-  font-size: 1.5rem;
-}
-.section-lottery .order-info .order-data-dollar .data-name {
-  font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.6);
-}
-.section-lottery .order-info .order-data-dollar .data {
-  font-size: 1.25rem;
-  color: rgba(255, 255, 255, 0.6);
-}
-.section-lottery .order-info .exchange-rate {
-  padding: 1rem 0.75rem;
-  background-color: rgba(82, 82, 82, 0.8);
-  border: 1px solid #525252;
+.section-lottery .pending-order {
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 0.25rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  width: fit-content;
   margin-bottom: 1rem;
 }
-.section-lottery .order-info .exchange-rate img {
-  width: 16px;
-  height: 16px;
-}
-.section-lottery .order-info .exchange-rate b {
-  font-weight: 600;
-}
-.section-lottery .payment-info {
-  background-color: rgba(41, 41, 41, 0.8);
-  padding: 1rem;
-  border-radius: 0.5rem;
-}
-.section-lottery .payment-info h4 {
-  margin-bottom: 1.25rem;
-}
-.section-lottery .payment-info h5 {
-  font-weight: 700;
-  font-size: 0.875rem;
-  margin-bottom: 0.5rem;
-}
-.section-lottery .payment-info .payment-data {
+.section-lottery .payment-methods {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 0.5rem 0;
-  font-size: 0.875rem;
-}
-.section-lottery .payment-info .payment-data .data-name {
-  font-weight: 600;
-}
-.section-lottery .no-login {
-  border: 2px dashed #D21E1E;
-  padding: 1rem;
-  border-radius: 0.25rem;
-  margin-top: 2rem;
-  font-size: 0.875rem;
-}
-.section-lottery .no-login a {
-  color: #D21E1E;
-  font-weight: 600;
-}
-.section-lottery .empty {
-  background-color: rgba(82, 82, 82, 0.8);
-  padding: 1rem;
-  border-radius: 0.25rem;
-  font-size: 0.875rem;
-}
-.section-lottery .closed {
-  padding: 0.75rem;
-  font-weight: 600;
-  background-color: rgba(175, 41, 29, 0.6);
-  border-radius: 2px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.25rem;
   margin-bottom: 1rem;
 }
-.section-lottery .pending {
-  padding: 1rem;
-  background-color: #525252;
-  border-radius: 0.25rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-.section-lottery .staff-options .staff-options-buttons {
-  display: flex;
-  gap: 0.5rem;
-}
-.section-lottery .staff-options .button {
+.section-lottery .payment-methods .payment-method {
   cursor: pointer;
-  padding: 0.5rem;
-  background-color: #292929;
-  border-radius: 0.25rem;
-  text-decoration: none;
-  transition: all 0.1s;
-}
-.section-lottery .staff-options .button:hover {
-  background-color: #525252;
-}
-.section-lottery .confirm,
-.section-lottery .order-detail {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  z-index: 20;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.75rem;
-}
-.section-lottery .confirm > div,
-.section-lottery .order-detail > div {
-  background-color: #292929;
-  padding: 1.5rem;
-  border-radius: 0.25rem;
-  max-width: 520px;
-  width: 100%;
-}
-.section-lottery .confirm > div h3,
-.section-lottery .order-detail > div h3 {
-  font-weight: 500;
-  margin-bottom: 1.5rem;
-}
-.section-lottery .confirm > div h4,
-.section-lottery .order-detail > div h4 {
-  font-family: 600;
-  margin-bottom: 1rem;
-}
-.section-lottery .confirm > div .quantity,
-.section-lottery .order-detail > div .quantity {
-  font-weight: 400;
-  font-size: 0.875rem;
-}
-.section-lottery .confirm > div .field,
-.section-lottery .order-detail > div .field {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.75rem;
-}
-.section-lottery .confirm > div hr,
-.section-lottery .order-detail > div hr {
-  border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  margin: 1rem 0;
-}
-.section-lottery .confirm > div .button,
-.section-lottery .order-detail > div .button {
-  cursor: pointer;
-  background-color: #701010;
-  border: none;
-  border-radius: 0.25rem;
-  padding: 0.5rem 1rem;
-  transition: all 0.1s;
-}
-.section-lottery .confirm > div .button:hover,
-.section-lottery .order-detail > div .button:hover {
-  background-color: #525252;
-}
-.section-lottery .confirm > div .button-cancel,
-.section-lottery .order-detail > div .button-cancel {
-  background-color: #AF291D;
-}
-.section-lottery .confirm > div .button-cancel:hover,
-.section-lottery .order-detail > div .button-cancel:hover {
-  background-color: rgba(175, 41, 29, 0.8);
-}
-.section-lottery .orders h3 {
-  margin: 1rem 0;
-}
-.section-lottery .orders .order {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-.section-lottery .orders .order a {
-  cursor: pointer;
-  color: #EF8F8F;
-  text-decoration: underline;
-  font-size: 0.875rem;
-}
-.section-lottery .orders .order a:hover {
-  color: rgba(239, 143, 143, 0.8);
-}
-.section-lottery .orders .order .status {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #FFFFFF;
-  padding: 0.25rem;
-  border-radius: 2px;
-  text-wrap: nowrap;
-}
-.section-lottery .orders .order .status-0 {
-  background-color: #967300;
-}
-.section-lottery .orders .order .status-1 {
-  background-color: #008a2e;
-}
-.section-lottery .orders .order .status-2 {
-  background-color: #AF291D;
-}
-.section-lottery #id_modal_orders_admin {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  z-index: 20;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.75rem;
-}
-.section-lottery #id_modal_orders_admin > div {
-  background-color: #0D0D0D;
-  padding: 1rem;
-  border-radius: 0.25rem;
-  width: 100%;
-  max-width: 480px;
-}
-.section-lottery #id_modal_orders_admin > div .modal-header {
-  margin-bottom: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.section-lottery #id_modal_orders_admin > div .modal-header .button-close {
-  cursor: pointer;
-  background: none;
   border: none;
   padding: 0;
-}
-.section-lottery #id_modal_orders_admin > div .orders {
-  overflow-y: overlay;
-  max-height: calc(100vh - 16rem);
-  min-height: calc(100vh - 20rem);
-}
-.section-lottery #id_modal_orders_admin > div .orders::-webkit-scrollbar {
-  display: none;
-}
-.section-lottery #id_modal_orders_admin > div .input {
-  background-color: #292929;
-  margin-bottom: 0.5rem;
-  border: 1px solid #525252;
+  background-color: transparent;
+  display: flex;
   border-radius: 0.25rem;
-  padding: 0.5rem;
-  font-size: 0.875rem;
-  width: 100%;
 }
-.section-lottery #id_modal_orders_admin > div .order {
+.section-lottery .payment-methods .payment-method img {
+  border-radius: 4px;
+  z-index: -1;
+}
+.section-lottery .payment-methods .payment-method.selected {
+  box-shadow: inset 0px 0px 0px 3px #108dd6;
+}
+.section-lottery .order-create-form {
+  margin-bottom: 1rem;
+}
+.section-lottery .order-create-form h4 {
+  margin-bottom: 1rem;
+}
+.section-lottery .order-create-form .payment-data {
   display: grid;
-  grid-template-columns: repeat(2, 50%);
-  gap: 0.5rem 0.25rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem 0.5rem;
+  padding: 1rem;
+  border-radius: 0.25rem;
   background-color: #292929;
+  margin-bottom: 1rem;
+}
+.section-lottery .order-create-form .payment-data h5 {
+  grid-column: span 2;
+  font-size: 1rem;
+}
+.section-lottery .order-create-form .payment-data .field-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.section-lottery .order-create-form .form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+.section-lottery .order-create-form .form-field label {
   margin-bottom: 0.5rem;
+}
+.section-lottery .order-create-form .form-field input,
+.section-lottery .order-create-form .form-field select {
+  border: 1px solid #292929;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  appearance: base-select;
+}
+.section-lottery .order-create-form .form-field input:read-only,
+.section-lottery .order-create-form .form-field select:read-only {
+  color: rgba(255, 255, 255, 0.6);
+}
+.section-lottery .order-create-form .split-dni {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 0.25rem;
+}
+.section-lottery .order-create-form .info-pay {
+  padding: 1rem;
+  background-color: #292929;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+.section-lottery .order-create-form .info-pay b {
+  color: rgba(255, 255, 255, 0.8);
+}
+.section-lottery .order-create-form .button-pay {
+  cursor: pointer;
+  width: 100%;
+  border: 1px solid #292929;
+  background-color: #108dd6;
   padding: 0.75rem;
   border-radius: 0.25rem;
-}
-.section-lottery #id_modal_orders_admin > div .order p {
   font-size: 0.875rem;
-}
-.section-lottery #id_modal_orders_admin > div .order .email {
-  font-size: 0.875rem;
-  font-weight: 700;
-  grid-column: span 2;
-}
-.section-lottery #id_modal_orders_admin > div .order .field-title {
-  font-size: 0.8125rem;
-  font-weight: 700;
-}
-.section-lottery #id_modal_orders_admin > div .order .order-status-0 {
-  font-weight: 700;
-  color: #967300;
-}
-.section-lottery #id_modal_orders_admin > div .order .order-status-1 {
-  font-weight: 700;
-  color: #008a2e;
-}
-.section-lottery #id_modal_orders_admin > div .order .order-status-2 {
-  font-weight: 700;
-  color: #AF291D;
-}
-.section-lottery #id_modal_orders_admin > div .order .buttons {
-  grid-column: span 2;
-}
-.section-lottery #id_modal_orders_admin > div .order .button {
-  cursor: pointer;
-  padding: 0.25rem 0.5rem;
-  border: none;
-  border-radius: 0.25rem;
-  font-size: 0.8125rem;
   font-weight: 600;
+  transition: all 0.1s;
 }
-.section-lottery #id_modal_orders_admin > div .order .button-to-be-confirmed {
-  background-color: #525252;
+.section-lottery .order-create-form .button-pay:hover {
+  background-color: rgba(16, 141, 214, 0.9);
 }
-.section-lottery #id_modal_orders_admin > div .order .button-confirm {
-  background-color: #008a2e;
+.section-lottery .tickets {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 0.25rem;
 }
-.section-lottery #id_modal_orders_admin > div .order .button-decline {
-  background-color: #AF291D;
+.section-lottery .tickets .ticket {
+  cursor: default;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  background-color: #292929;
+}
+.section-lottery .tickets .tickets-empty {
+  grid-column: -1/1;
+}
+.section-lottery .admin-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.25rem;
+}
+.section-lottery .admin-options .admin-option {
+  cursor: pointer;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: none;
+  font-weight: 600;
 }
 @media (min-width: 1024px) {
   .section-lottery {
+    display: grid;
     grid-template-columns: 1fr 1fr;
     max-width: 1280px;
+    gap: 1rem;
   }
   .section-lottery .lottery-image {
-    margin-left: auto;
-    width: 50vw;
-    height: 50vw;
-    max-width: 640px;
-    max-height: 640px;
+    height: calc((100vw - 3rem) / 2);
+    width: calc((100vw - 3rem) / 2);
+    max-height: calc((1280px - 3rem) / 2);
+    max-width: calc((1280px - 3rem) / 2);
+    position: sticky;
+    top: 2rem;
+  }
+  .section-lottery .lottery-info {
+    max-width: calc((1280px - 3rem) / 2);
+  }
+  .section-lottery .payment-method {
+    max-height: 80px;
   }
 }
 
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(13, 13, 13, 0.2);
+  backdrop-filter: blur(2px);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-order-list {
+  background-color: #292929;
+  padding: 1rem;
+  position: relative;
+  border-radius: 0.25rem;
+}
+.admin-order-list .button-close {
+  cursor: pointer;
+  padding: 0.25rem;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border-radius: 0.25rem;
+  background-color: transparent;
+  transition: all 0.1s;
+}
+.admin-order-list .button-close:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.admin-order-list h3 {
+  margin-bottom: 1rem;
+}
+.admin-order-list .filter-order {
+  padding: 0.5rem;
+  border: 1px solid #525252;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  width: 100%;
+  background-color: rgba(13, 13, 13, 0.5);
+}
+
+/*
+
+    padding: 1rem;
+    display: grid;
+    gap: 1rem;
+    max-width: $sm;
+    margin: auto;
+
+    .lottery-image {
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+        width: calc(100vw - 3rem);
+        height: calc(100vw - 3rem);
+
+        max-width: calc($sm - 2rem);
+
+        max-height: calc($sm - 2rem);
+    }
+
+    .lottery-info {
+        padding: 1rem 0;
+
+        h2 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            line-height: 1.875rem;
+        }
+
+        hr {
+            border: none;
+            border-bottom: 1px solid rgba($white, $alpha: 0.2);
+            margin: 1rem 0;
+        }
+
+        h3 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .lottery-data {
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
+
+            b {
+                font-weight: 600;
+            }
+        }
+
+        .form {
+            margin-bottom: 1rem;
+
+            .form-fields {
+                display: flex;
+                gap: 0.25rem;
+                flex-wrap: wrap;
+
+            }
+
+            .form-field {
+                background-color: $background-color-2;
+                border: none;
+                appearance: none;
+                padding: 0.5rem;
+                border-radius: 0.25rem;
+
+                min-width: 80px;
+
+                &:focus {
+                    outline: 1px solid $primary-color;
+
+                }
+            }
+
+            .form-field-select,
+            .form-field-select::picker(select) {
+                appearance: base-select;
+            }
+
+            .form-field-select::picker(select) {
+                margin-top: .25rem;
+                border-radius: 4px;
+                border: 1px solid $primary-color;
+            }
+
+            .option {
+                padding: 0.5rem;
+                background-color: $background-color-2;
+
+                &:hover,
+                &:focus {
+                    background: $primary-color;
+                }
+
+                &::checkmark {
+                    display: none;
+                }
+            }
+
+            .button {
+                cursor: pointer;
+                background-color: $primary-color;
+                border: none;
+                border-radius: 0.25rem;
+                padding: 0.5rem 1rem;
+                transition: all 0.1s;
+
+                &:hover {
+                    background-color: $border-color;
+                }
+            }
+
+
+            .exchange-rate {
+                display: flex;
+            }
+
+        }
+    }
+
+    .order-info {
+        .order-data {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            padding: 0 0.5rem;
+
+            .data-name {
+                font-weight: 700;
+            }
+
+            .data {
+                font-size: 1.5rem;
+            }
+        }
+
+        .order-data-dollar {
+            .data-name {
+                font-size: 0.875rem;
+                color: rgba($white, $alpha: 0.6);
+            }
+
+            .data {
+                font-size: 1.25rem;
+                color: rgba($white, $alpha: 0.6);
+            }
+        }
+
+
+        .exchange-rate {
+            padding: 1rem 0.75rem;
+            background-color: rgba($border-color, $alpha: 0.8);
+            border: 1px solid $border-color;
+            border-radius: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            width: fit-content;
+            margin-bottom: 1rem;
+
+            img {
+                width: 16px;
+                height: 16px;
+            }
+
+            b {
+                font-weight: 600;
+            }
+        }
+
+    }
+
+    .payment-info {
+        background-color: rgba($background-color-2, $alpha: 0.8);
+       padding: 1rem;
+        border-radius: 0.5rem;
+
+        h4 {
+            margin-bottom: 1.25rem;
+        }
+
+        h5 {
+            font-weight: 700;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .payment-data {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 0.5rem 0;
+            font-size: 0.875rem;
+
+            .data-name {
+                font-weight: 600;
+            }
+        }
+    }
+
+    .no-login {
+        border: 2px dashed $secondary-color;
+        padding: 1rem;
+        border-radius: 0.25rem;
+        margin-top: 2rem;
+        font-size: 0.875rem;
+
+        a {
+            color: $secondary-color;
+            font-weight: 600;
+        }
+    }
+
+    .empty {
+        background-color: rgba($border-color, $alpha: 0.8);
+        padding: 1rem;
+        border-radius: 0.25rem;
+        font-size: 0.875rem;
+    }
+
+    .closed {
+        padding: 0.75rem;
+        font-weight: 600;
+        background-color: rgba($danger, $alpha: 0.6);
+        border-radius: 2px;
+        margin-bottom: 1rem;
+    }
+
+    .pending {
+        padding: 1rem;
+        background-color: $border-color;
+        border-radius: 0.25rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+    }
+
+    .staff-options {
+        .staff-options-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .button {
+            cursor: pointer;
+            padding: 0.5rem;
+            background-color: $background-color-2;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            transition: all 0.1s;
+            &:hover {
+                background-color: $border-color;
+            }
+        }
+    }
+
+    .confirm,
+    .order-detail {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 20;
+        background-color: rgba($black, $alpha: 0.5);
+        backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem;
+
+        &>div {
+            background-color: $background-color-2;
+            padding: 1.5rem;
+            border-radius: 0.25rem;
+            max-width: 520px;
+            width: 100%;
+
+            h3 {
+                font-weight: 500;
+                margin-bottom: 1.5rem;
+            }
+
+            h4 {
+                font-family: 600;
+                margin-bottom: 1rem;
+            }
+
+            .quantity {
+                font-weight: 400;
+                font-size: 0.875rem;
+            }
+
+            .field {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 0.75rem;
+            }
+
+            hr {
+                border: none;
+                border-bottom: 1px solid rgba($white, $alpha: 0.2);
+                margin: 1rem 0;
+
+            }
+
+            .button {
+                cursor: pointer;
+                background-color: $primary-color;
+                border: none;
+                border-radius: 0.25rem;
+                padding: 0.5rem 1rem;
+                transition: all 0.1s;
+
+                &:hover {
+                    background-color: $border-color;
+                }
+            }
+
+            .button-cancel {
+                background-color: $danger;
+
+                &:hover {
+                    background-color: rgba($danger, $alpha: 0.8);
+                }
+            }
+        }
+    }
+
+    .orders {
+        h3 {
+            margin: 1rem 0;
+        }
+
+        .order {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+
+            a {
+                cursor: pointer;
+                color: $tertiary-color;
+                text-decoration: underline;
+                font-size: 0.875rem;
+
+                &:hover {
+                    color: rgba($tertiary-color, $alpha: 0.8);
+                }
+            }
+
+            .status {
+                font-size: 0.75rem;
+                font-weight: 600;
+                color: $white;
+                padding: 0.25rem;
+                border-radius: 2px;
+                text-wrap: nowrap;
+            }
+
+            .status-0 {
+                background-color: $warning;
+            }
+
+            .status-1 {
+                background-color: $success;
+            }
+
+            .status-2 {
+                background-color: $danger;
+            }
+
+        }
+    }
+
+    #id_modal_orders_admin {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 20;
+        background-color: rgba($black, $alpha: 0.5);
+        backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem;
+
+        &>div {
+            background-color: $background-color;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            width: 100%;
+            max-width: 480px;
+
+            .modal-header {
+                margin-bottom: 1rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                h3 {}
+
+                .button-close {
+                    cursor: pointer;
+                    background: none;
+                    border: none;
+                    padding: 0;
+                }
+            }
+
+
+            .orders {
+                overflow-y: overlay;
+                max-height: calc(100vh - 16rem);
+                min-height: calc(100vh - 20rem);
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            }
+
+            .input {
+                background-color: $background-color-2;
+                margin-bottom: 0.5rem;
+                border: 1px solid $border-color;
+                border-radius: 0.25rem;
+                padding: 0.5rem;
+                font-size: 0.875rem;
+                width: 100%;
+            }
+
+            .order {
+                display: grid;
+                grid-template-columns: repeat(2, 50%);
+                gap: 0.5rem 0.25rem;
+                background-color: $background-color-2;
+                margin-bottom: 0.5rem;
+                padding: 0.75rem;
+                border-radius: 0.25rem;
+
+                p {
+                    font-size: 0.875rem;
+                }
+
+                .email {
+                    font-size: 0.875rem;
+                    font-weight: 700;
+                    grid-column: span 2;
+                }
+
+                .field-title {
+                    font-size: 0.8125rem;
+                    font-weight: 700;
+                }
+
+                .order-status-0 {
+                    font-weight: 700;
+                    color: $warning;
+                }
+
+                .order-status-1 {
+                    font-weight: 700;
+                    color: $success;
+                }
+
+                .order-status-2 {
+                    font-weight: 700;
+                    color: $danger;
+                }
+
+                .buttons {
+                    grid-column: span 2;
+                }
+
+                .button {
+                    cursor: pointer;
+                    padding: 0.25rem 0.5rem;
+                    border: none;
+                    border-radius: 0.25rem;
+                    font-size: 0.8125rem;
+                    font-weight: 600;
+                }
+
+                .button-to-be-confirmed {
+                    background-color: $border-color;
+                }
+
+                .button-confirm {
+                    background-color: $success;
+                }
+
+                .button-decline {
+                    background-color: $danger;
+                }
+            }
+
+
+        }
+
+    }
+
+    @include md {
+        grid-template-columns: 1fr 1fr;
+        max-width: $lg;
+
+        .lottery-image {
+
+            margin-left: auto;
+            width: 50vw;
+            height: 50vw;
+            max-width: calc($lg/2);
+            max-height: calc($lg/2);
+        }
+    }
+}*/
 * {
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
@@ -898,6 +1236,14 @@ h1, h2, h3, h4, h5, p {
   margin: 0;
 }
 
+button {
+  background-color: #292929;
+}
+
+input, select {
+  background-color: #0D0D0D;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -905,7 +1251,7 @@ input::-webkit-inner-spin-button {
 }
 
 input[type=number] {
-  -moz-appearance: textfield;
+  -moz-appearance: textfield !important;
   appearance: none;
 }
 

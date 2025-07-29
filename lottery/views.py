@@ -6,8 +6,8 @@ from django.views.generic import (
     DetailView,
     CreateView,
 )
-from .models import Lottery, Order, Dollar
-from .forms import OrderForm
+from .models import Lottery, Order, Dollar, Ticket
+from .forms import Order1Form, Order2Form
 
 
 class HomeView(TemplateView):
@@ -26,37 +26,40 @@ class LotteryDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         if self.request.user.is_authenticated:
-            context["orders"] = Order.objects.filter(
-                lottery=self.get_object().pk, user=self.request.user
+            context["user_tickets"] = Ticket.objects.filter(
+                order__user=self.request.user, order__lottery=self.get_object()
             )
             context["pending_order"] = Order.objects.filter(
-                lottery=self.get_object().pk, user=self.request.user, status=0
+                lottery=self.get_object(), user=self.request.user, status=0
             )
+
         context["dollar"] = Dollar.objects.get(pk=1)
+
         return context
 
 
 class OrderCreateView(CreateView):
     model = Order
     template_name = "lottery/_order_create.html"
-    form_class = OrderForm
+
+    def get_form_class(self):
+        if self.request.GET["payment_method"] == "0":
+            return Order1Form
+        return Order2Form
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        if self.request.method == "GET":
-            context["lottery"] = Lottery.objects.get(pk=self.request.GET["lottery"])
-            context["dollar"] = Dollar.objects.get(pk=1)
-        context["select_number"] = range(1, 11)
+        context["lottery"] = Lottery.objects.get(pk=self.request.GET["lottery"])
+        context["payment_method"] = self.request.GET["payment_method"]
         return context
-
+    
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.user = self.request.user
         self.object.save()
-        print(self.args)
-
-        messages.success(self.request, "Pendiente de revisión")
         return redirect("lottery", self.request.POST["lottery"][0])
+    
+    
 
 
 class OrderListView(ListView):
@@ -79,15 +82,15 @@ class OrderDetailView(DetailView):
         return context
 
 
-class OrderAdminListView(ListView):
+class AdminOrderListView(ListView):
     model = Order
-    template_name = "lottery/_order_admin_list.html"
+    template_name = "lottery/_admin_order_list.html"
 
     def get_queryset(self):
 
         return (
-            Order.objects.filter(lottery=self.kwargs["pk"])
-            .filter(reference__contains=self.request.GET["filter"])
+            Order.objects.filter(lottery=self.kwargs["lottery_pk"])
+            #.filter(reference__contains=self.request.GET["filter"])
             .order_by("status")
         )
 

@@ -10,7 +10,7 @@ urlpatterns = [
     path("order/create/", views.OrderCreateView.as_view(), name="order-create"),
     path("order/detail/<int:pk>/", views.OrderDetailView.as_view(), name="order-detail"),
     path("order/list/", views.OrderListView.as_view(), name="order-list"),
-    path("order/admin/list/<int:pk>/", views.OrderAdminListView.as_view(), name="order-admin-list",),
+    path("order/admin/list/<int:lottery_pk>/", views.AdminOrderListView.as_view(), name="admin-order-list",),
     path("order/status/<int:pk>/", views.change_order_status, name="order-status"),
     path("get_emails/<int:pk>/", views.get_emails, name="get-emails"),
 ]

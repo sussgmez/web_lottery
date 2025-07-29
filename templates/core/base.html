@@ -20,8 +20,9 @@
     {% include './header.html' %}
     {% block content %}
     {% endblock %}
+    {% include "./footer.html" %}
     <!-- JS -->
-    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/App.js' %}"></script>
     {% block extra_js %}{% endblock %}
   </body>
 </html>

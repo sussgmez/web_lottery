@@ -1,6 +1,145 @@
 {% load static %}
 {% load lottery_extras %}
 
+<form class="order-create-form" action="{% url 'order-create' %}?payment_method={{ payment_method }}&lottery={{ lottery.pk }}" hx-on::after-process-node="setAmount('{{ payment_method }}')" method="post">
+  {% csrf_token %}
+  {{ form.errors }}
+  
+  <input type="hidden" name="lottery" value="{{ lottery.pk }}" />
+  <input type="hidden" name="user" value="{{ user.pk }}" />
+  <input type="hidden" name="dollar" value="1" />
+  <input type="hidden" name="payment_method" value="{{ payment_method }}" />
+  {% if payment_method == '0' %}
+    <h4>Pago móvil</h4>
+    <div class="form-field">
+      <label for="id_quantity">Cantidad de tickets</label>
+      <select name="quantity" onchange="setAmount('{{ payment_method }}', this.value)" id="id_quantity">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+    </div>
+    {{ form.quantity.choices }}
+    <div class="form-field">
+      <label for="id_phone">Nro. de teléfono</label>
+      {{ form.phone }}
+    </div>
+    <div class="form-field">
+      <label for="id_dni">Cédula</label>
+      <div class="split-dni">{{ form.type_of_dni }}
+        {{ form.dni }}</div>
+    </div>
+    <div class="form-field">
+      <label for="id_bank_code">Banco</label>
+      {{ form.bank_code }}
+    </div>
+    <div class="form-field">
+      <label for="id_reference">Nro. de referencia</label>
+      {{ form.reference }}
+    </div>
+    <div class="form-field">
+      <label for="id_amount">Monto Bs.</label>
+      {{ form.amount_bs }}
+    </div>
+    <div class="payment-data">
+      <h5>Datos del pago móvil</h5>
+      <div class="field">
+        <p class="field-name">Nro. de teléfono</p>
+        <p>0412-345-6789</p>
+      </div>
+      <div class="field">
+        <p class="field-name">Cédula</p>
+        <p>V-12.345.678</p>
+      </div>
+      <div class="field">
+        <p class="field-name">Banco</p>
+        <p>Banco de Venezuela (0102)</p>
+      </div>
+    </div>
+
+  {% comment %} ZELLE {% endcomment %}
+  {% elif payment_method == '1' %}
+    <h4>Zelle</h4>
+    <div class="form-field">
+      <label for="id_quantity">Cantidad de tickets</label>
+      <select name="quantity" onchange="setAmount('{{ payment_method }}', this.value)" id="id_quantity">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+    </div>
+    <div class="form-field">
+      <label for="id_email">Email</label>
+      {{ form.email_or_phone }}
+    </div>
+    <div class="form-field">
+      <label for="id_amount">Monto ($)</label>
+      {{ form.amount_usd }}
+    </div>
+    <div class="payment-data">
+      <h5>Datos de Zelle</h5>
+      <div class="field">
+        <p class="field-name">Email</p>
+        <p>email@email.com</p>
+      </div>
+    </div>
+
+  {% comment %} PAYPAL {% endcomment %}
+  {% elif payment_method == '2' %}
+    <h4>Paypal</h4>
+
+    <div class="form-field">
+      <label for="id_quantity">Cantidad de tickets</label>
+      <select name="quantity" onchange="setAmount('{{ payment_method }}', this.value)" id="id_quantity">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+    </div>
+    <div class="form-field">
+      <label for="id_email">Email</label>
+      {{ form.email_or_phone }}
+    </div>
+    <div class="form-field">
+      <label for="id_amount">Monto ($)</label>
+      {{ form.amount_usd }}
+    </div>
+    <div class="payment-data">
+      <h5>Datos de Paypal</h5>
+      <div class="field">
+        <p class="field-name">Email</p>
+        <p>email@email.com</p>
+      </div>
+    </div>
+  {% endif %}
+  <p class="info-pay">
+    Una vez realizado el pago pulse <b>Enviar</b>
+  </p>
+  <input type="submit" value="Enviar" class="button-pay" />
+</form>
+
+{% comment %}
 <form id="id_form_order_create" class="form" action="{% url 'order-create' %}" method="post">
   {% csrf_token %}
   <input type="hidden" name="dollar" value="{{ dollar }}" />
@@ -21,4 +160,18 @@
     <button class="button" onclick="event.preventDefault();show_confirm(htmx.find('#id_quantity').value);">Comprar</button>
   </div>
 
+  <h3>Método de pago</h3>
+  <div class="payment-methods">
+    <div class="payment-method">
+      <p>Pago móvil</p>
+    </div>
+    <div class="payment-method">
+      <p>Zelle</p>
+    </div>
+    <div class="payment-method">
+      <p>Paypal</p>
+    </div>
+  </div>
 </form>
+
+{% endcomment %}

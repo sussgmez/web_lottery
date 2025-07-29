@@ -46,7 +46,7 @@
                         backdrop-filter: blur(1px);
 
                         p {
-                            background-color: $danger;
+                            background-color: $danger-color;
                             font-weight: 700;
                             color: $white;
                             padding: 0.5rem 2rem;
@@ -79,7 +79,7 @@
                 }
 
                 &:has(.closed) {
-                    border: 1px solid $danger;
+                    border: 1px solid $danger-color;
                     &:hover {
                         background-color: $background-color-2;
                     }

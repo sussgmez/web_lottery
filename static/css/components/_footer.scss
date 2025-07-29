@@ -1,0 +1,22 @@
+@use '../variables' as *;
+@use '../responsive' as *;
+
+
+.footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: $background-color-2;
+    padding: 1.5rem;
+    margin-top: 3rem;
+    .socials {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        .social {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+        }
+    }
+}
