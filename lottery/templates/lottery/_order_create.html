@@ -1,15 +1,53 @@
 {% load static %}
 {% load lottery_extras %}
 
-<form class="order-create-form" action="{% url 'order-create' %}?payment_method={{ payment_method }}&lottery={{ lottery.pk }}" hx-on::after-process-node="setAmount('{{ payment_method }}')" method="post">
+<form class="form-order-create" action="{% url 'order-create' %}?payment_method={{ payment_method }}&lottery={{ lottery.pk }}" hx-on::after-process-node="setAmount('{{ payment_method }}')" method="post">
   {% csrf_token %}
-  {{ form.errors }}
-  
   <input type="hidden" name="lottery" value="{{ lottery.pk }}" />
   <input type="hidden" name="user" value="{{ user.pk }}" />
   <input type="hidden" name="dollar" value="1" />
   <input type="hidden" name="payment_method" value="{{ payment_method }}" />
+
   {% if payment_method == '0' %}
+    <div class="form-field form-quantity">
+      <label for="id_quantity">Cantidad</label>
+      <select name="quantity" id="id_quantity">
+        <option value="">1</option>
+        <option value="">2</option>
+        <option value="">3</option>
+        <option value="">4</option>
+      </select>
+    </div>
+
+    <div class="form-info">
+      <h5>Datos Pago Móvil</h5>
+      <div class="info-field">
+        <p>Cédula</p>
+        <p>V-12.345.678</p>
+      </div>
+      <div class="info-field">
+        <p>Télefono</p>
+        <p>0412-345-6789</p>
+      </div>
+      <div class="info-field">
+        <p>Banco</p>
+        <p>Banco de Venezuela (0102)</p>
+      </div>
+    </div>
+
+    <div class="form-input">{{ form.reference }}</div>
+
+    <div class="form-input split-dni">{{ form.type_of_dni }}
+      {{ form.dni }}</div>
+
+    <div class="form-input">{{ form.phone }}</div>
+
+    <div class="form-input">{{ form.bank_code }}</div>
+
+    <div class="form-input">{{ form.amount_bs }}</div>
+
+    {% comment %}
+
     <h4>Pago móvil</h4>
     <div class="form-field">
       <label for="id_quantity">Cantidad de tickets</label>
@@ -63,8 +101,9 @@
         <p>Banco de Venezuela (0102)</p>
       </div>
     </div>
+    {% endcomment %}
 
-  {% comment %} ZELLE {% endcomment %}
+    {% comment %}ZELLE{% endcomment %}
   {% elif payment_method == '1' %}
     <h4>Zelle</h4>
     <div class="form-field">
@@ -98,7 +137,7 @@
       </div>
     </div>
 
-  {% comment %} PAYPAL {% endcomment %}
+    {% comment %}PAYPAL{% endcomment %}
   {% elif payment_method == '2' %}
     <h4>Paypal</h4>
 

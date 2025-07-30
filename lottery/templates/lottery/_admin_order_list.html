@@ -1,19 +1,46 @@
 {% for order in order_list %}
   <div class="order"
     hx-on::after-process-node="setAmountOrder('#id_amount_{{ order.pk }}', {% if order.payment_method == 0 %}
+      
+      
+      
       '{{ order.amount_bs }}'
+
+
+
     {% else %}
+      
+      
+      
       '{{ order.amount_usd }}'
+
+
+
     {% endif %}, '{{ order.payment_method }}')">
-    <p>{{ order.user.email }}</p>
+    <p>
+      <span class="email">{{ order.user.email }}</span> x {{ order.quantity }}
+    </p>
     {% if order.payment_method == 0 %}
-      <p>{{ order.get_payment_method_display }}</p>
+      <div class="payment-method payment-method-0">
+        <p>{{ order.get_payment_method_display }}</p>
+      </div>
       <p id="id_amount_{{ order.pk }}"></p>
     {% elif order.payment_method == 1 %}
+      <div class="payment-method payment-method-1">
+        <p>{{ order.get_payment_method_display }}</p>
+      </div>
+      <p>{{ order.email_or_phone }}</p>
+      <p id="id_amount_{{ order.pk }}"></p>
+    {% elif order.payment_method == 1 %}
+      <div class="payment-method payment-method-2">
+        <p>{{ order.get_payment_method_display }}</p>
+      </div>
       <p>{{ order.get_payment_method_display }}</p>
-      <p class="email">{{ order.email_or_phone }}</p>
+      <p>{{ order.email_or_phone }}</p>
       <p id="id_amount_{{ order.pk }}"></p>
     {% endif %}
+    <button class="button button-confirm">Confirmar</button>
+    <button class="button button-decline">Rechazar</button>
   </div>
 {% endfor %}
 

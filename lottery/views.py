@@ -59,8 +59,6 @@ class OrderCreateView(CreateView):
         self.object.save()
         return redirect("lottery", self.request.POST["lottery"][0])
     
-    
-
 
 class OrderListView(ListView):
     model = Order

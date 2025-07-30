@@ -1,11 +1,159 @@
 @use '../variables' as *;
 @use '../responsive' as *;
 
+
+
+// Section lottery 
+.section-lottery {
+    display: grid;
+    padding: 1rem;
+    gap: 1rem;
+    background-color: $background-color;
+    .lottery-image-tickets {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        .lottery-image  {
+            display: flex;
+            border-radius: 0.25rem;
+            overflow: hidden;
+    
+            img {
+                width: calc(100vw - 2rem);
+                height: calc(100vw - 2rem);
+                
+            }
+        }
+        .lottery-tickets {
+            h4 {
+                font-weight: 500;
+                margin-bottom: 0.5rem;
+            }
+            .tickets-empty {
+                font-size: 0.875rem;
+                padding: 0.75rem;
+                background-color: $background-color-2;
+                border-radius: 0.25rem;
+            }
+        }
+    }
+
+    .lottery-info {
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+        h2 {
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+        .div-price {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            .price {
+                font-size: 1.25rem;
+                font-weight: 600;
+            }
+            .ticket-1 {
+                font-size: 1rem;
+                font-weight: 400;
+            }
+        }
+        hr {
+            width: 100%;
+            border: none;
+            border-bottom: 2px solid $white;
+        }
+        .payment-methods, .form-quantity {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            label {
+                font-weight: 600;
+            }
+            select {
+                appearance: base-select;
+                border: none;
+                padding: 0;
+            }
+        }
+        .form-order-create {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            .form-info {
+                background-color: $background-color-2;
+                padding: 1rem;
+                border-radius: 0.25rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+                h5 {
+                    font-size: 1rem;
+                }
+                .info-field {
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 0.875rem;
+                }
+            }
+            .form-input input, .form-input select {
+                appearance: base-select;
+                width: 100%;
+                border: 1px solid $border-color;
+                padding: 0.75rem;
+                border-radius: 0.25rem;
+                font-size: 0.875rem;
+            }
+            .split-dni {
+                display: grid;
+                gap: 0.25rem;
+                grid-template-columns: 1fr 3fr;
+            }
+
+
+
+
+            .info-pay {
+                font-size: 0.875rem;
+            }
+            .button-pay {
+                cursor: pointer;
+                background-color: $info-color;
+                border: none;
+                border-radius: 0.25rem;
+                padding: 0.75rem;
+                font-weight: 600;
+                font-size: 0.875rem;
+            }
+
+        }
+    }
+}
+
+
+/*
+
 // Section lottery
 .section-lottery {
     padding: 2rem 1rem;
     max-width: 520px;
+    min-height: 100vhd;
     margin: auto;
+
+    .no-login {
+        border: 1px solid $info-color;
+        padding: 1rem;
+        border-radius: 0.25rem;
+        margin-top: 2rem;
+        font-size: 0.875rem;
+
+        a {
+            color: $info-color;
+            font-weight: 600;
+        }
+    }
+
 
     .lottery-image {
         border-radius: 0.5rem;
@@ -73,6 +221,7 @@
 
     .order-create-form {
         margin-bottom: 1rem;
+
         h4 {
             margin-bottom: 1rem;
         }
@@ -168,6 +317,7 @@
             border-radius: 0.25rem;
             background-color: $background-color-2;
         }
+
         .tickets-empty {
             grid-column: -1 / 1;
         }
@@ -177,6 +327,7 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 0.25rem;
+
         .admin-option {
             cursor: pointer;
             width: 100%;
@@ -226,8 +377,8 @@
     align-items: center;
     justify-content: center;
 }
-// Order list
 
+// Order list
 .admin-order-list {
     background-color: $background-color-2;
     padding: 1rem;
@@ -245,13 +396,16 @@
         border-radius: 0.25rem;
         background-color: transparent;
         transition: all 0.1s;
-        &:hover {       
+
+        &:hover {
             background-color: rgba($white, $alpha: 0.1);
         }
     }
+
     h3 {
         margin-bottom: 1rem;
     }
+
     .filter-order {
         padding: 0.5rem;
         border: 1px solid $border-color;
@@ -259,8 +413,36 @@
         font-size: 0.875rem;
         width: 100%;
         background-color: rgba($background-color, $alpha: 0.5);
+        margin-bottom: 1rem;
     }
-}
+    
+    #id_admin_order_list {
+        overflow-y: overlay;
+        scrollbar-width: none;
+        &::-webkit-scrollbar, &:scrol {
+            width: 0;
+        }
+    }
+
+    .order {
+        background-color: rgba($white, $alpha: 0.1);
+        padding: 1rem;
+        border-radius: 0.25rem;
+
+        .email {
+            font-weight: 600;
+        }
+
+        .payment-method {
+            padding: 0.5rem;
+            border: 1px solid $background-color;
+            
+        }
+        .payment-method-0 {
+
+        }
+    }
+}*/
 
 
 // Order form

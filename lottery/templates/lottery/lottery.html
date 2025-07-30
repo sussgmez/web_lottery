@@ -9,60 +9,77 @@
 {% block content %}
   <section class="section-lottery">
     {% comment %}Lottery image{% endcomment %}
-    <div class="lottery-image">
-      <img src="{{ lottery.image.url }}" alt="" />
+    <div class="lottery-image-tickets">
+      <div class="lottery-image">
+        <img src="{{ lottery.image.url }}" alt="" />
+      </div>
+      <div class="lottery-tickets">
+        <h4>Mis tickets</h4>
+        <p class="tickets-empty">Compra tus primeros tickets para participar</p>
+      </div>
     </div>
     {% comment %}Loterry info{% endcomment %}
     <div class="lottery-info">
-      <h3>{{ lottery.description }}</h3>
-      <div class="lottery-wrap">
-        <div class="lottery-field">
-          <p class="field-name">Sorteo</p>
-          <p>Sorteo nacional</p>
-        </div>
-        <div class="lottery-field">
-          <p class="field-name">Cierre del sorteo</p>
-          <p>{{ lottery.closing_date|date:'d/m/Y' }}</p>
-        </div>
-        <div class="lottery-field">
-          <p class="field-name">Precio ticket ($)</p>
-          <p id="id_lottery_price">{{ lottery.price }}</p>
-        </div>
+      <h2>{{ lottery.description }}</h2>
+      <div class="div-price">
+        <p class="price">{{ lottery.price|floatformat:'.2f' }} $</p>
+        <p class="ticket-1">x 1 ticket</p>
       </div>
-      {% comment %}if user is_staff{% endcomment %}
-      {% if user.is_staff %}
-        <h3>Opciones de administrador</h3>
-        <div class="admin-options">
-          <button class="admin-option" hx-get="{% url 'admin-order-list' lottery.pk %}" hx-target="#id_admin_order_list" hx-on:click="htmx.removeClass('#id_modal_admin_order_list', 'hidden')">Ver pagos</button>
-          <button class="admin-option">Cerrar sorteo</button>
-        </div>
-      {% else %}
-        {% comment %}if user has pending order{% endcomment %}
-        {% if pending_order %}
-          <div class="pending-order">
-            <p>Tienes una order por confirmar.</p>
+      {% comment %}if user is_authenticated{% endcomment %}
+      {% if user.is_authenticated %}
+        {% comment %}if user is_staff{% endcomment %}
+        {% if user.is_staff %}
+          <h2>Opciones de administrador</h2>
+          <div class="admin-options">
+            <button class="admin-option" hx-get="{% url 'admin-order-list' lottery.pk %}" hx-target="#id_admin_order_list" hx-on:click="htmx.removeClass('#id_modal_admin_order_list', 'hidden')">Ver pagos</button>
+            <button class="admin-option">Cerrar sorteo</button>
           </div>
         {% else %}
-          <h3>Comprar tickets</h3>
-          <h4>Métodos de pago</h4>
-          <div class="payment-methods">
-            <button class="payment-method selected" hx-get="{% url 'order-create' %}?payment_method=0&lottery={{ object.pk }}" hx-target="#id_order_create" hx-on:click="htmx.removeClass('.selected', 'selected');htmx.addClass(this, 'selected')"><img src="{% static 'img/pago_movil.png' %}" alt="" /></button>
-            <button class="payment-method" hx-get="{% url 'order-create' %}?payment_method=1&lottery={{ object.pk }}" hx-target="#id_order_create" hx-on:click="htmx.removeClass('.selected', 'selected');htmx.addClass(this, 'selected')"><img src="{% static 'img/zelle.png' %}" alt="" /></button>
-            <button class="payment-method" hx-get="{% url 'order-create' %}?payment_method=2&lottery={{ object.pk }}" hx-target="#id_order_create" hx-on:click="htmx.removeClass('.selected', 'selected');htmx.addClass(this, 'selected')"><img src="{% static 'img/paypal.png' %}" alt="" /></button>
+          {% comment %}if user has pending order{% endcomment %}
+          {% if pending_order %}
+            <div class="pending-order">
+              <p>Tienes una order por confirmar.</p>
+            </div>
+          {% else %}
+            <hr />
+            <h3>Comprar tickets</h3>
+            <div class="payment-methods">
+              <label for="id_payment_method">Método de pago</label>
+              <select name="" id="id_payment_method" hx-on:change="htmx.ajax('GET',`{% url 'order-create' %}?payment_method=${this.value}&lottery={{ object.pk }}`,'#id_order_create')">
+                <option value="0" selected>Pago móvil</option>
+                <option value="1" >Zelle</option>
+                <option value="2" >Paypal</option>
+              </select>
+            </div>
+            <div class="order-create" id="id_order_create" hx-get="{% url 'order-create' %}?payment_method=0&lottery={{ object.pk }}" hx-trigger="load"></div>
+            {% comment %} 
+            
+            <h4>Métodos de pago</h4>
+            <div class="payment-methods">
+              <button class="payment-method selected" hx-get="{% url 'order-create' %}?payment_method=0&lottery={{ object.pk }}" hx-target="#id_order_create" hx-on:click="htmx.removeClass('.selected', 'selected');htmx.addClass(this, 'selected')"><img src="{% static 'img/pago_movil.png' %}" alt="" /></button>
+              <button class="payment-method" hx-get="{% url 'order-create' %}?payment_method=1&lottery={{ object.pk }}" hx-target="#id_order_create" hx-on:click="htmx.removeClass('.selected', 'selected');htmx.addClass(this, 'selected')"><img src="{% static 'img/zelle.png' %}" alt="" /></button>
+              <button class="payment-method" hx-get="{% url 'order-create' %}?payment_method=2&lottery={{ object.pk }}" hx-target="#id_order_create" hx-on:click="htmx.removeClass('.selected', 'selected');htmx.addClass(this, 'selected')"><img src="{% static 'img/paypal.png' %}" alt="" /></button>
+            </div>
+            {% endcomment %}
+          {% endif %}
+          <h3>Mis tickets</h3>
+          <div class="tickets" id="id_user_tickets">
+            {% for ticket in user_tickets %}
+              <div class="ticket">
+                <p>#{{ ticket.number_of_ticket }}</p>
+              </div>
+            {% empty %}
+              <div class="tickets-empty">
+                <p>Compra tus primeros tickets para participar.</p>
+              </div>
+            {% endfor %}
           </div>
-          <div class="order-create" id="id_order_create" hx-get="{% url 'order-create' %}?payment_method=0&lottery={{ object.pk }}" hx-trigger="load"></div>
         {% endif %}
-        <h3>Mis tickets</h3>
-        <div class="tickets" id="id_user_tickets">
-          {% for ticket in user_tickets %}
-            <div class="ticket">
-              <p>#{{ ticket.number_of_ticket }}</p>
-            </div>
-          {% empty %}
-            <div class="tickets-empty">
-              <p>Compra tus primeros tickets para participar.</p>
-            </div>
-          {% endfor %}
+      {% else %}
+        <div class="no-login">
+          <p>
+            <a href="{% url 'login' %}">Inicia sesión</a> o <a href="{% url 'signup' %}">regístrate</a> para participar en los sorteos.
+          </p>
         </div>
       {% endif %}
     </div>
@@ -95,7 +112,7 @@
     }
     function setAmountOrder(element, amount, payment_method) {
       console.log(element, amount, payment_method)
-
+    
       if (payment_method == '0') {
         htmx.find(element).innerHTML = Intl.NumberFormat('ve-VE', { style: 'currency', currency: 'VEF' }).format(parseFloat(amount))
       } else {
