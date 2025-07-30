@@ -29,9 +29,6 @@ class LotteryDetailView(DetailView):
             context["user_tickets"] = Ticket.objects.filter(
                 order__user=self.request.user, order__lottery=self.get_object()
             )
-            context["pending_order"] = Order.objects.filter(
-                lottery=self.get_object(), user=self.request.user, status=0
-            )
 
         context["dollar"] = Dollar.objects.get(pk=1)
 
@@ -51,33 +48,18 @@ class OrderCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context["lottery"] = Lottery.objects.get(pk=self.request.GET["lottery"])
         context["payment_method"] = self.request.GET["payment_method"]
+        context["pending_order"] = Order.objects.filter(
+            lottery=self.request.GET["lottery"], user=self.request.user, status=0
+        )
         return context
-    
+
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.user = self.request.user
         self.object.save()
-        return redirect("lottery", self.request.POST["lottery"][0])
-    
-
-class OrderListView(ListView):
-    model = Order
-    template_name = "lottery/order_list.html"
-
-    def get_queryset(self):
-        return Order.objects.filter(user=self.request.user)
-
-
-class OrderDetailView(DetailView):
-    model = Order
-    template_name = "lottery/_order_detail.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["dollar"] = Dollar.objects.get(pk=1).history.as_of(
-            self.get_object().created
+        return redirect(
+            f".?payment_method={self.object.payment_method}&lottery={self.object.lottery.pk}"
         )
-        return context
 
 
 class AdminOrderListView(ListView):
@@ -85,12 +67,12 @@ class AdminOrderListView(ListView):
     template_name = "lottery/_admin_order_list.html"
 
     def get_queryset(self):
+        return Order.objects.filter(lottery=self.kwargs["lottery_pk"])
 
-        return (
-            Order.objects.filter(lottery=self.kwargs["lottery_pk"])
-            #.filter(reference__contains=self.request.GET["filter"])
-            .order_by("status")
-        )
+
+class AdminOrderDetailView(DetailView):
+    model = Order
+    template_name = "lotteryt/_admin_order.html"
 
 
 def close_lottery(request, pk):
@@ -119,22 +101,3 @@ def change_order_status(request, pk):
         "lottery/_order_admin.html",
         context={"order": Order.objects.get(pk=pk)},
     )
-
-
-def get_emails(request, pk):
-    lottery = Lottery.objects.get(pk=pk)
-    response = HttpResponse(content_type="text/plain")
-    response["Content-Disposition"] = (
-        f'attachment; filename="{lottery.description}.txt"'
-    )
-
-    text = ""
-    orders = Order.objects.filter(lottery=lottery.pk, status=1)
-
-    for order in orders:
-        for x in range(0, order.quantity):
-            text += order.user.email + "\n"
-
-    response.write(text)
-
-    return response

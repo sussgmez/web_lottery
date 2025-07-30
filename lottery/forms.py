@@ -17,13 +17,14 @@ class Order1Form(forms.ModelForm):
     type_of_dni = forms.ChoiceField(
         widget=forms.Select(), choices=Order.TYPE_OF_DNI, required=True
     )
-    phone = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Nro. de teléfono"}), max_length=11, min_length=11, required=False)
+    phone = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Nro. de teléfono"}), max_length=11, min_length=11, required=True)
     bank_code = forms.ChoiceField(
         widget=forms.Select(), choices=Order.BANK_CODE, required=True
     )
-    reference = forms.IntegerField(
-        widget=forms.NumberInput(attrs={"placeholder": "Nro. de referencia"}),
+    reference = forms.CharField(
+        widget=forms.TextInput(attrs={"placeholder": "Nro. de referencia"}),
         required=True,
+        min_length=6,
     )
     amount_bs = forms.FloatField(
         widget=forms.NumberInput(attrs={"placeholder": "Monto", "readonly": ""}),

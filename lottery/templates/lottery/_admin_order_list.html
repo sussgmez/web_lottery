@@ -1,82 +1,14 @@
-{% for order in order_list %}
-  <div class="order"
-    hx-on::after-process-node="setAmountOrder('#id_amount_{{ order.pk }}', {% if order.payment_method == 0 %}
-      
-      
-      
-      '{{ order.amount_bs }}'
+{% load static %}
 
-
-
-    {% else %}
-      
-      
-      
-      '{{ order.amount_usd }}'
-
-
-
-    {% endif %}, '{{ order.payment_method }}')">
-    <p>
-      <span class="email">{{ order.user.email }}</span> x {{ order.quantity }}
-    </p>
-    {% if order.payment_method == 0 %}
-      <div class="payment-method payment-method-0">
-        <p>{{ order.get_payment_method_display }}</p>
-      </div>
-      <p id="id_amount_{{ order.pk }}"></p>
-    {% elif order.payment_method == 1 %}
-      <div class="payment-method payment-method-1">
-        <p>{{ order.get_payment_method_display }}</p>
-      </div>
-      <p>{{ order.email_or_phone }}</p>
-      <p id="id_amount_{{ order.pk }}"></p>
-    {% elif order.payment_method == 1 %}
-      <div class="payment-method payment-method-2">
-        <p>{{ order.get_payment_method_display }}</p>
-      </div>
-      <p>{{ order.get_payment_method_display }}</p>
-      <p>{{ order.email_or_phone }}</p>
-      <p id="id_amount_{{ order.pk }}"></p>
-    {% endif %}
-    <button class="button button-confirm">Confirmar</button>
-    <button class="button button-decline">Rechazar</button>
-  </div>
-{% endfor %}
-
-{% comment %} {% load lottery_extras %}
-
-{% for order in order_list %}
-  <div class="order" id="id_order_{{ order.pk }}" hx-on::after-process-node="set_amount_order({{ order.created|get_exchange_rate|multiply:order.lottery.price }}, {{ order.quantity }}, '#id_order_amout_{{ order.pk }}')">
-    <p class="email">{{ order.user.email }} x {{ order.quantity }}</p>
-    <div>
-      <p class="field-title">Monto total</p>
-      <p id="id_order_amout_{{ order.pk }}"></p>
+<div class="admin-orders">
+    <button><img src="{% static 'img/close.png' %}" alt=""></button>
+    <h3>Pagos</h3>
+    <div class="order-list">
+        {% for order in order_list %}
+            <div class="order">
+                {{ order }}
+            </div>
+        {% endfor %}
     </div>
-    <div>
-      <p class="field-title">Nro. de referencia</p>
-      <p>#{{ order.reference }}</p>
-    </div>
-    {% if order.status == 0 %}
-      <p class="order-status-0">{{ order.get_status_display }}</p>
-      <div class="buttons">
-        <button class="button button-confirm" hx-get="{% url 'order-status' order.pk %}?status=1" hx-target="#id_order_{{ order.pk }}">Confirmar</button>
-        <button class="button button-decline" hx-get="{% url 'order-status' order.pk %}?status=2" hx-target="#id_order_{{ order.pk }}">Rechazar</button>
-      </div>
-    {% elif order.status == 1 %}
-      <p class="order-status-1">{{ order.get_status_display }}</p>
-      <div class="buttons">
-        <button class="button button-to-be-confirmed" hx-get="{% url 'order-status' order.pk %}?status=0" hx-target="#id_order_{{ order.pk }}">Cancelar</button>
-      </div>
-    {% elif order.status == 2 %}
-      <p class="order-status-2">{{ order.get_status_display }}</p>
-      <div class="buttons">
-        <button class="button button-to-be-confirmed" hx-get="{% url 'order-status' order.pk %}?status=0" hx-target="#id_order_{{ order.pk }}">Cancelar</button>
-      </div>
-    {% endif %}
-  </div>
-{% empty %}
-  <div class="empty">
-    <p>No se encontraron tickets.</p>
-  </div>
-{% endfor %} {% endcomment %}
+</div>
+

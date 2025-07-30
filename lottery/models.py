@@ -4,6 +4,7 @@ from simple_history.models import HistoricalRecords
 from phonenumber_field.modelfields import PhoneNumberField
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from django.core.validators import RegexValidator
 import random
 
 
@@ -34,6 +35,11 @@ class Lottery(models.Model):
     
 
 class Order(models.Model):
+    phone_validator = RegexValidator(
+        regex=r'^04\d{9}$',
+        message="Ingrese un nro. de teléfono válido. ej. 04123456789"
+    )
+    
     PAYMENT_METHOD = [
         (0, 'Pago móvil'),
         (1, 'Zelle'),
@@ -86,9 +92,9 @@ class Order(models.Model):
     payment_method = models.IntegerField(_("Método de pago"), choices=PAYMENT_METHOD, default=0)
     
     # Pago móvil
-    dni = models.CharField(_("Cédula de identidad"), max_length=50, blank=True, null=True)
+    dni = models.IntegerField(_("Cédula de identidad"), blank=True, null=True)
     type_of_dni = models.IntegerField(_("Tipo de DNI"), choices=TYPE_OF_DNI, blank=True, null=True)
-    phone = models.CharField(_("Nro. de teléfono"), blank=True, null=True)
+    phone = models.CharField(_("Nro. de teléfono"), max_length=11, validators=[phone_validator], blank=True, null=True)
     bank_code = models.CharField(_("Banco"), max_length=4, choices=BANK_CODE, blank=True, null=True)
     reference = models.IntegerField(_("Nro. de referencia"), blank=True, null=True)
     
@@ -103,15 +109,15 @@ class Order(models.Model):
         return f'{self.user.email} lottery-{self.lottery.pk} ({self.quantity})'
     
 class Ticket(models.Model):
-    number_of_ticket = models.IntegerField(_("Número de ticket"), unique=True)
+    number = models.IntegerField(_("Número de ticket"), unique=True)
     order = models.ForeignKey("lottery.Order", verbose_name=_("Orden"), on_delete=models.CASCADE, related_name="tickets")    
 
     def __str__(self):
-        return f'{self.order.lottery.pk} - {self.number_of_ticket}'
+        return f'{self.order.lottery.pk} - {self.number}'
 
 @receiver(post_save, sender=Order)
 def order_post_save_receiver(sender, instance, created, **kwargs):
     if (instance.status == 1):
         while len(instance.tickets.all()) < instance.quantity:
-            available_numbers = set([x for x in range(1, 10001)]) - set([x.number_of_ticket for x in Ticket.objects.all()])
-            Ticket.objects.create(order=instance, number_of_ticket=random.choice(list(available_numbers)))
+            available_numbers = set([x for x in range(1, 10001)]) - set([x.number for x in Ticket.objects.all()])
+            Ticket.objects.create(order=instance, number=random.choice(list(available_numbers)))
