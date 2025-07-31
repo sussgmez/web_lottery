@@ -473,7 +473,8 @@
 }
 
 .section-lottery {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   padding: 1rem;
   gap: 1rem;
   background-color: #191919;
@@ -501,8 +502,10 @@
   overflow: hidden;
 }
 .section-lottery .lottery-image-tickets .lottery-image img {
-  max-width: calc(100vw - 2rem);
-  max-height: calc(100vw - 2rem);
+  width: calc(100vw - 2rem);
+  height: calc(100vw - 2rem);
+  max-width: calc(480px - 2rem);
+  max-height: calc(480px - 2rem);
 }
 .section-lottery .lottery-image-tickets .lottery-tickets h4 {
   font-weight: 500;
@@ -516,7 +519,7 @@
 }
 .section-lottery .lottery-image-tickets .lottery-tickets .tickets {
   display: grid;
-  grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.25rem;
 }
 .section-lottery .lottery-image-tickets .lottery-tickets .tickets .ticket {
@@ -525,6 +528,7 @@
   border-radius: 0.25rem;
   border: 1px solid hsl(0, 0%, 20%);
   text-align: center;
+  font-size: 0.875rem;
 }
 .section-lottery .lottery-info {
   display: flex;
@@ -656,12 +660,18 @@
 }
 @media (min-width: 768px) {
   .section-lottery {
-    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     max-width: 1280px;
   }
   .section-lottery .lottery-image-tickets .lottery-image img {
-    max-width: calc((100vw - 3rem) / 2);
-    max-height: calc((100vw - 3rem) / 2);
+    width: calc((100vw - 3rem) / 2);
+    height: calc((100vw - 3rem) / 2);
+    max-width: calc((1280px - 3rem) / 2);
+    max-height: calc((1280px - 3rem) / 2);
+  }
+  .section-lottery .lottery-image-tickets .tickets {
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
   }
 }
 
@@ -680,6 +690,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1rem;
 }
 .modal-admin .admin-orders {
   background-color: hsl(0, 0%, 15%);
@@ -714,7 +725,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  height: 400px;
+  height: calc(100vh - 12rem);
   overflow: overlay;
   padding-right: 0.25rem;
   /* Track */
@@ -773,6 +784,27 @@
 .modal-admin .admin-orders .order-list .admin-order .order-info .date {
   text-align: end;
   font-size: 0.8125rem;
+}
+.modal-admin .admin-orders .order-list .admin-order .order-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.modal-admin .admin-orders .order-list .admin-order .order-footer .status {
+  padding: 0.25rem 0.5rem;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  border-radius: 2px;
+}
+.modal-admin .admin-orders .order-list .admin-order .order-footer .status-0 {
+  background-color: #967300;
+}
+.modal-admin .admin-orders .order-list .admin-order .order-footer .status-1 {
+  background-color: #268337;
+}
+.modal-admin .admin-orders .order-list .admin-order .order-footer .status-2 {
+  background-color: #972b22;
 }
 .modal-admin .admin-orders .order-list .admin-order .buttons {
   display: flex;

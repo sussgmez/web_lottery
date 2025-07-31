@@ -98,6 +98,6 @@ def change_order_status(request, pk):
 
     return render(
         request,
-        "lottery/_order_admin.html",
+        "lottery/_admin_order.html",
         context={"order": Order.objects.get(pk=pk)},
     )

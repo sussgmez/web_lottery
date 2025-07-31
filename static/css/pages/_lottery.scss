@@ -5,7 +5,8 @@
 
 // Section lottery 
 .section-lottery {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     padding: 1rem;
     gap: 1rem;
     background-color: $background-color;
@@ -35,8 +36,10 @@
             overflow: hidden;
 
             img {
-                max-width: calc(100vw - 2rem);
-                max-height: calc(100vw - 2rem);
+                width: calc(100vw - 2rem);
+                height: calc(100vw - 2rem);
+                max-width: calc(480px - 2rem);
+                max-height: calc(480px - 2rem);
 
             }
         }
@@ -56,7 +59,7 @@
 
             .tickets {
                 display: grid;
-                grid-template-columns: repeat(8, minmax(0, 1fr));
+                grid-template-columns: repeat(4, minmax(0, 1fr));
                 gap: 0.25rem;
 
                 .ticket {
@@ -65,6 +68,7 @@
                     border-radius: 0.25rem;
                     border: 1px solid $gray-800;
                     text-align: center;
+                    font-size: 0.875rem;
                 }
             }
         }
@@ -229,7 +233,8 @@
     }
 
     @include sm {
-        grid-template-columns: repeat(2, 1fr);
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         max-width: $lg;
 
         .lottery-image-tickets {
@@ -237,9 +242,15 @@
             .lottery-image {
 
                 img {
-                    max-width: calc((100vw - 3rem) / 2);
-                    max-height: calc((100vw - 3rem) / 2);
+                    width: calc((100vw - 3rem) / 2);
+                    height: calc((100vw - 3rem) / 2);
+                    max-width: calc(($lg - 3rem) / 2);
+                    max-height: calc(($lg - 3rem) / 2);
                 }
+            }
+
+            .tickets {
+                grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
             }
         }
     }
@@ -261,6 +272,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 1rem;
 
 
     .admin-orders {
@@ -300,7 +312,7 @@
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
-            height: 400px;
+            height: calc(100vh - 12rem);
             overflow: overlay;
             padding-right: 0.25rem;
 
@@ -371,6 +383,31 @@
                         text-align: end;
                         font-size: 0.8125rem;
                     }
+                }
+
+                .order-footer {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    .status {
+                        padding: 0.25rem 0.5rem;
+                        color: $white;
+                        font-weight: 600;
+                        font-size: 0.8125rem;
+                        border-radius: 2px;
+                    }
+
+                    .status-0 {
+                        background-color: $warning-color;
+                    }
+                    .status-1 {
+                        background-color: $success-color-2;
+                    }
+                    .status-2 {
+                        background-color: $danger-color-2;
+                    }
+
                 }
 
                 .buttons {

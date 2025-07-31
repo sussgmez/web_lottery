@@ -1,39 +1,51 @@
 {% load lottery_extras %}
 
-<div class="admin-order">
-  <div class="order-header">
-    <p class="order-email">{{ order.user.email }}</p>
-    <p class="order-quantity">x {{ order.quantity }} tickets</p>
-  </div>
-  <hr />
+<div class="order-header">
+  <p class="order-email">{{ order.user.email }}</p>
+  <p class="order-quantity">x {{ order.quantity }} tickets</p>
+</div>
+<hr />
 
-  <div class="order-info">
-    <p class="payment-method">{{ order.get_payment_method_display }}</p>
-    <p class="date">{{ order.created|date:'d/m/Y' }}</p>
-    {% if order.payment_method == 0 %}
-      <p class="label">Teléfono</p>
-      <p class="field">{{ order.phone }}</p>
-      <p class="label">Banco</p>
-      <p class="field">{{ order.bank_code }} - {{ order.get_bank_code_display }}</p>
-      <p class="label">Referencia</p>
-      <p class="field">{{ order.reference }}</p>
-      <p class="label">Monto</p>
-      <p class="field">{{ order.amount_bs }}</p>
-    {% elif order.payment_method == 1 %}
-      <p class="label">Email/Teléfono</p>
-      <p class="field">{{ order.email_or_phone }}</p>
-      <p class="label">Monto</p>
-      <p class="field">{{ order.amount_usd }}</p>
-    {% elif order.payment_method == 2 %}
-      <p class="label">Email/Teléfono</p>
-      <p class="field">{{ order.email_or_phone }}</p>
-      <p class="label">Monto</p>
-      <p class="field">{{ order.amount_usd }}</p>
+<div class="order-info">
+  <p class="payment-method">{{ order.get_payment_method_display }}</p>
+  <p class="date">{{ order.created|date:'d/m/Y' }}</p>
+  {% if order.payment_method == 0 %}
+    <p class="label">Teléfono</p>
+    <p class="field">{{ order.phone }}</p>
+    <p class="label">Banco</p>
+    <p class="field">{{ order.bank_code }} - {{ order.get_bank_code_display }}</p>
+    <p class="label">Referencia</p>
+    <p class="field">{{ order.reference }}</p>
+    <p class="label">Monto</p>
+    <p class="field">{{ order.amount_bs }}</p>
+  {% elif order.payment_method == 1 %}
+    <p class="label">Email/Teléfono</p>
+    <p class="field">{{ order.email_or_phone }}</p>
+    <p class="label">Monto</p>
+    <p class="field">{{ order.amount_usd }}</p>
+  {% elif order.payment_method == 2 %}
+    <p class="label">Email/Teléfono</p>
+    <p class="field">{{ order.email_or_phone }}</p>
+    <p class="label">Monto</p>
+    <p class="field">{{ order.amount_usd }}</p>
+  {% endif %}
+</div>
+<div class="order-footer">
+  <div>
+    {% if order.status == 0 %}
+      <p class="status status-0">En revisión</p>
+    {% elif order.status == 1 %}
+      <p class="status status-1">Confirmada</p>
+    {% else %}
+      <p class="status status-2">Rechazada</p>
     {% endif %}
   </div>
   <div class="buttons">
-    <button class="btn btn-decline">Rechazar</button>
-    <button class="btn btn-confirm">Confirmar</button>
+    {% if order.status == 0 %}
+      <button class="btn btn-decline" hx-get="{% url 'order-status' order.pk %}?status=2" hx-target="#id_admin_order_{{ order.pk }}">Rechazar</button>
+      <button class="btn btn-confirm" hx-get="{% url 'order-status' order.pk %}?status=1" hx-target="#id_admin_order_{{ order.pk }}">Confirmar</button>
+    {% else %}
+      <button class="btn btn-decline" hx-get="{% url 'order-status' order.pk %}?status=0" hx-target="#id_admin_order_{{ order.pk }}">Cancelar</button>
+    {% endif %}
   </div>
-
 </div>
