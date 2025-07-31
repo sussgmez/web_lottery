@@ -49,3 +49,10 @@
     {% endif %}
   </div>
 </div>
+<div class="admin-tickets">
+  {% for ticket in order.tickets.all %}
+    <div class="ticket">
+      <p>#{{ ticket.number }}</p>
+    </div>
+  {% endfor %}
+</div>

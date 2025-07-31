@@ -27,8 +27,9 @@ class LotteryDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         if self.request.user.is_authenticated:
             context["user_tickets"] = Ticket.objects.filter(
-                order__user=self.request.user, order__lottery=self.get_object()
+                order__user=self.request.user, order__lottery=self.get_object(), order__status=1
             )
+            context["available_tickets"] = Lottery.AVAILABLE_TICKETS - len(Ticket.objects.filter(order__lottery=context["lottery"].pk))
 
         context["dollar"] = Dollar.objects.get(pk=1)
 
@@ -48,6 +49,8 @@ class OrderCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context["lottery"] = Lottery.objects.get(pk=self.request.GET["lottery"])
         context["payment_method"] = self.request.GET["payment_method"]
+        available_tickets = Lottery.AVAILABLE_TICKETS - len(Ticket.objects.filter(order__lottery=context["lottery"].pk))
+        context["available_tickets"] = range(1, (available_tickets + 1)) if available_tickets < 10 else range(1, 11)
         context["pending_order"] = Order.objects.filter(
             lottery=self.request.GET["lottery"], user=self.request.user, status=0
         )

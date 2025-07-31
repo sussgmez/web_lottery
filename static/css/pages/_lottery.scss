@@ -53,7 +53,7 @@
             .tickets-empty {
                 font-size: 0.875rem;
                 padding: 0.75rem;
-                background-color: $gray-800;
+                background-color: $grey-800;
                 border-radius: 0.25rem;
             }
 
@@ -66,7 +66,7 @@
                     width: 100%;
                     padding: 0.5rem;
                     border-radius: 0.25rem;
-                    border: 1px solid $gray-800;
+                    border: 1px solid $grey-800;
                     text-align: center;
                     font-size: 0.875rem;
                 }
@@ -109,17 +109,17 @@
         hr {
             width: 100%;
             border: none;
-            border-bottom: 1px solid $gray-800;
+            border-bottom: 1px solid $grey-800;
         }
 
         .pending-order {
             padding: 0.75rem;
-            border: 1px solid $gray-600;
-            background-color: $gray-800;
+            border: 1px solid $grey-600;
+            background-color: $grey-800;
             border-radius: 0.25rem;
 
             p {
-                color: $gray-100;
+                color: $grey-100;
                 font-weight: 600;
                 font-size: 0.875rem;
 
@@ -217,17 +217,24 @@
             }
         }
 
+        .not-available {
+            padding: 0.75rem;
+            background-color: $grey-800;
+            border-radius: 0.25rem;
+
+        }
+
         // Admin
         .button-admin-option {
             cursor: pointer;
             border-radius: 0.25rem;
             padding: 0.5rem 1rem;
-            border: 1px solid $gray-700;
-            background-color: $gray-800;
+            border: 1px solid $grey-700;
+            background-color: $grey-800;
             transition: all 0.2s;
 
             &:hover {
-                background-color: $gray-700;
+                background-color: $grey-700;
             }
         }
     }
@@ -263,7 +270,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba($gray-800, $alpha: 0.2);
+    background-color: rgba($grey-800, $alpha: 0.2);
     backdrop-filter: blur(4px);
     z-index: 50;
 }
@@ -276,12 +283,13 @@
 
 
     .admin-orders {
-        background-color: $gray-850;
+        background-color: $grey-850;
         padding: 1.25rem;
         position: relative;
         border-radius: 0.25rem;
         width: 100%;
         max-width: 480px;
+        border: 1px solid $grey-700;
 
         h4 {
             margin-bottom: 1rem;
@@ -304,7 +312,7 @@
             }
 
             &:hover {
-                background-color: $gray-800;
+                background-color: $grey-800;
             }
         }
 
@@ -322,18 +330,18 @@
 
             /* Track */
             &::-webkit-scrollbar-track {
-                background: $gray-800;
+                background: $grey-800;
             }
 
             /* Handle */
             &::-webkit-scrollbar-thumb {
-                background: $gray-700;
+                background: $grey-700;
             }
 
 
             .admin-order {
                 padding: 0.75rem;
-                background-color: $gray-800;
+                background-color: $grey-800;
                 border-radius: 0.25rem;
                 display: flex;
                 flex-direction: column;
@@ -342,7 +350,7 @@
                 hr {
                     width: 100%;
                     border: none;
-                    border-bottom: 1px solid $gray-600;
+                    border-bottom: 1px solid $grey-600;
                     margin: 0;
                 }
 
@@ -401,13 +409,28 @@
                     .status-0 {
                         background-color: $warning-color;
                     }
+
                     .status-1 {
                         background-color: $success-color-2;
                     }
+
                     .status-2 {
                         background-color: $danger-color-2;
                     }
 
+                }
+
+                .admin-tickets {
+                    display: grid;
+                    grid-template-columns: repeat(5, minmax(0, 1fr));
+                    gap: 0.25rem;
+                    .ticket {
+                        text-align: center;
+                        font-size: 0.875rem;
+                        padding: 0.25rem;
+                        border: 1px solid $grey-700;
+                        border-radius: 0.25rem;
+                    }
                 }
 
                 .buttons {
@@ -420,7 +443,7 @@
                         font-size: 0.8125rem;
                         padding: 0.25rem 0.75rem;
                         border-radius: 0.25rem;
-                        background-color: $gray-800;
+                        background-color: $grey-800;
                         font-weight: 600;
 
                     }

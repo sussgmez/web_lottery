@@ -647,6 +647,11 @@
   font-weight: 600;
   font-size: 0.875rem;
 }
+.section-lottery .lottery-info .not-available {
+  padding: 0.75rem;
+  background-color: hsl(0, 0%, 20%);
+  border-radius: 0.25rem;
+}
 .section-lottery .lottery-info .button-admin-option {
   cursor: pointer;
   border-radius: 0.25rem;
@@ -699,6 +704,7 @@
   border-radius: 0.25rem;
   width: 100%;
   max-width: 480px;
+  border: 1px solid hsl(0, 0%, 30%);
 }
 .modal-admin .admin-orders h4 {
   margin-bottom: 1rem;
@@ -805,6 +811,18 @@
 }
 .modal-admin .admin-orders .order-list .admin-order .order-footer .status-2 {
   background-color: #972b22;
+}
+.modal-admin .admin-orders .order-list .admin-order .admin-tickets {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.25rem;
+}
+.modal-admin .admin-orders .order-list .admin-order .admin-tickets .ticket {
+  text-align: center;
+  font-size: 0.875rem;
+  padding: 0.25rem;
+  border: 1px solid hsl(0, 0%, 30%);
+  border-radius: 0.25rem;
 }
 .modal-admin .admin-orders .order-list .admin-order .buttons {
   display: flex;

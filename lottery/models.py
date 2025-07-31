@@ -20,6 +20,7 @@ class Dollar(models.Model):
 
 
 class Lottery(models.Model):
+    AVAILABLE_TICKETS = 10000
     description = models.CharField(_("Descripción"), max_length=200)
     image = models.ImageField(_("Imagen"), upload_to='images/')
     price = models.FloatField(_("Precio"))
@@ -115,9 +116,20 @@ class Ticket(models.Model):
     def __str__(self):
         return f'{self.order.lottery.pk} - {self.number}'
 
+
 @receiver(post_save, sender=Order)
-def order_post_save_receiver(sender, instance, created, **kwargs):
-    if (instance.status == 1):
+def order_post_save_receiver(sender, instance, created, **kwargs):    
+    if created:
         while len(instance.tickets.all()) < instance.quantity:
-            available_numbers = set([x for x in range(1, 10001)]) - set([x.number for x in Ticket.objects.all()])
+            available_numbers = set([x for x in range(1, (Lottery.AVAILABLE_TICKETS + 1))]) - set([x.number for x in Ticket.objects.all()])
             Ticket.objects.create(order=instance, number=random.choice(list(available_numbers)))
+
+    else: 
+        if instance.status == "2":
+            for ticket in instance.tickets.all():
+                ticket.delete()
+        else:
+            while len(instance.tickets.all()) < instance.quantity:
+                available_numbers = set([x for x in range(1, (Lottery.AVAILABLE_TICKETS + 1))]) - set([x.number for x in Ticket.objects.all()])
+                Ticket.objects.create(order=instance, number=random.choice(list(available_numbers)))
+

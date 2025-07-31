@@ -46,16 +46,9 @@
         <div class="form-field form-quantity">
           <label for="id_quantity">Cantidad</label>
           <select name="quantity" id="id_quantity" hx-on:change="amount({{ payment_method }}, this.value)">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
+            {% for number in available_tickets %}
+              <option value="{{ number }}">{{ number }}</option>
+            {% endfor %}
           </select>
         </div>
 
@@ -97,16 +90,9 @@
         <div class="form-field form-quantity">
           <label for="id_quantity">Cantidad</label>
           <select name="quantity" id="id_quantity" hx-on:change="amount({{ payment_method }}, this.value)">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
+            {% for number in available_tickets %}
+              <option value="{{ number }}">{{ number }}</option>
+            {% endfor %}
           </select>
         </div>
         <div class="form-input">{{ form.email_or_phone }}</div>
@@ -122,16 +108,9 @@
         <div class="form-field form-quantity">
           <label for="id_quantity">Cantidad</label>
           <select name="quantity" id="id_quantity" hx-on:change="amount({{ payment_method }}, this.value)">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
+            {% for number in available_tickets %}
+              <option value="{{ number }}">{{ number }}</option>
+            {% endfor %}
           </select>
         </div>
         <div class="form-input">{{ form.email_or_phone }}</div>

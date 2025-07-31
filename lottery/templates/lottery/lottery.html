@@ -47,8 +47,12 @@
             <button class="button-admin-option">Cerrar sorteo</button>
           </div>
         {% else %}
-          {% comment %}if user has pending order{% endcomment %}
-          <div id="id_div_order_create" class="div-order-create" hx-get="{% url 'order-create' %}?payment_method=0&lottery={{ lottery.pk }}" hx-trigger="load"></div>
+          {% if available_tickets == 0 %}
+            <p class="not-available">No quedan tickets disponibles</p>
+          {% else %}
+            {% comment %}if user has pending order{% endcomment %}
+            <div id="id_div_order_create" class="div-order-create" hx-get="{% url 'order-create' %}?payment_method=0&lottery={{ lottery.pk }}" hx-trigger="load"></div>
+          {% endif %}
         {% endif %}
       {% else %}
         <div class="no-login">
@@ -60,7 +64,7 @@
     </div>
   </section>
   {% if user.is_staff %}
-    <div class="modal modal-admin hidden" id="id_modal_admin" hx-on:click="htmx.addClass(this, 'hidden')"></div> 
+    <div class="modal modal-admin hidden" id="id_modal_admin" hx-on:click="htmx.addClass(this, 'hidden')"></div>
   {% endif %}
 {% endblock %}
 
@@ -69,35 +73,41 @@
     function changePaymentMethod() {
       htmx.ajax('GET', `{% url 'order-create' %}?payment_method=${htmx.find('#id_payment_method').value}&lottery={{ object.pk }}`, '#id_div_order_create')
     }
-    
+    function amount(payment_method, quantity = 1) {
+      if (payment_method == 0) {
+        htmx.find('#id_amount_bs').value = (quantity * parseFloat('{{ lottery.price|floatformat:".2f" }}') * parseFloat('{{ dollar.exchange_rate }}')).toFixed(2)
+      } else {
+        htmx.find('#id_amount_usd').value = (quantity * parseFloat('{{ lottery.price|floatformat:".2f" }}')).toFixed(2)
+      }
+    }
     
     window.onload = () => {
       changePaymentMethod()
     }
     
     /*
-                       function formatCurrency(value) {
-                          return Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(parseFloat(value))
-                        }
-                        function setAmount(payment_method, quantity = '1') {
-                          if (payment_method == '0') {
-                            htmx.find('#id_amount_bs').value = (parseFloat(quantity) * parseFloat("{{ dollar.exchange_rate|floatformat:'.2f' }}") * parseFloat("{{ lottery.price|floatformat:'.2f' }}")).toFixed(2)
-                          } else {
-                            htmx.find('#id_amount_usd').value = (parseFloat(quantity) * parseFloat("{{ lottery.price|floatformat:'.2f' }}")).toFixed(2)
-                          }
-                        }
-                        function setAmountOrder(element, amount, payment_method) {
-                          console.log(element, amount, payment_method)
-                        
-                          if (payment_method == '0') {
-                            htmx.find(element).innerHTML = Intl.NumberFormat('ve-VE', { style: 'currency', currency: 'VEF' }).format(parseFloat(amount))
-                          } else {
-                            htmx.find(element).innerHTML = Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(parseFloat(amount))
-                          }
-                        }
-                        window.onload = () => {
-                          htmx.find('#id_lottery_price').innerHTML = formatCurrency("{{ lottery.price|floatformat:'.2f' }}")
-                        }*/
+                               function formatCurrency(value) {
+                                  return Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(parseFloat(value))
+                                }
+                                function setAmount(payment_method, quantity = '1') {
+                                  if (payment_method == '0') {
+                                    htmx.find('#id_amount_bs').value = (parseFloat(quantity) * parseFloat("{{ dollar.exchange_rate|floatformat:'.2f' }}") * parseFloat("{{ lottery.price|floatformat:'.2f' }}")).toFixed(2)
+                                  } else {
+                                    htmx.find('#id_amount_usd').value = (parseFloat(quantity) * parseFloat("{{ lottery.price|floatformat:'.2f' }}")).toFixed(2)
+                                  }
+                                }
+                                function setAmountOrder(element, amount, payment_method) {
+                                  console.log(element, amount, payment_method)
+                                
+                                  if (payment_method == '0') {
+                                    htmx.find(element).innerHTML = Intl.NumberFormat('ve-VE', { style: 'currency', currency: 'VEF' }).format(parseFloat(amount))
+                                  } else {
+                                    htmx.find(element).innerHTML = Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(parseFloat(amount))
+                                  }
+                                }
+                                window.onload = () => {
+                                  htmx.find('#id_lottery_price').innerHTML = formatCurrency("{{ lottery.price|floatformat:'.2f' }}")
+                                }*/
   </script>
 {% endblock %}
 
