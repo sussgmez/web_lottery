@@ -70,13 +70,6 @@
       htmx.ajax('GET', `{% url 'order-create' %}?payment_method=${htmx.find('#id_payment_method').value}&lottery={{ object.pk }}`, '#id_div_order_create')
     }
     
-    function amount(payment_method, quantity = 1) {
-      if (payment_method == 0) {
-        htmx.find('#id_amount_bs').value = (parseFloat('{{ object.price|floatformat:".2f" }}') * quantity * parseFloat('{{ dollar|floatformat:".2f" }}')).toFixed(2)
-      } else {
-        htmx.find('#id_amount_usd').value = parseFloat('{{ object.price|floatformat:".2f" }}') * quantity
-      }
-    }
     
     window.onload = () => {
       changePaymentMethod()

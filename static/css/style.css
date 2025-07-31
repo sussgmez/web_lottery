@@ -159,10 +159,10 @@
 .login .form .errors p {
   font-size: 0.875rem;
   font-weight: 600;
-  color: rgba(255, 185, 179, 0.8);
+  color: rgba(195, 112, 104, 0.8);
 }
 .login .form:has(.error) .input {
-  outline: 1px solid #FFB9B3;
+  outline: 1px solid #C37068;
 }
 .login .form .form-fields {
   display: flex;
@@ -282,10 +282,10 @@
 .signup .form .errors p {
   font-size: 0.875rem;
   font-weight: 600;
-  color: rgba(255, 185, 179, 0.8);
+  color: rgba(195, 112, 104, 0.8);
 }
 .signup .form:has(.error) .input {
-  outline: 1px solid #FFB9B3;
+  outline: 1px solid #C37068;
 }
 .signup .form .form-fields {
   display: flex;
@@ -412,7 +412,7 @@
   backdrop-filter: blur(1px);
 }
 .home .section-lotteries .lotteries .lottery .lottery-image .closed p {
-  background-color: #FFB9B3;
+  background-color: #C37068;
   font-weight: 700;
   color: #FFFFFF;
   padding: 0.5rem 2rem;
@@ -437,7 +437,7 @@
   background-color: #525252;
 }
 .home .section-lotteries .lotteries .lottery:has(.closed) {
-  border: 1px solid #FFB9B3;
+  border: 1px solid #C37068;
 }
 .home .section-lotteries .lotteries .lottery:has(.closed):hover {
   background-color: #262626;
@@ -479,6 +479,7 @@
   background-color: #191919;
   max-width: 480px;
   margin: auto;
+  min-height: 100vh;
 }
 .section-lottery .no-login {
   border: 1px solid #108dd6;
@@ -619,11 +620,11 @@
   grid-column: span 2;
 }
 .section-lottery .lottery-info .form-order-create .form-input .error p {
-  color: #FFB9B3;
+  color: #C37068;
 }
 .section-lottery .lottery-info .form-order-create .form-input:has(.error) input,
 .section-lottery .lottery-info .form-order-create .form-input:has(.error) select {
-  border: 1px solid #FFB9B3;
+  border: 1px solid #C37068;
 }
 .section-lottery .lottery-info .form-order-create .split-dni {
   display: grid;
@@ -679,6 +680,126 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.modal-admin .admin-orders {
+  background-color: hsl(0, 0%, 15%);
+  padding: 1.25rem;
+  position: relative;
+  border-radius: 0.25rem;
+  width: 100%;
+  max-width: 480px;
+}
+.modal-admin .admin-orders h4 {
+  margin-bottom: 1rem;
+}
+.modal-admin .admin-orders .btn-close {
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: none;
+  background-color: transparent;
+  padding: 2px;
+  display: flex;
+  border-radius: 2px;
+}
+.modal-admin .admin-orders .btn-close img {
+  height: 20px;
+  width: 20px;
+}
+.modal-admin .admin-orders .btn-close:hover {
+  background-color: hsl(0, 0%, 20%);
+}
+.modal-admin .admin-orders .order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 400px;
+  overflow: overlay;
+  padding-right: 0.25rem;
+  /* Track */
+  /* Handle */
+}
+.modal-admin .admin-orders .order-list::-webkit-scrollbar {
+  width: 4px;
+}
+.modal-admin .admin-orders .order-list::-webkit-scrollbar-track {
+  background: hsl(0, 0%, 20%);
+}
+.modal-admin .admin-orders .order-list::-webkit-scrollbar-thumb {
+  background: hsl(0, 0%, 30%);
+}
+.modal-admin .admin-orders .order-list .admin-order {
+  padding: 0.75rem;
+  background-color: hsl(0, 0%, 20%);
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.modal-admin .admin-orders .order-list .admin-order hr {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid hsl(0, 0%, 40%);
+  margin: 0;
+}
+.modal-admin .admin-orders .order-list .admin-order .order-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.modal-admin .admin-orders .order-list .admin-order .order-header .order-email {
+  font-size: 0.875rem;
+}
+.modal-admin .admin-orders .order-list .admin-order .order-header .order-quantity {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.modal-admin .admin-orders .order-list .admin-order .order-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  align-items: center;
+}
+.modal-admin .admin-orders .order-list .admin-order .order-info .payment-method {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.modal-admin .admin-orders .order-list .admin-order .order-info .label {
+  font-weight: 600;
+  font-size: 0.8125rem;
+}
+.modal-admin .admin-orders .order-list .admin-order .order-info .field,
+.modal-admin .admin-orders .order-list .admin-order .order-info .date {
+  text-align: end;
+  font-size: 0.8125rem;
+}
+.modal-admin .admin-orders .order-list .admin-order .buttons {
+  display: flex;
+  justify-content: end;
+  gap: 0.25rem;
+}
+.modal-admin .admin-orders .order-list .admin-order .buttons .btn {
+  cursor: pointer;
+  font-size: 0.8125rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  background-color: hsl(0, 0%, 20%);
+  font-weight: 600;
+}
+.modal-admin .admin-orders .order-list .admin-order .buttons .btn-decline {
+  border: 1px solid #C37068;
+  color: #C37068;
+}
+.modal-admin .admin-orders .order-list .admin-order .buttons .btn-decline:hover {
+  background-color: rgba(195, 112, 104, 0.1);
+}
+.modal-admin .admin-orders .order-list .admin-order .buttons .btn-confirm {
+  border: 1px solid #68C379;
+  color: #68C379;
+}
+.modal-admin .admin-orders .order-list .admin-order .buttons .btn-confirm:hover {
+  background-color: rgba(104, 195, 121, 0.1);
 }
 
 /*

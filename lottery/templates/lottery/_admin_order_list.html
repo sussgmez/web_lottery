@@ -1,13 +1,11 @@
 {% load static %}
 
-<div class="admin-orders">
-    <button><img src="{% static 'img/close.png' %}" alt=""></button>
-    <h3>Pagos</h3>
+<div class="admin-orders" onclick="event.stopPropagation()">
+    <button class="btn-close" hx-on:click="htmx.addClass('#id_modal_admin', 'hidden')"><img src="{% static 'img/close.png' %}" alt=""></button>
+    <h4>Pagos</h4>
     <div class="order-list">
         {% for order in order_list %}
-            <div class="order">
-                {{ order }}
-            </div>
+            {% include "lottery/_admin_order.html" with order=order %}
         {% endfor %}
     </div>
 </div>
