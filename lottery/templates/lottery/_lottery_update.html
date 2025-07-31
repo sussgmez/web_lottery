@@ -1,0 +1,22 @@
+{% csrf_token %}
+<div class="form-field form-description">
+    {{ form.description }}
+</div>
+<div class="form-field form-image">
+    <label for="id_image">Imagen</label>
+    {{ form.image }}
+</div>
+<div class="form-field">
+    <label for="id_price">Precio ticket</label>
+    {{ form.price }}
+</div>
+<div class="form-field form-date">
+    <label for="id_closing_date">Fecha de cierre</label>
+    <input type="date" name="closing_date" value="{{ lottery.closing_date|date:"Y-m-d" }}" required="" id="id_closing_date">
+</div>
+<div class="form-field form-closed">
+    <label for="id_closed">¿Cerrar sorteo?</label>
+    {{ form.closed }}
+</div>
+
+<button class="btn btn-submit">Editar</button>

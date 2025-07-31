@@ -143,3 +143,4 @@ LOGIN_URL = '/login/'
 
 USE_L10N  = False
 DECIMAL_SEPARATOR = '.'
+

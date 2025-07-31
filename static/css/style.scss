@@ -39,8 +39,9 @@ button {
     background-color: $background-color-2;
 }
 
-input, select {
+input, select, textarea {
     background-color: $background-color;
+    resize: none;
 } 
 
 input::-webkit-outer-spin-button,

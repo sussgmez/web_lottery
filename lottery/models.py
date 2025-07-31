@@ -21,11 +21,15 @@ class Dollar(models.Model):
 
 class Lottery(models.Model):
     AVAILABLE_TICKETS = 10000
-    description = models.CharField(_("Descripción"), max_length=200)
+    description = models.TextField(_("Descripción"))
     image = models.ImageField(_("Imagen"), upload_to='images/')
     price = models.FloatField(_("Precio"))
     closing_date = models.DateField(_("Fecha de cierre"))
     closed = models.BooleanField(_("Cerrada"))
+    
+    history = HistoricalRecords()
+    created = models.DateTimeField(_("Fecha de creación"), auto_now_add=True)
+    updated = models.DateTimeField(_("Última modificación"), auto_now=True)
 
     class Meta:
         verbose_name = _("lottery")
@@ -107,7 +111,7 @@ class Order(models.Model):
     
     
     def __str__(self):
-        return f'{self.user.email} lottery-{self.lottery.pk} ({self.quantity})'
+        return f'{self.pk}: {self.user.email} lottery-{self.lottery.pk} ({self.quantity})'
     
 class Ticket(models.Model):
     number = models.IntegerField(_("Número de ticket"), unique=True)

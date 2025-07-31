@@ -4,17 +4,17 @@
       <img src="{{ lottery.image.url }}" alt="" />
       {% if lottery.closed %}
         <div class="closed">
-          <p>Finalizada</p>
+          <p>Finalizado</p>
         </div>
       {% endif %}
     </div>
     <div class="lottery-info">
       <h4>{{ lottery.description }}</h4>
       <p>
-        <b>Cierre del sorteo:</b> {{ lottery.closing_date|date:'d/m/Y' }}
+        <b>{{ lottery.price|floatformat:".2f" }} $ x 1</b>
       </p>
       <p>
-        <b>Ticket:</b> {{ lottery.price }} $
+        <b>Fecha de cierre:</b> {{ lottery.closing_date|date:'d/m/Y' }}
       </p>
     </div>
   </a>

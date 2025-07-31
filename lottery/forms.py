@@ -1,6 +1,17 @@
 from django import forms
 from phonenumber_field.formfields import PhoneNumberField, SplitPhoneNumberField
-from .models import Order
+from .models import Order, Lottery
+
+
+class LotteryForm(forms.ModelForm):
+    
+    description = forms.CharField(widget=forms.Textarea(attrs={'rows':2}), max_length=200, required=True)
+    closing_date = forms.DateField(widget=forms.DateInput(attrs={'type':'date', }), required=True)
+
+
+    class Meta:
+        model = Lottery
+        fields = ("description", "image", "price", "closing_date", "closed")
 
 
 class Order1Form(forms.ModelForm):
@@ -17,7 +28,12 @@ class Order1Form(forms.ModelForm):
     type_of_dni = forms.ChoiceField(
         widget=forms.Select(), choices=Order.TYPE_OF_DNI, required=True
     )
-    phone = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Nro. de teléfono"}), max_length=11, min_length=11, required=True)
+    phone = forms.CharField(
+        widget=forms.TextInput(attrs={"placeholder": "Nro. de teléfono"}),
+        max_length=11,
+        min_length=11,
+        required=True,
+    )
     bank_code = forms.ChoiceField(
         widget=forms.Select(), choices=Order.BANK_CODE, required=True
     )

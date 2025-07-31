@@ -1,5 +1,3 @@
-{% load lottery_extras %}
-
 <div class="order-header">
   <p class="order-email">{{ order.user.email }}</p>
   <p class="order-quantity">x {{ order.quantity }} tickets</p>
@@ -17,17 +15,13 @@
     <p class="label">Referencia</p>
     <p class="field">{{ order.reference }}</p>
     <p class="label">Monto</p>
-    <p class="field">{{ order.amount_bs }}</p>
-  {% elif order.payment_method == 1 %}
+    <p class="field">{{ order.amount_bs|floatformat:".2f" }} Bs. </p>
+  {% elif order.payment_method == 1 or order.payment_method == 2 %}
     <p class="label">Email/Teléfono</p>
     <p class="field">{{ order.email_or_phone }}</p>
     <p class="label">Monto</p>
-    <p class="field">{{ order.amount_usd }}</p>
+    <p class="field">{{ order.amount_usd|floatformat:".2f" }} $</p>
   {% elif order.payment_method == 2 %}
-    <p class="label">Email/Teléfono</p>
-    <p class="field">{{ order.email_or_phone }}</p>
-    <p class="label">Monto</p>
-    <p class="field">{{ order.amount_usd }}</p>
   {% endif %}
 </div>
 <div class="order-footer">

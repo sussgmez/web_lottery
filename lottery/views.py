@@ -1,13 +1,15 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
+from django.contrib.admin.views.decorators import staff_member_required
 from django.views.generic import (
     TemplateView,
     ListView,
     DetailView,
     CreateView,
+    UpdateView,
 )
 from .models import Lottery, Order, Dollar, Ticket
-from .forms import Order1Form, Order2Form
+from .forms import Order1Form, Order2Form, LotteryForm
 
 
 class HomeView(TemplateView):
@@ -27,13 +29,27 @@ class LotteryDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         if self.request.user.is_authenticated:
             context["user_tickets"] = Ticket.objects.filter(
-                order__user=self.request.user, order__lottery=self.get_object(), order__status=1
+                order__user=self.request.user,
+                order__lottery=self.get_object(),
+                order__status=1,
             )
-            context["available_tickets"] = Lottery.AVAILABLE_TICKETS - len(Ticket.objects.filter(order__lottery=context["lottery"].pk))
+            context["available_tickets"] = Lottery.AVAILABLE_TICKETS - len(
+                Ticket.objects.filter(order__lottery=context["lottery"].pk)
+            )
 
         context["dollar"] = Dollar.objects.get(pk=1)
 
         return context
+
+
+class LotteryUpdateView(UpdateView):
+    model = Lottery
+    template_name = "lottery/_lottery_update.html"
+    form_class = LotteryForm
+
+    def form_valid(self, form):
+        self.object.save()
+        return redirect("lottery", self.object.pk)
 
 
 class OrderCreateView(CreateView):
@@ -49,8 +65,14 @@ class OrderCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context["lottery"] = Lottery.objects.get(pk=self.request.GET["lottery"])
         context["payment_method"] = self.request.GET["payment_method"]
-        available_tickets = Lottery.AVAILABLE_TICKETS - len(Ticket.objects.filter(order__lottery=context["lottery"].pk))
-        context["available_tickets"] = range(1, (available_tickets + 1)) if available_tickets < 10 else range(1, 11)
+        available_tickets = Lottery.AVAILABLE_TICKETS - len(
+            Ticket.objects.filter(order__lottery=context["lottery"].pk)
+        )
+        context["available_tickets"] = (
+            range(1, (available_tickets + 1))
+            if available_tickets < 10
+            else range(1, 11)
+        )
         context["pending_order"] = Order.objects.filter(
             lottery=self.request.GET["lottery"], user=self.request.user, status=0
         )
@@ -70,13 +92,13 @@ class AdminOrderListView(ListView):
     template_name = "lottery/_admin_order_list.html"
 
     def get_queryset(self):
-        return Order.objects.filter(lottery=self.kwargs["lottery_pk"])
-
+        filter = self.request.GET['filter']
+        print(filter)
+        return Order.objects.filter(lottery=self.kwargs["lottery_pk"]).filter(user__email__contains=filter) | Order.objects.filter(lottery=self.kwargs["lottery_pk"]).filter(tickets__number__contains=filter)
 
 class AdminOrderDetailView(DetailView):
     model = Order
     template_name = "lotteryt/_admin_order.html"
-
 
 def close_lottery(request, pk):
     lottery = Lottery.objects.get(pk=pk)

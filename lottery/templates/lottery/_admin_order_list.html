@@ -1,13 +1,9 @@
-{% load static %}
-
-<div class="admin-orders" onclick="event.stopPropagation()">
-  <button class="btn-close" hx-on:click="htmx.addClass('#id_modal_admin', 'hidden')"><img src="{% static 'img/close.png' %}" alt="" /></button>
-  <h4>Pagos</h4>
-  <div class="order-list">
-    {% for order in order_list %}
-      <div class="admin-order" id="id_admin_order_{{ order.pk }}">
-        {% include 'lottery/_admin_order.html' with order=order %}
-      </div>
-    {% endfor %}
+{% for order in order_list %}
+  <div class="admin-order" id="id_admin_order_{{ order.pk }}">
+    {% include 'lottery/_admin_order.html' with order=order %}
   </div>
-</div>
+{% empty %}
+  <div class="order-list-empty">
+    <p>Aún no se han registrado pagos.</p>
+  </div>
+{% endfor %}
