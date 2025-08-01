@@ -1,6 +1,5 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.admin.views.decorators import staff_member_required
 from django.views.generic import (
     TemplateView,
     ListView,
@@ -58,6 +57,17 @@ class LotteryUpdateView(UpdateView):
         return redirect("lottery", self.object.pk)
 
 
+class LotteryCreateView(CreateView):
+    model = Lottery
+    template_name = "lottery/_lottery_create.html"
+    form_class = LotteryForm
+
+    def form_valid(self, form):
+        self.object = form.save(commit=True)
+        return redirect('home')
+    
+
+
 class OrderCreateView(CreateView):
     model = Order
     template_name = "lottery/_order_create.html"
@@ -104,6 +114,17 @@ class AdminOrderListView(ListView):
 class AdminOrderDetailView(DetailView):
     model = Order
     template_name = "lotteryt/_admin_order.html"
+
+
+class DollarUpdateView(UpdateView):
+    model = Dollar
+    template_name = "lottery/_dollar_update.html"
+    fields = ['exchange_rate',]
+
+    def form_valid(self, form):
+        self.object = form.save(commit=True)
+        return redirect('dollar-update', pk=self.object.pk)
+
 
 def close_lottery(request, pk):
     lottery = Lottery.objects.get(pk=pk)

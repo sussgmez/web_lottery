@@ -1,0 +1,11 @@
+{% load static %}
+<div class="dollar-update-form">
+    <h4>Modificar tasa de cambio</h4>
+    <button class="btn-close" hx-on:click="htmx.addClass('#id_options_modal', 'hidden')"><img src="{% static 'img/close.png' %}" alt="" /></button>
+    <form hx-post="{% url "dollar-update" object.pk %}" hx-target="#id_options_modal">
+        {% csrf_token %}
+        {{ form.exchange_rate }}
+        <p><span>Última modificación:</span> {{ object.updated|date:"d/m/Y h:i a" }}</p>
+        <button class="btn">Modificar</button>
+    </form>
+</div>

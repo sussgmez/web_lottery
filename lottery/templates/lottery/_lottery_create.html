@@ -1,0 +1,24 @@
+{% load static %}
+<div class="form-lottery-create">
+    {{ form.errors }}
+  <h4>Crear sorteo</h4>
+  <button class="btn-close" hx-on:click="htmx.addClass('#id_options_modal', 'hidden')"><img src="{% static 'img/close.png' %}" alt="" /></button>
+  <form action="{% url 'lottery-create' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="hidden" name="closed" value="false" />
+    <div class="form-field form-description">{{ form.description }}</div>
+    <div class="form-field form-image">
+      <label for="id_image">Imagen</label>
+      {{ form.image }}
+    </div>
+    <div class="form-field">
+      <label for="id_price">Precio ticket</label>
+      {{ form.price }}
+    </div>
+    <div class="form-field form-date">
+      <label for="id_closing_date">Fecha de cierre</label>
+      <input type="date" name="closing_date" value="{{ lottery.closing_date|date:'Y-m-d' }}" required="" id="id_closing_date" />
+    </div>
+    <button class="btn btn-submit">Crear +</button>
+  </form>
+</div>

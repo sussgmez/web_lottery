@@ -21,6 +21,10 @@
     {% block content %}
     {% endblock %}
     {% include "./footer.html" %}
+
+    {% if user.is_staff %}
+      <div id="id_options_modal" class="hidden"></div>
+    {% endif %}
     <!-- JS -->
     <script src="{% static 'js/App.js' %}"></script>
     {% block extra_js %}{% endblock %}

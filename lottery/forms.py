@@ -5,7 +5,8 @@ from .models import Order, Lottery
 
 class LotteryForm(forms.ModelForm):
     
-    description = forms.CharField(widget=forms.Textarea(attrs={'rows':2}), max_length=200, required=True)
+    description = forms.CharField(widget=forms.Textarea(attrs={'rows':2, 'placeholder':'Lotería...'}), max_length=200, required=True)
+    price = forms.FloatField(widget=forms.NumberInput())
     closing_date = forms.DateField(widget=forms.DateInput(attrs={'type':'date', }), required=True)
 
 

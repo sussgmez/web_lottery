@@ -4,6 +4,7 @@
 
 @forward 'components/header';
 @forward 'components/footer';
+@forward 'components/modals';
 @forward 'pages/login';
 @forward 'pages/signup';
 @forward 'pages/home';
@@ -24,6 +25,7 @@ body {
 .hidden {
     display: none !important;
 }
+
 
 img {
     width: 100%;
