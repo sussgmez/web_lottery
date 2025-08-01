@@ -5,6 +5,57 @@
 .home {
     min-height: 100vh;
 
+    #id_carousel {
+        width: 100vw;
+        height: 100vw;
+        max-height: 520px;
+        min-height: 360px;
+        overflow: hidden;
+        position: relative;
+
+        #id_carousel_image {
+            width: 100vw;
+        }
+
+        .btn-carousel {
+            position: absolute;
+            background-color: transparent;
+            border: none;
+        }
+
+        .btn-prev,
+        .btn-next {
+            top: calc(50% - 1rem);
+
+            img {
+                width: 32px;
+                height: 32px;
+            }
+        }
+
+        .btn-prev {
+            left: 1rem;
+        }
+
+        .btn-next {
+            right: 1rem;
+        }
+
+        @include sm {
+
+            .btn-prev,
+            .btn-next {
+
+                top: calc(50% - 1.5rem);
+
+                img {
+                    width: 48px;
+                    height: 48px;
+                }
+            }
+        }
+    }
+
     .section-lotteries {
         padding: 4rem 2rem;
         width: fit-content;
@@ -80,6 +131,7 @@
                         font-size: 0.875rem;
                         margin-bottom: 0.25rem;
                     }
+
                     b {
                         font-weight: 600;
                     }

@@ -8,9 +8,46 @@
 
 {% block content %}
   <div class="home">
+    <section class="carousel" id="id_carousel">
+      <a href="" id="id_carousel_link">
+        <img id="id_carousel_image" src="" alt="">
+      </a>
+      <button class="btn-carousel btn-prev" onclick="prevCarousel()"><img src="{% static 'img/prev.png' %}" alt=""></button>
+      <button class="btn-carousel btn-next" onclick="nextCarousel()"><img src="{% static 'img/next.png' %}" alt=""></button>
+    </section>
     <section class="section-lotteries">
       <h2 class="header-section">Sorteos</h2>
       <div class="lotteries" hx-get="{% url 'lotteries' %}" hx-trigger="load"></div>
     </section>
   </div>
+{% endblock %}
+
+{% block extra_js %}
+  <script>
+    var i_carousel = 0
+    var CAROUSEL = [
+      {% for carousel_image in carousel %} 
+        ['{{ carousel_image.image.url }}','{{ carousel_image.url }}'],
+      {% endfor %}
+    ]
+    
+    function nextCarousel() {
+      i_carousel = i_carousel < CAROUSEL.length - 1 ? i_carousel + 1 : 0
+      htmx.find('#id_carousel_image').src = CAROUSEL[i_carousel][0]      
+      htmx.find('#id_carousel_link').href = CAROUSEL[i_carousel][1]
+    }
+
+    function prevCarousel() {
+      i_carousel = i_carousel == 0 ? CAROUSEL.length - 1 : i_carousel - 1
+      htmx.find('#id_carousel_image').src = CAROUSEL[i_carousel][0]
+      htmx.find('#id_carousel_link').href = CAROUSEL[i_carousel][1]
+    }
+
+    window.onload = () => {
+      htmx.find('#id_carousel_image').src = CAROUSEL[i_carousel][0] 
+      htmx.find('#id_carousel_link').href = CAROUSEL[i_carousel][1]
+    }
+
+
+  </script>
 {% endblock %}

@@ -29,6 +29,18 @@
           {% endif %}
         {% endif %}
       </div>
+      <div class="issues">
+        <h4>¿Tienes algún inconveniente?</h4>
+        <p>Ponte en contacto con nuestro equipo de soporte.</p>
+        <div class="contact">
+          <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18.6038 12.7268L15.5652 9.08666C15.2572 8.69067 15.1032 8.49267 15.0225 8.27061C14.9511 8.07411 14.9215 7.86486 14.9357 7.65628C14.9518 7.42055 15.045 7.18766 15.2313 6.72187L15.942 4.94513C16.2177 4.25581 16.3556 3.91116 16.5934 3.68525C16.8029 3.48618 17.0656 3.3519 17.3496 3.29856C17.672 3.23803 18.0321 3.32806 18.7524 3.50812L20.7197 4.00002C20.7197 14 13.72 21 3.71973 21L3.2281 19.0324C3.04804 18.3122 2.95801 17.952 3.01854 17.6297C3.07188 17.3456 3.20616 17.083 3.40522 16.8734C3.63113 16.6356 3.97579 16.4977 4.66511 16.222L6.25064 15.5878C6.78204 15.3752 7.04773 15.2689 7.31264 15.2608C7.54678 15.2536 7.77934 15.3013 7.99171 15.4002C8.23199 15.512 8.43434 15.7144 8.83904 16.1191L11.9254 19.1569" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+          <p>+58 412 345 6789</p>
+        </div>
+        <div class="contact">
+          <svg width="20px" height="20px" viewBox="0 -2.5 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>email [#1573]</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Dribbble-Light-Preview" transform="translate(-300.000000, -922.000000)" fill="#ffffff"> <g id="icons" transform="translate(56.000000, 160.000000)"> <path d="M262,764.291 L254,771.318 L246,764.281 L246,764 L262,764 L262,764.291 Z M246,775 L246,766.945 L254,773.98 L262,766.953 L262,775 L246,775 Z M244,777 L264,777 L264,762 L244,762 L244,777 Z" id="email-[#1573]"> </path> </g> </g> </g> </g></svg>
+          <p>email@email.com</p>
+        </div>
+      </div>
     </div>
     {% comment %}Loterry info{% endcomment %}
     <div class="lottery-info">
@@ -105,204 +117,5 @@
     window.onload = () => {
       changePaymentMethod()
     }
-    
-    /*
-                                               function formatCurrency(value) {
-                                                  return Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(parseFloat(value))
-                                                }
-                                                function setAmount(payment_method, quantity = '1') {
-                                                  if (payment_method == '0') {
-                                                    htmx.find('#id_amount_bs').value = (parseFloat(quantity) * parseFloat("{{ dollar.exchange_rate|floatformat:'.2f' }}") * parseFloat("{{ lottery.price|floatformat:'.2f' }}")).toFixed(2)
-                                                  } else {
-                                                    htmx.find('#id_amount_usd').value = (parseFloat(quantity) * parseFloat("{{ lottery.price|floatformat:'.2f' }}")).toFixed(2)
-                                                  }
-                                                }
-                                                function setAmountOrder(element, amount, payment_method) {
-                                                  console.log(element, amount, payment_method)
-                                                
-                                                  if (payment_method == '0') {
-                                                    htmx.find(element).innerHTML = Intl.NumberFormat('ve-VE', { style: 'currency', currency: 'VEF' }).format(parseFloat(amount))
-                                                  } else {
-                                                    htmx.find(element).innerHTML = Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(parseFloat(amount))
-                                                  }
-                                                }
-                                                window.onload = () => {
-                                                  htmx.find('#id_lottery_price').innerHTML = formatCurrency("{{ lottery.price|floatformat:'.2f' }}")
-                                                }*/
   </script>
 {% endblock %}
-
-{% comment %}
-{% block content %}
-  <div>
-    <section class="section-lottery">
-      <div class="lottery-image">
-        <img src="{{ lottery.image.url }}" alt="" />
-      </div>
-      <div class="lottery-info">
-        <h2>{{ lottery.description }}</h2>
-        <p class="lottery-data">
-          <b>Cierre del sorteo:</b>{{ lottery.closing_date|date:'d/m/Y' }}
-        </p>
-        <p class="lottery-data">
-          <b>Ticket:</b>{{ lottery.price|floatformat_dot }}$
-        </p>
-        {% if lottery.closed %}
-          <div class="closed">
-            <p>Sorteo finalizado.</p>
-          </div>
-        {% elif user.is_authenticated and not user.is_staff %}
-          {% if not pending_order %}
-            <div class="id_order_create" hx-get="{% url 'order-create' %}?lottery={{ object.pk }}" hx-trigger="load"></div>
-            <div class="order-info">
-              <div class="exchange-rate">
-                <img src="{% static 'img/info.png' %}" alt="" />
-                <p>
-                  <b>Tasa de cambio:</b> {{ dollar.exchange_rate|floatformat_dot }} Bs.
-                </p>
-              </div>
-              <hr />
-              <div class="order-data order-data-dollar">
-                <p class="data-name">Monto total $:</p>
-                <p id="id_amount_dollar" class="data"></p>
-              </div>
-              <div class="order-data">
-                <p class="data-name">Monto total Bs.:</p>
-                <p id="id_amount_bs" class="data"></p>
-              </div>
-              <hr />
-            </div>
-            <div class="payment-info">
-              <h4>Información de pago</h4>
-              <hr />
-              <h5>Pago móvil</h5>
-              <div class="payment-data">
-                <p class="data-name">Cédula</p>
-                <p>12.345.678</p>
-              </div>
-              <div class="payment-data">
-                <p class="data-name">Teléfono</p>
-                <p>0412-345-6789</p>
-              </div>
-              <div class="payment-data">
-                <p class="data-name">Banco</p>
-                <p>Banco de Venezuela (0102)</p>
-              </div>
-            </div>
-          {% else %}
-            <p class="pending">Tienes una orden pendiente de revisión</p>
-          {% endif %}
-        {% else %}
-
-        {% endif %}
-        {% if user.is_staff %}
-          <div class="staff-options">
-            <h3>Opciones de administrador</h3>
-            <div class="staff-options-buttons">
-              <a href="{% url 'get-emails' lottery.pk %}" class="button">Descargar lista</a>
-              <a hx-get="{% url 'order-admin-list' lottery.pk %}?filter" hx-target="#id_orders_admin" hx-on:click="htmx.toggleClass('#id_modal_orders_admin', 'hidden')" class="button">Ver tickets</a>
-              {% if lottery.closed %}
-                <a href="{% url 'lottery-open' lottery.pk %}" class="button">Volver a abrir</a>
-              {% else %}
-                <a href="{% url 'lottery-close' lottery.pk %}" class="button">Cerrar sorteo</a>
-              {% endif %}
-            </div>
-          </div>
-        {% elif user.is_authenticated %}
-          <div class="orders">
-            <h3>Ticket comprados</h3>
-            {% for order in orders %}
-              <div class="order">
-                <a hx-get="{% url 'order-detail' order.pk %}" hx-target="#id_order_detail" hx-on:click="htmx.toggleClass('#id_order_detail', 'hidden')">Cantidad de tickets: {{ order.quantity }} - Nro. de referencia: {{ order.reference }}</a>
-                <p class="status status-{{ order.status }}">{{ order.get_status_display }}</p>
-              </div>
-            {% empty %}
-              <p class="empty">No estás participando en el sorteo.</p>
-            {% endfor %}
-          </div>
-        {% else %}
-          <div class="no-login">
-            <p>
-              <a href="{% url 'login' %}">Inicia sesión</a> o <a href="{% url 'signup' %}">regístrate</a> para participar en los sorteos.
-            </p>
-          </div>
-        {% endif %}
-      </div>
-      <!-- Modals -->
-      <div id="id_order_detail" class="order-detail hidden"></div>
-      <div id="id_confirm" class="confirm hidden">
-        <div>
-          <h3>Confirmar pago móvil</h3>
-          <h4>{{ lottery.description }} <span class="quantity">x <span id="id_check_quantity_2"></span></span></h4>
-          <div class="field">
-            <p>Cantidad tickets:</p>
-            <p>
-              <span id="id_check_quantity">1</span>
-            </p>
-          </div>
-          <div class="field">
-            <p>Referencia:</p>
-            <p>
-              <span id="id_check_reference">12345</span>
-            </p>
-          </div>
-          <div class="field">
-            <p>Monto total Bs.:</p>
-            <p>
-              <span id="id_check_amount_bs">{{ lottery.price|multiply:dollar.exchange_rate }}</span>
-            </p>
-          </div>
-          <hr />
-          <div>
-            <button class="button button-cancel" hx-on:click="event.preventDefault();htmx.toggleClass('#id_confirm', 'hidden');">Cancelar</button>
-            <button class="button" hx-on:click="htmx.find('#id_form_order_create').submit();">Enviar</button>
-          </div>
-        </div>
-      </div>
-      {% if user.is_staff %}
-        <div id="id_modal_orders_admin" class="hidden">
-          <div>
-            <div class="modal-header">
-              <h3>Tickets</h3>
-              <button class="button-close" hx-on:click="htmx.toggleClass('#id_modal_orders_admin', 'hidden');"><img src="{% static 'img/close.png' %}" alt="" /></button>
-            </div>
-            <input type="text" class="input" name="filter" id="id_filter_ticket" hx-get="{% url 'order-admin-list' lottery.pk %}" hx-target="#id_orders_admin" hx-trigger="keyup" placeholder="Buscar ticket" />
-            <div class="orders" id="id_orders_admin"></div>
-          </div>
-        </div>
-      {% endif %}
-      <div class="id_payment_method"></div>
-    </section>
-  </div>
-{% endblock %}
-
-{% block extra_js %}
-  <script>
-    function set_amount(quantity = 1) {
-      htmx.find('#id_amount_dollar').innerHTML = Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(parseFloat(quantity * '{{ lottery.price|floatformat_dot }}').toFixed(2))
-      htmx.find('#id_amount_bs').innerHTML = Intl.NumberFormat('ve-VE', { style: 'currency', currency: 'VES' }).format(parseFloat(quantity * '{{ dollar.exchange_rate|floatformat_dot }}' * '{{ lottery.price|floatformat_dot }}').toFixed(2))
-    }
-    function show_confirm(quantity) {
-      console.log(quantity)
-      let reference = htmx.find('#id_reference')
-      if (reference.checkValidity()) {
-        htmx.find('#id_check_quantity_2').innerHTML = quantity
-        htmx.find('#id_check_quantity').innerHTML = quantity
-        htmx.find('#id_check_reference').innerHTML = reference.value
-        htmx.find('#id_check_amount_bs').innerHTML = Intl.NumberFormat('ve-VE', { style: 'currency', currency: 'VES' }).format(parseFloat(quantity * '{{ dollar.exchange_rate|floatformat_dot }} ' * '{{ lottery.price|floatformat_dot }}').toFixed(2))
-    
-        htmx.toggleClass('#id_confirm', 'hidden')
-      } else {
-        htmx.find('#id_reference').reportValidity()
-      }
-    }
-    function set_amount_order(amount, quantity, id = '#id_order_amount_bs') {
-      htmx.find(id).innerHTML = Intl.NumberFormat('ve-VE', { style: 'currency', currency: 'VES' }).format(amount * quantity)
-    }
-    
-    window.onload = () => {
-      set_amount()
-    }
-  </script>
-{% endblock %}
-{% endcomment %}

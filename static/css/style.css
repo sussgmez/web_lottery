@@ -371,6 +371,48 @@
 .home {
   min-height: 100vh;
 }
+.home #id_carousel {
+  width: 100vw;
+  height: 100vw;
+  max-height: 520px;
+  min-height: 360px;
+  overflow: hidden;
+  position: relative;
+}
+.home #id_carousel #id_carousel_image {
+  width: 100vw;
+}
+.home #id_carousel .btn-carousel {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+}
+.home #id_carousel .btn-prev,
+.home #id_carousel .btn-next {
+  top: calc(50% - 1rem);
+}
+.home #id_carousel .btn-prev img,
+.home #id_carousel .btn-next img {
+  width: 32px;
+  height: 32px;
+}
+.home #id_carousel .btn-prev {
+  left: 1rem;
+}
+.home #id_carousel .btn-next {
+  right: 1rem;
+}
+@media (min-width: 768px) {
+  .home #id_carousel .btn-prev,
+  .home #id_carousel .btn-next {
+    top: calc(50% - 1.5rem);
+  }
+  .home #id_carousel .btn-prev img,
+  .home #id_carousel .btn-next img {
+    width: 48px;
+    height: 48px;
+  }
+}
 .home .section-lotteries {
   padding: 4rem 2rem;
   width: fit-content;
@@ -392,7 +434,7 @@
   height: fit-content;
   background-color: hsl(0, 0%, 15%);
   transition: all 0.1s;
-  border: 1px solid rgba(127.5, 127.5, 127.5, 0.5);
+  border: 1px solid rgba(128, 128, 128, 0.5);
   max-width: 480px;
 }
 .home .section-lotteries .lotteries .lottery .lottery-image {
@@ -539,6 +581,19 @@
   border: 1px solid hsl(0, 0%, 20%);
   text-align: center;
   font-size: 0.875rem;
+}
+.section-lottery .lottery-image-tickets .issues {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background-color: hsl(0, 0%, 15%);
+  border-radius: 0.25rem;
+}
+.section-lottery .lottery-image-tickets .issues .contact {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 .section-lottery .lottery-info {
   display: flex;
@@ -916,6 +971,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.25rem;
 }
 .modal-admin .admin-orders .order-list .admin-order .order-footer .status {
   padding: 0.25rem 0.5rem;
@@ -923,6 +979,9 @@
   font-weight: 600;
   font-size: 0.8125rem;
   border-radius: 2px;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .modal-admin .admin-orders .order-list .admin-order .order-footer .status-0 {
   background-color: #967300;

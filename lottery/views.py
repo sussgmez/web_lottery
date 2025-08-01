@@ -8,12 +8,18 @@ from django.views.generic import (
     CreateView,
     UpdateView,
 )
-from .models import Lottery, Order, Dollar, Ticket
+from .models import Lottery, Order, Dollar, Ticket, Carousel
 from .forms import Order1Form, Order2Form, LotteryForm
 
 
 class HomeView(TemplateView):
     template_name = "lottery/home.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["carousel"] = Carousel.objects.all()
+        return context
+    
 
 
 class LotteryListView(ListView):
@@ -93,8 +99,7 @@ class AdminOrderListView(ListView):
 
     def get_queryset(self):
         filter = self.request.GET['filter']
-        print(filter)
-        return Order.objects.filter(lottery=self.kwargs["lottery_pk"]).filter(user__email__contains=filter) | Order.objects.filter(lottery=self.kwargs["lottery_pk"]).filter(tickets__number__contains=filter)
+        return (Order.objects.filter(lottery=self.kwargs["lottery_pk"]).filter(user__email__contains=filter) | Order.objects.filter(lottery=self.kwargs["lottery_pk"]).filter(tickets__number__contains=filter)).distinct()
 
 class AdminOrderDetailView(DetailView):
     model = Order

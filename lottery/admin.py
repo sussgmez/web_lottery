@@ -1,12 +1,15 @@
 from django.contrib import admin
-from .models import Lottery, Order, Dollar, Ticket
+from .models import Lottery, Order, Dollar, Ticket, Carousel
 
+
+
+@admin.register(Carousel)
+class CarouselAdmin(admin.ModelAdmin):
+    pass
 
 @admin.register(Ticket)
 class TicketAdmin(admin.ModelAdmin):
     pass
-
-
 
 @admin.register(Lottery)
 class LotteryAdmin(admin.ModelAdmin):

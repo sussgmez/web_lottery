@@ -121,6 +121,10 @@ class Ticket(models.Model):
         return f'{self.order.lottery.pk} - {self.number}'
 
 
+class Carousel(models.Model):
+    image = models.ImageField(_("Imagen"), upload_to='carousel/')
+    url = models.URLField(_("URL"), max_length=400)
+
 @receiver(post_save, sender=Order)
 def order_post_save_receiver(sender, instance, created, **kwargs):    
     if created:

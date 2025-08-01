@@ -73,6 +73,20 @@
                 }
             }
         }
+
+        .issues {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 0.75rem;
+            background-color: $grey-850;
+            border-radius: 0.25rem;
+            .contact {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+        }
     }
 
     .lottery-info {
@@ -530,6 +544,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
+                    gap: 0.25rem;
 
                     .status {
                         padding: 0.25rem 0.5rem;
@@ -537,6 +552,9 @@
                         font-weight: 600;
                         font-size: 0.8125rem;
                         border-radius: 2px;
+                        text-wrap: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
                     }
 
                     .status-0 {
