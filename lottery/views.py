@@ -13,12 +13,11 @@ from .forms import Order1Form, Order2Form, LotteryForm
 
 class HomeView(TemplateView):
     template_name = "lottery/home.html"
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["carousel"] = Carousel.objects.all()
         return context
-    
 
 
 class LotteryListView(ListView):
@@ -64,8 +63,7 @@ class LotteryCreateView(CreateView):
 
     def form_valid(self, form):
         self.object = form.save(commit=True)
-        return redirect('home')
-    
+        return redirect("home")
 
 
 class OrderCreateView(CreateView):
@@ -108,8 +106,16 @@ class AdminOrderListView(ListView):
     template_name = "lottery/_admin_order_list.html"
 
     def get_queryset(self):
-        filter = self.request.GET['filter']
-        return (Order.objects.filter(lottery=self.kwargs["lottery_pk"]).filter(user__email__contains=filter) | Order.objects.filter(lottery=self.kwargs["lottery_pk"]).filter(tickets__number__contains=filter)).distinct()
+        filter = self.request.GET["filter"]
+        return (
+            Order.objects.filter(lottery=self.kwargs["lottery_pk"]).filter(
+                user__email__contains=filter
+            )
+            | Order.objects.filter(lottery=self.kwargs["lottery_pk"]).filter(
+                tickets__number__contains=filter
+            )
+        ).distinct()
+
 
 class AdminOrderDetailView(DetailView):
     model = Order
@@ -119,11 +125,13 @@ class AdminOrderDetailView(DetailView):
 class DollarUpdateView(UpdateView):
     model = Dollar
     template_name = "lottery/_dollar_update.html"
-    fields = ['exchange_rate',]
+    fields = [
+        "exchange_rate",
+    ]
 
     def form_valid(self, form):
         self.object = form.save(commit=True)
-        return redirect('dollar-update', pk=self.object.pk)
+        return redirect("dollar-update", pk=self.object.pk)
 
 
 def close_lottery(request, pk):

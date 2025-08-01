@@ -103,8 +103,8 @@
 
 {% block extra_js %}
   <script>
-    function changePaymentMethod() {
-      htmx.ajax('GET', `{% url 'order-create' %}?payment_method=${htmx.find('#id_payment_method').value}&lottery={{ object.pk }}`, '#id_div_order_create')
+    function changePaymentMethod(payment_method) {
+      htmx.ajax('GET', `{% url 'order-create' %}?payment_method=${payment_method}&lottery={{ object.pk }}`, '#id_div_order_create')
     }
     function amount(payment_method, quantity = 1) {
       if (payment_method == 0) {
@@ -115,7 +115,7 @@
     }
     
     window.onload = () => {
-      changePaymentMethod()
+      changePaymentMethod(0)
     }
   </script>
 {% endblock %}

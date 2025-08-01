@@ -10,13 +10,28 @@
 {% else %}
   <hr />
   <h3>Comprar tickets</h3>
+  <p>Métodos de pagos</p>
   <div class="payment-methods">
+    <div class="payment-method" hx-on:click="changePaymentMethod(0)">
+      <img src="{% static 'img/bdv.png' %}" alt="BDV">
+      <p>Pago móvil</p>
+    </div>
+    <div class="payment-method" hx-on:click="changePaymentMethod(1)">
+      <img src="{% static 'img/zelle.png' %}" alt="BDV">
+      <p>Zelle</p>
+    </div>
+    <div class="payment-method" hx-on:click="changePaymentMethod(2)">
+      <img src="{% static 'img/paypal.png' %}" alt="BDV">
+      <p>Paypal</p>
+    </div>
+    {% comment %} 
     <label for="id_payment_method">Método de pago</label>
     <select name="" id="id_payment_method" hx-on:change="changePaymentMethod()">
       <option value="0" {% if payment_method == "0" %}selected{% endif %}>Pago móvil</option>
       <option value="1" {% if payment_method == "1" %}selected{% endif %}>Zelle</option>
       <option value="2" {% if payment_method == "2" %}selected{% endif %}>Paypal</option>
     </select>
+    {% endcomment %}
   </div>
   <div class="order-create" id="id_order_create">
     <form class="form-order-create" hx-post="{% url 'order-create' %}?payment_method={{ payment_method }}&lottery={{ lottery.pk }}" hx-on::after-process-node="amount({{ payment_method }})" method="post" hx-target="#id_div_order_create">
