@@ -185,7 +185,6 @@
   align-items: center;
   background-color: #262626;
   padding: 1.5rem;
-  margin-top: 3rem;
 }
 .footer .socials {
   display: flex;
@@ -685,7 +684,7 @@
   height: fit-content;
   background-color: hsl(0, 0%, 15%);
   transition: all 0.1s;
-  border: 1px solid rgba(127.5, 127.5, 127.5, 0.5);
+  border: 1px solid rgba(128, 128, 128, 0.5);
   max-width: 480px;
 }
 .home .section-lotteries .lotteries .lottery .lottery-image {
@@ -898,7 +897,7 @@
 }
 .section-lottery .lottery-info .payment-methods {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.25rem;
 }
 .section-lottery .lottery-info .payment-methods .payment-method {
@@ -1109,6 +1108,9 @@
   }
   .section-lottery .lottery-image-tickets .tickets {
     grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  }
+  .section-lottery .payment-methods {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
   }
 }
 

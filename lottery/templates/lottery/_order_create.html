@@ -13,25 +13,17 @@
   <p>Métodos de pagos</p>
   <div class="payment-methods">
     <div class="payment-method" hx-on:click="changePaymentMethod(0)">
-      <img src="{% static 'img/bdv.png' %}" alt="BDV">
+      <img src="{% static 'img/bdv.png' %}" alt="BDV" />
       <p>Pago móvil</p>
     </div>
     <div class="payment-method" hx-on:click="changePaymentMethod(1)">
-      <img src="{% static 'img/zelle.png' %}" alt="BDV">
+      <img src="{% static 'img/zelle.png' %}" alt="BDV" />
       <p>Zelle</p>
     </div>
     <div class="payment-method" hx-on:click="changePaymentMethod(2)">
-      <img src="{% static 'img/paypal.png' %}" alt="BDV">
+      <img src="{% static 'img/paypal.png' %}" alt="BDV" />
       <p>Paypal</p>
     </div>
-    {% comment %} 
-    <label for="id_payment_method">Método de pago</label>
-    <select name="" id="id_payment_method" hx-on:change="changePaymentMethod()">
-      <option value="0" {% if payment_method == "0" %}selected{% endif %}>Pago móvil</option>
-      <option value="1" {% if payment_method == "1" %}selected{% endif %}>Zelle</option>
-      <option value="2" {% if payment_method == "2" %}selected{% endif %}>Paypal</option>
-    </select>
-    {% endcomment %}
   </div>
   <div class="order-create" id="id_order_create">
     <form class="form-order-create" hx-post="{% url 'order-create' %}?payment_method={{ payment_method }}&lottery={{ lottery.pk }}" hx-on::after-process-node="amount({{ payment_method }})" method="post" hx-target="#id_div_order_create">
@@ -75,7 +67,8 @@
             </div>
           {% endif %}
         </div>
-        <div class="form-input split-dni">{{ form.type_of_dni }}
+        <div class="form-input split-dni">
+          {{ form.type_of_dni }}
           {{ form.dni }}
           {% if form.dni.errors %}
             <div class="error">
@@ -138,40 +131,3 @@
     </form>
   </div>
 {% endif %}
-
-{% comment %}
-<form id="id_form_order_create" class="form" action="{% url 'order-create' %}" method="post">
-  {% csrf_token %}
-  <input type="hidden" name="dollar" value="{{ dollar }}" />
-
-  <input type="hidden" name="user" value="{{ user.pk }}" />
-
-  <input type="hidden" name="lottery" value="{{ lottery.pk }}" />
-
-  <h3>Comprar tickets</h3>
-  <div class="form-fields">
-    <select id="id_quantity" class="form-field form-field-select" name="quantity" hx-on:change="set_amount(this.value)">
-      <button><selectedcontent></selectedcontent></button>
-      {% for num in select_number %}
-        <option class="option" value="{{ num }}">{{ num }}</option>
-      {% endfor %}
-    </select>
-    <input id="id_reference" class="form-field" name="reference" type="number" placeholder="Nro. de referencia" required />
-    <button class="button" onclick="event.preventDefault();show_confirm(htmx.find('#id_quantity').value);">Comprar</button>
-  </div>
-
-  <h3>Método de pago</h3>
-  <div class="payment-methods">
-    <div class="payment-method">
-      <p>Pago móvil</p>
-    </div>
-    <div class="payment-method">
-      <p>Zelle</p>
-    </div>
-    <div class="payment-method">
-      <p>Paypal</p>
-    </div>
-  </div>
-</form>
-
-{% endcomment %}
