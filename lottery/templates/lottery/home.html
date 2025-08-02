@@ -9,11 +9,11 @@
 {% block content %}
   <div class="home">
     <section class="carousel" id="id_carousel">
-      <a href="" id="id_carousel_link">
-        <img id="id_carousel_image" src="" alt="">
-      </a>
-      <button class="btn-carousel btn-prev" onclick="prevCarousel()"><img src="{% static 'img/prev.png' %}" alt=""></button>
-      <button class="btn-carousel btn-next" onclick="nextCarousel()"><img src="{% static 'img/next.png' %}" alt=""></button>
+      {% for carousel_image in carousel %}
+        <a class="carousel-image {% if not forloop.first %}carousel-image-hide{% endif %}" href="{{ carousel_image.url }}"><img src="{{ carousel_image.image.url }}" alt="" /></a>
+      {% endfor %}
+      <button class="btn-carousel btn-prev" onclick="prevCarousel()"><img src="{% static 'img/prev.png' %}" alt="" /></button>
+      <button class="btn-carousel btn-next" onclick="nextCarousel()"><img src="{% static 'img/next.png' %}" alt="" /></button>
     </section>
     <section class="section-lotteries">
       <h2 class="header-section">Sorteos</h2>
@@ -25,28 +25,29 @@
 {% block extra_js %}
   <script>
     var i_carousel = 0
-    var CAROUSEL = [
-      {% for carousel_image in carousel %} 
-        ['{{ carousel_image.image.url }}','{{ carousel_image.url }}'],
-      {% endfor %}
-    ]
-    
+    var carousel = document.getElementsByClassName('carousel-image')
+    let carouselTimer;
+
+
     function nextCarousel() {
-      i_carousel = i_carousel < CAROUSEL.length - 1 ? i_carousel + 1 : 0
-      htmx.find('#id_carousel_image').src = CAROUSEL[i_carousel][0]      
-      htmx.find('#id_carousel_link').href = CAROUSEL[i_carousel][1]
-    }
+      carousel[i_carousel].classList.add('carousel-image-hide')
+      i_carousel = i_carousel < carousel.length - 1 ? i_carousel + 1 : 0
+      carousel[i_carousel].classList.remove('carousel-image-hide')
+      clearTimeout(carouselTimer)
+      carouselTimer = setTimeout(nextCarousel, 2000)
 
+    }
+    
     function prevCarousel() {
-      i_carousel = i_carousel == 0 ? CAROUSEL.length - 1 : i_carousel - 1
-      htmx.find('#id_carousel_image').src = CAROUSEL[i_carousel][0]
-      htmx.find('#id_carousel_link').href = CAROUSEL[i_carousel][1]
+      carousel[i_carousel].classList.add('carousel-image-hide')
+      i_carousel = i_carousel == 0 ? carousel.length - 1 : i_carousel - 1
+      carousel[i_carousel].classList.remove('carousel-image-hide')
+      clearTimeout(carouselTimer)
+      carouselTimer = setTimeout(nextCarousel, 2000)
+
     }
 
-    window.onload = () => {
-      htmx.find('#id_carousel_image').src = CAROUSEL[i_carousel][0] 
-      htmx.find('#id_carousel_link').href = CAROUSEL[i_carousel][1]
-    }
+    carouselTimer = setTimeout(nextCarousel, 2000)
 
 
   </script>
