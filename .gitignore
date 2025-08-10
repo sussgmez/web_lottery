@@ -6,3 +6,4 @@ lottery/migrations/*
 authentication/migrations/*
 !authentication/migrations/__init__.py
 images
+carousel
