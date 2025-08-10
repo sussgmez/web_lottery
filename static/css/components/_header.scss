@@ -4,97 +4,86 @@
 
 .header {
     display: flex;
-    align-items: center;
-    padding: 0.75rem 1.5rem;
-    justify-content: space-between;
     position: sticky;
-    border-bottom: 1px solid rgba($white, $alpha: 0.15);
-    z-index: 20;
     top: 0;
-    background-color: $grey-900;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 20;
+    background-color: $red-30;
+    padding: 1.25rem 1rem;
 
     .brand {
         &>a {
             display: flex;
+            height: 32px;
         }
     }
 
     .btn-menu {
-        cursor: pointer;
         display: flex !important;
+        transition: all 0.2s;
+        cursor: pointer;
         border-radius: 0.25rem;
-        padding: 0.5rem;
-        transition: all 0.1s;
+        padding: 0.25rem;
 
         &:hover {
-            background-color: $background-color-2;
+            background-color: rgba($black, 0.15);
         }
     }
 
     .nav {
         display: flex;
         position: absolute;
-        top: calc(100% + 0.25rem);
-        background-color: $background-color-2;
-        left: 0.25rem;
-        right: 0.25rem;
+        top: 100%;
+        right: 0;
+        left: 0;
         flex-direction: column;
-        border-radius: 0.25rem;
-        border: 1px solid $border-color;
-        gap: 0;
+        gap: 0.25rem;
         z-index: 10;
+        border-bottom: 1px solid $grey-70;
+        background-color: $grey-95;
+        padding: 0.25rem;
+        overflow: hidden;
 
-        .nav-link {
-            cursor: pointer;
+        .nav-link,
+        .menu-option {
             display: flex;
-            font-size: 0.875rem;
-            font-weight: 700;
-            text-decoration: none;
-            gap: 0.25rem;
-            padding: 1rem;
+            align-items: center;
+            gap: 0.5rem;
             transition: all 0.1s;
-            color: $white;
-            align-items: end !important;
+            cursor: pointer;
+            box-shadow: 0 0 4px $grey-85;
+            border: 1px solid $grey-80;
+            border-radius: 0.25rem;
+            background-color: $white;
+            padding: 1rem;
             width: 100%;
-            border-bottom: 1px solid $border-color;
+            color: $black;
+            font-weight: 600;
+            font-size: 0.8125rem;
+            text-decoration: none;
+            text-wrap: nowrap;
 
-            img {
-                width: 16px;
-                height: 16px;
+            svg * {
+                fill: $black;
+                stroke: $black;
             }
 
             &:hover {
-                background-color: $grey-850;
-            }
-
-            &:last-of-type {
-                border-bottom: none;
+                box-shadow: 0 0 4px $grey-70;
             }
         }
 
         #id_menu_options {
-            background-color: $grey-800;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            margin: 0.25rem 0 0 0.75rem;
 
             .menu-option {
-                cursor: pointer;
-                padding: 1rem;
-                text-wrap: nowrap;
-                display: flex;
-                align-items: center;
-                gap: 0.25rem;
-                border-bottom: 1px solid $grey-700;
-
-                p {
-                    font-size: 0.875rem;
-                    font-weight: 600;
-                    color: $grey-200;
-                }
-
-
-                &:hover {
-                    background-color: $grey-700;
-                }
+                border: 1px solid $grey-70;
             }
+
         }
     }
 
@@ -108,97 +97,68 @@
         .btn-menu {
             display: none !important;
         }
+
         .nav {
-            position: static;
             display: flex !important;
+            position: static;
             flex-direction: row;
             gap: 0.25rem;
-
-            background-color: transparent;
             border: none;
+            background-color: transparent;
+            overflow: visible;
 
             .nav-link {
                 position: relative;
                 cursor: pointer;
-                text-wrap: nowrap;
+
+                box-shadow: none;
                 border: none;
+                border-radius: 0.25rem;
+                background-color: transparent;
                 padding: 0.75rem;
+                color: $white;
+                text-wrap: nowrap;
+
+
+                svg * {
+                    fill: $white;
+                }
+
+                &:hover {
+                    box-shadow: none;
+                    background-color: rgba($black, 0.15);
+                }
             }
         }
+
         .admin-options {
             position: relative;
+
             #id_menu_options {
                 position: absolute;
                 top: calc(100% + 0.5rem);
                 right: 0;
+                gap: 0;
+                border: 1px solid $grey-50;
                 border-radius: 0.25rem;
+                background-color: $white;
+                
                 overflow: hidden;
-                border: 1px solid $grey-700;
+                overflow: hidden;
+
                 .menu-option {
-                    padding: 0.75rem 2rem 0.75rem 0.75rem;
+                    border: none;
+                    border-bottom: 1px solid $grey-50;
+                    border-radius: 0;
+                    padding: 0.75rem 1rem;
+                    &:last-of-type {
+                        border: none;
+                    }
+                    &:hover {
+                        background-color: $grey-95;
+                    }
                 }
             }
         }
     }
-
-/*
-    @include sm {
-        .btn-menu {
-            display: none !important;
-        }
-
-        .nav {
-            position: static;
-            display: flex !important;
-            flex-direction: row;
-            gap: 0.25rem;
-
-            background-color: transparent;
-            border: none;
-
-            .nav-link {
-                cursor: pointer;
-                text-wrap: nowrap;
-                border: none;
-                padding: 0.75rem;
-            }
-        }
-
-        /*
-        .admin-options {
-            position: relative;
-
-            #id_menu_options {
-                position: absolute;
-                top: calc(100% + 0.5rem);
-                right: 0;
-                background-color: $grey-850;
-                border-radius: 0.25rem;
-                border: 1px solid $grey-700;
-
-                .menu-option {
-                    cursor: pointer;
-                    padding: 0.75rem 2rem 0.75rem 0.75rem;
-                    text-wrap: nowrap;
-                    display: flex;
-                    align-items: center;
-                    gap: 0.25rem;
-
-                    p {
-                        font-size: 0.875rem;
-                        font-weight: 600;
-                        color: $grey-200;
-                    }
-
-                    &:first-of-type {
-                        border-bottom: 1px solid $grey-700;
-                    }
-
-                    &:hover {
-                        background-color: $grey-800;
-                    }
-                }
-            }
-        }
-    }*/
 }

@@ -1,16 +1,38 @@
 $white: #FFFFFF;
 $black: #000000;
 
+
+
+$grey-10: hsl(0, 0%, 10%);
+$grey-15: hsl(0, 0%, 15%);
+$grey-20: hsl(0, 0%, 20%);
+$grey-30: hsl(0, 0%, 30%);
+$grey-40: hsl(0, 0%, 40%);
+$grey-50: hsl(0, 0%, 50%);
+$grey-60: hsl(0, 0%, 60%);
+$grey-70: hsl(0, 0%, 70%);
+$grey-80: hsl(0, 0%, 80%);
+$grey-85: hsl(0, 0%, 85%);
+$grey-90: hsl(0, 0%, 90%);
+$grey-95: hsl(0, 0%, 95%);
+$grey-98: hsl(0, 0%, 98%);
+
+
+$red-30: hsl(0, 75%, 30%);
+$red-40: hsl(0, 75%, 40%);
+
+
+/*  Delete */
 $primary-color: #701010;
-$secondary-color: #D21E1E;
+$secondary-color: hsl(0, 75%, 47%);
 $tertiary-color: #EF8F8F;
-$background-color: #191919;
-$background-color-2: #262626;
-$background-color-3: #0D0D0D;
-$border-color: #525252;
+$background-color: hsl(0, 0%, 90%);
+$background-color-2: hsl(0, 0%, 85%);
+$background-color-3: hsl(0, 0%, 80%);
+$border-color: hsl(0, 0%, 70%);
 
 $danger-color: #C37068;
-$danger-color-2: #972b22;
+$danger-color-2: hsl(5, 63%, 36%);
 $success-color: #68C379;
 $success-color-2: #268337;
 $warning-color: #967300;
@@ -29,5 +51,6 @@ $grey-400: hsl(0, 0%, 60%);
 $grey-300: hsl(0, 0%, 70%);
 $grey-200: hsl(0, 0%, 80%);
 $grey-100: hsl(0, 0%, 90%);
+
 
 

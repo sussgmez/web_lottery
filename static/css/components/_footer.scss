@@ -6,8 +6,12 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: $background-color-2;
+    background-color: $grey-20;
     padding: 1.5rem;
+    p {
+        font-weight: 600;
+        color: $white;
+    }
     .socials {
         display: flex;
         flex-direction: column;
@@ -16,6 +20,7 @@
             display: flex;
             align-items: center;
             font-weight: 600;
+            gap: 0.5rem;
         }
     }
 }

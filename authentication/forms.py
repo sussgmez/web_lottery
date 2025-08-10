@@ -6,7 +6,7 @@ from .models import CustomUser
 
 class LoginForm(forms.Form):
     email = forms.EmailField(
-        widget=forms.TextInput(attrs={"class": "input", "placeholder":"Correo electrónico", "autofocus": ""}),
+        widget=forms.TextInput(attrs={"class": "input", "placeholder":"Email", "autofocus": ""}),
         max_length=150,
         required=True,
     )
