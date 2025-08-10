@@ -71,8 +71,8 @@
         margin: auto;
 
         .header-section {
-            font-weight: 600;
-            margin-bottom: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
         }
 
         .lotteries {
@@ -80,13 +80,13 @@
             gap: 0.75rem;
 
             .lottery {
-                box-shadow: -4px 4px 0 rgba($black, 0.15);
+                box-shadow: -4px 4px 0 $grey-90;
                 overflow: hidden;
                 text-decoration: none;
                 height: fit-content;
                 background-color: $white;
                 transition: all 0.1s;
-                border: 1px solid $grey-20;
+                border: 1px solid $grey-60;
                 max-width: 480px;
 
                 .lottery-image {
@@ -96,30 +96,6 @@
                     max-height: 480px;
                     position: relative;
                     border-bottom: 1px solid $grey-90;
-
-                    /*
-                    .closed {
-                        position: absolute;
-                        top: 0;
-                        right: 0;
-                        left: 0;
-                        bottom: 0;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        background-color: rgba($black, $alpha: 0.5);
-                        backdrop-filter: blur(1px);
-
-                        p {
-                            font-size: 1.25rem;
-                            font-weight: 700;
-                            color: rgba($white, 0.7);
-                            background-color: rgba($danger-color-2, $alpha: 0.25);
-                            border: 1px solid rgba($danger-color-2, $alpha: 0.25);
-                            padding: 1.5rem;
-                            border-radius: 2px;
-                        }
-                    }*/
                 }
 
                 .lottery-info {
@@ -143,19 +119,23 @@
                     b {
                         font-weight: 600;
                     }
+                    .closed {
+                        font-weight: 700;
+                        color: $red-40;
+                    }
                 }
 
                 &:hover {
                     background-color: $grey-98;
                 }
-
+                /*
                 &:has(.closed) {
                     border: 1px solid rgba($danger-color-2, $alpha: 0.5);
 
                     &:hover {
                         background-color: $background-color-2;
                     }
-                }
+                }*/
             }
 
             @include sm {
@@ -178,136 +158,4 @@
             }
         }
     }
-
-    /*
-    .section-lotteries {
-        padding: 4rem 2rem;
-        width: fit-content;
-        margin: auto;
-
-        .header-section {
-            font-weight: 600;
-            margin-bottom: 2rem;
-        }
-
-        .lotteries {
-            display: grid;
-            gap: 0.75rem;
-
-            .lottery {
-                box-shadow: 0 0 8px $black;
-                border-radius: 4px;
-                overflow: hidden;
-                text-decoration: none;
-                height: fit-content;
-                background-color: $grey-850;
-                transition: all 0.1s;
-                border: 1px solid rgba($grey-500, $alpha: 0.5);
-                max-width: 480px;
-
-
-                .lottery-image {
-                    width: calc(100vw - 4rem);
-                    height: calc(100vw - 4rem);
-                    max-width: 480px;
-                    max-height: 480px;
-                    position: relative;
-
-                    .closed {
-                        position: absolute;
-                        top: 0;
-                        right: 0;
-                        left: 0;
-                        bottom: 0;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        background-color: rgba($black, $alpha: 0.5);
-                        backdrop-filter: blur(1px);
-
-                        p {
-                            font-size: 1.25rem;
-                            font-weight: 700;
-                            color: rgba($white, 0.7);
-                            background-color: rgba($danger-color-2, $alpha: 0.25);
-                            border: 1px solid rgba($danger-color-2, $alpha: 0.25);
-                            padding: 1.5rem;
-                            border-radius: 2px;
-                        }
-                    }
-                }
-
-                .lottery-info {
-                    padding: 1rem 0.75rem;
-
-                    h4 {
-
-                        font-weight: 600;
-                        line-height: 1.25rem;
-                        font-size: 1rem;
-                        height: 2.5rem;
-                        margin-bottom: 0.75rem;
-                        overflow: hidden;
-                    }
-
-                    p,
-                    b {
-                        font-size: 0.875rem;
-                        margin-bottom: 0.25rem;
-                    }
-
-                    b {
-                        font-weight: 600;
-                    }
-                }
-
-                &:hover {
-                    background-color: $grey-800;
-                }
-
-                &:has(.closed) {
-                    border: 1px solid rgba($danger-color-2, $alpha: 0.5);
-
-                    &:hover {
-                        background-color: $background-color-2;
-                    }
-                }
-            }
-
-            .empty {
-                grid-column: span 4;
-                background-color: rgba($tertiary-color, $alpha: 0.05);
-                padding: 1rem;
-                border-radius: 0.25rem;
-
-                p {
-                    color: $tertiary-color;
-                    font-size: 0.875rem;
-                }
-            }
-
-            @include sm {
-                $lottery-size: 280px;
-                grid-template-columns: repeat(2, minmax(0, $lottery-size));
-
-                .lottery-image {
-                    width: $lottery-size !important;
-                    height: $lottery-size !important;
-                }
-
-            }
-
-            @include md {
-                $lottery-size: 280px;
-                grid-template-columns: repeat(3, minmax(0, $lottery-size));
-
-            }
-
-            @include lg {
-                $lottery-size: 280px;
-                grid-template-columns: repeat(4, minmax(0, $lottery-size));
-
-            }
-        }
-    }*/
 }

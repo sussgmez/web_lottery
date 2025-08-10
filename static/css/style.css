@@ -6,8 +6,9 @@
   justify-content: space-between;
   align-items: center;
   z-index: 20;
-  background-color: hsl(0, 75%, 30%);
-  padding: 1.25rem 1rem;
+  background-color: hsl(220, 75%, 30%);
+  background: linear-gradient(0.875turn, hsl(220, 75%, 30%), hsl(220, 75%, 50%));
+  padding: 1rem;
 }
 .header .brand > a {
   display: flex;
@@ -30,11 +31,11 @@
   right: 0;
   left: 0;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.5rem;
   z-index: 10;
   border-bottom: 1px solid hsl(0, 0%, 70%);
-  background-color: hsl(0, 0%, 95%);
-  padding: 0.25rem;
+  background-color: hsl(220, 75%, 30%);
+  padding: 0.75rem;
   overflow: hidden;
 }
 .header .nav .nav-link,
@@ -44,8 +45,6 @@
   gap: 0.5rem;
   transition: all 0.1s;
   cursor: pointer;
-  box-shadow: 0 0 4px hsl(0, 0%, 85%);
-  border: 1px solid hsl(0, 0%, 80%);
   border-radius: 0.25rem;
   background-color: #FFFFFF;
   padding: 1rem;
@@ -61,15 +60,11 @@
   fill: #000000;
   stroke: #000000;
 }
-.header .nav .nav-link:hover,
-.header .nav .menu-option:hover {
-  box-shadow: 0 0 4px hsl(0, 0%, 70%);
-}
 .header .nav #id_menu_options {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  margin: 0.25rem 0 0 0.75rem;
+  gap: 0.5rem;
+  margin: 0.5rem 0 0 1rem;
 }
 .header .nav #id_menu_options .menu-option {
   border: 1px solid hsl(0, 0%, 70%);
@@ -167,7 +162,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.1);
   z-index: 50;
   backdrop-filter: blur(4px);
   padding: 0.5rem;
@@ -175,12 +170,24 @@
   align-items: center;
   justify-content: center;
 }
+#id_options_modal .btn-close {
+  cursor: pointer;
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  border: none;
+  background-color: transparent;
+  padding: 4px;
+  display: flex;
+}
+#id_options_modal .btn-close:hover {
+  background-color: hsl(0, 0%, 95%);
+}
 #id_options_modal .dollar-update-form {
-  background-color: hsl(0, 0%, 15%);
+  background-color: #FFFFFF;
   padding: 1.25rem;
   position: relative;
-  border-radius: 0.5rem;
-  border: 1px solid hsl(0, 0%, 20%);
+  border: 1px solid hsl(0, 0%, 70%);
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -199,48 +206,33 @@
 #id_options_modal .dollar-update-form input,
 #id_options_modal .dollar-update-form textarea {
   padding: 0.5rem;
-  border: 1px solid hsl(0, 0%, 50%);
-  border-radius: 0.25rem;
+  border: 1px solid hsl(0, 0%, 60%);
   width: 100%;
 }
 #id_options_modal .dollar-update-form p {
   font-size: 0.875rem;
 }
 #id_options_modal .dollar-update-form .btn {
+  cursor: pointer;
   width: fit-content;
   padding: 0.5rem;
   border: none;
-  border-radius: 0.25rem;
-  background-color: #108dd6;
+  background-color: hsl(220, 75%, 50%);
   font-size: 0.875rem;
   font-weight: 600;
+  color: #FFFFFF;
 }
-#id_options_modal .btn-close {
-  cursor: pointer;
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  border: none;
-  background-color: transparent;
-  padding: 2px;
-  display: flex;
-  border-radius: 2px;
-}
-#id_options_modal .btn-close img {
-  height: 20px;
-  width: 20px;
-}
-#id_options_modal .btn-close:hover {
-  background-color: hsl(0, 0%, 20%);
+#id_options_modal .dollar-update-form .btn:hover {
+  background-color: hsl(220, 75%, 30%);
 }
 #id_options_modal .form-lottery-create {
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  background-color: hsl(0, 0%, 15%);
+  background-color: #FFFFFF;
   padding: 1.25rem;
-  border: 1px solid hsl(0, 0%, 30%);
+  border: 1px solid hsl(0, 0%, 70%);
   border-radius: 0.25rem;
 }
 #id_options_modal .form-lottery-create h4 {
@@ -262,8 +254,7 @@
 #id_options_modal .form-lottery-create .form-field textarea {
   width: 100%;
   padding: 0.5rem;
-  border-radius: 0.25rem;
-  border: 1px solid hsl(0, 0%, 40%);
+  border: 1px solid hsl(0, 0%, 60%);
 }
 #id_options_modal .form-lottery-create .form-image {
   display: flex;
@@ -279,19 +270,18 @@
   border: none;
   padding: 0;
   font-size: 0.875rem;
-  background-color: hsl(0, 0%, 15%);
+  background-color: transparent;
 }
 #id_options_modal .form-lottery-create .form-image input::file-selector-button {
   cursor: pointer;
-  background-color: #108dd6;
-  padding: 0.5rem;
+  background-color: hsl(220, 75%, 50%);
+  padding: 0.375rem 0.5rem;
   border: none;
-  border-radius: 0.25rem;
   color: #FFFFFF;
   transition: all 0.2s;
 }
 #id_options_modal .form-lottery-create .form-image input::file-selector-button:hover {
-  background-color: #0e76b3;
+  background-color: hsl(220, 75%, 30%);
 }
 #id_options_modal .form-lottery-create .form-image br {
   display: none;
@@ -305,17 +295,188 @@
 #id_options_modal .form-lottery-create .btn-submit {
   cursor: pointer;
   border: none;
-  border-radius: 0.25rem;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem;
   font-size: 0.875rem;
-  background-color: #108dd6;
+  background-color: hsl(220, 75%, 50%);
   font-weight: 600;
   transition: all 0.2s;
+  color: white;
 }
 #id_options_modal .form-lottery-create .btn-submit:hover {
-  background-color: #0e76b3;
+  background-color: hsl(220, 75%, 30%);
 }
 
+/*
+#id_options_modal {
+
+    .dollar-update-form {
+        background-color: $grey-850;
+        padding: 1.25rem;
+        position: relative;
+        border-radius: 0.5rem;
+        border: 1px solid $grey-800;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        max-width: 360px;
+
+
+        h4 {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        input,
+        textarea {
+            padding: 0.5rem;
+            border: 1px solid $grey-500;
+            border-radius: 0.25rem;
+            width: 100%;
+        }
+
+        p {
+            font-size: 0.875rem;
+        }
+
+        .btn {
+            width: fit-content;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 0.25rem;
+            background-color: $info-color;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+    }
+
+    .btn-close {
+        cursor: pointer;
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        border: none;
+        background-color: transparent;
+        padding: 2px;
+        display: flex;
+        border-radius: 2px;
+
+        img {
+            height: 20px;
+            width: 20px;
+        }
+
+        &:hover {
+            background-color: $grey-800;
+        }
+    }
+
+    .form-lottery-create {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        background-color: $grey-850;
+        padding: 1.25rem;
+        border: 1px solid $grey-700;
+        border-radius: 0.25rem;
+
+
+        h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+
+            label {
+                font-size: 0.875rem;
+                font-weight: 600;
+            }
+
+            input,
+            textarea {
+                width: 100%;
+                padding: 0.5rem;
+                border-radius: 0.25rem;
+                border: 1px solid $grey-600;
+            }
+        }
+
+        .form-image {
+            display: flex;
+            flex-direction: column;
+            font-size: 0;
+            color: transparent;
+            gap: 0.5rem;
+
+            a {
+                font-size: 0.875rem;
+            }
+
+            input {
+                border: none;
+                padding: 0;
+                font-size: 0.875rem;
+                background-color: $grey-850;
+
+                &::file-selector-button {
+                    cursor: pointer;
+                    background-color: $info-color;
+                    padding: 0.5rem;
+                    border: none;
+                    border-radius: 0.25rem;
+                    color: $white;
+                    transition: all 0.2s;
+
+                    &:hover {
+                        background-color: $info-color-2;
+                    }
+                }
+            }
+
+            br {
+                display: none;
+            }
+        }
+
+        .form-description textarea {
+            font-size: 1.25rem;
+        }
+
+        .form-date {
+            color-scheme: dark;
+        }
+
+        .btn-submit {
+            cursor: pointer;
+            border: none;
+            border-radius: 0.25rem;
+            padding: 0.75rem 1rem;
+            font-size: 0.875rem;
+            background-color: $info-color;
+            font-weight: 600;
+            transition: all 0.2s;
+
+            &:hover {
+                background-color: $info-color-2;
+            }
+        }
+    }
+
+}*/
 .login {
   display: flex;
   position: relative;
@@ -393,284 +554,89 @@
 .signup {
   display: flex;
   position: relative;
-  min-height: calc(100vh - 68px);
+  padding: 0.5rem;
+  min-height: 100vh;
 }
 .signup .form {
   display: flex;
   flex-direction: column;
-  padding: 0;
-  background-color: hsl(0, 0%, 90%);
-  width: 100%;
-  max-width: none;
   margin: 0;
-  border: none;
-  border-radius: 0;
-  height: auto;
+  border: 1px solid hsl(0, 0%, 10%);
+  background-color: #FFFFFF;
+  height: fit-content;
+  width: 100%;
+  box-shadow: -4px 4px 0 rgba(0, 0, 0, 0.15);
+  max-width: 480px;
 }
 .signup .form > div {
-  padding: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid hsl(0, 0%, 80%);
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
-.signup .form > div:last-child {
+.signup .form > div:last-of-type {
   border: none;
 }
-.signup .form .label {
-  margin-bottom: 0.25rem;
-  font-size: 0.875rem;
+.signup .form h2 {
+  font-weight: 300;
+  font-size: 1.25rem;
 }
-.signup .form .input {
-  background-color: transparent !important;
-  border: 1px solid hsl(0, 0%, 70%);
-  padding: 0.5rem;
-  border-radius: 0.25rem;
-  margin-bottom: 1rem;
-  color: #FFFFFF;
-  font-size: 0.875rem;
+.signup .form h4 {
+  font-style: italic;
+  font-weight: 600;
 }
-.signup .form .button {
-  cursor: pointer;
-  padding: 0.5rem 1.5rem;
-  width: fit-content;
-  background-color: #701010;
-  font-weight: 500;
-  border: none;
-  border-radius: 0.25rem;
-  font-size: 0.875rem;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
-  border: 1px solid #701010;
-  transition: all 0.1s;
-}
-.signup .form .button:hover {
-  background-color: hsl(0, 0%, 70%);
-}
-.signup .form .errors {
+.signup .form .form-field {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
-.signup .form .errors p {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: rgba(195, 112, 104, 0.8);
-}
-.signup .form:has(.error) .input {
-  outline: 1px solid #C37068;
-}
-.signup .form .form-fields {
-  display: flex;
-  flex-direction: column;
-}
-.signup .form small {
+.signup .form .form-field input, .signup .form .form-field select {
+  background-color: transparent;
+  border: 1px solid hsl(0, 0%, 30%);
+  padding: 0.75rem;
   font-size: 0.875rem;
 }
-.signup .form small a,
-.signup .form small b {
-  color: hsl(0, 75%, 47%);
-}
-.signup .form h2 {
-  font-weight: 300;
-  margin-bottom: 0.75rem;
-  color: hsl(0, 75%, 47%);
-  font-size: 1.25rem;
-}
-.signup .form hr {
-  width: calc(100% + 4rem);
-  border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  margin: 1.5rem -2rem;
-}
-.signup .form h3 {
-  margin-bottom: 1.25rem;
-  font-size: 1.125rem;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.9);
-}
-.signup .form h4 {
-  font-weight: 500;
-  line-height: 1.5rem;
-  font-size: 0.875rem;
-}
-.signup .input-phone-number {
+.signup .form .input-phone-number {
   display: flex;
   gap: 0.25rem;
 }
-.signup .input-phone-number input,
-.signup .input-phone-number select {
-  appearance: none;
-  background-color: transparent !important;
-  border: 1px solid hsl(0, 0%, 70%);
-  padding: 0.5rem;
-  border-radius: 0.25rem;
-  margin-bottom: 1rem;
-  color: #FFFFFF;
-  font-size: 0.875rem;
-}
-.signup .input-phone-number input option,
-.signup .input-phone-number select option {
-  background-color: hsl(0, 0%, 90%);
-}
-.signup .input-phone-number #id_phone_number_0 {
+.signup .form .input-phone-number #id_phone_number_0 {
   width: 40%;
 }
-.signup .input-phone-number #id_phone_number_1 {
+.signup .form .input-phone-number #id_phone_number_1 {
   width: 60%;
+}
+.signup .form .btn-submit {
+  cursor: pointer;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  background-color: hsl(0, 0%, 10%);
+  color: #FFFFFF;
+  font-weight: 700;
+  border: 1px solid hsl(0, 0%, 10%);
+}
+.signup .form .btn-submit:hover {
+  background-color: white;
+  color: hsl(0, 0%, 10%);
+}
+.signup .form p {
+  font-size: 0.875rem;
+}
+.signup .form p a {
+  font-weight: 700;
 }
 .signup .background-login {
   position: absolute;
   top: 0;
-  left: 0;
   right: 0;
   bottom: 0;
+  left: 0;
   z-index: -1;
-}
-@media (min-width: 768px) {
-  .signup .form {
-    max-width: 480px;
-    width: 100%;
-    height: fit-content;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 0.5rem;
-    margin: 1rem;
-  }
-  .signup .form > div {
-    padding: 2rem;
-  }
 }
 
 .home {
   min-height: 100vh;
-  /*
-  .section-lotteries {
-      padding: 4rem 2rem;
-      width: fit-content;
-      margin: auto;
-
-      .header-section {
-          font-weight: 600;
-          margin-bottom: 2rem;
-      }
-
-      .lotteries {
-          display: grid;
-          gap: 0.75rem;
-
-          .lottery {
-              box-shadow: 0 0 8px $black;
-              border-radius: 4px;
-              overflow: hidden;
-              text-decoration: none;
-              height: fit-content;
-              background-color: $grey-850;
-              transition: all 0.1s;
-              border: 1px solid rgba($grey-500, $alpha: 0.5);
-              max-width: 480px;
-
-
-              .lottery-image {
-                  width: calc(100vw - 4rem);
-                  height: calc(100vw - 4rem);
-                  max-width: 480px;
-                  max-height: 480px;
-                  position: relative;
-
-                  .closed {
-                      position: absolute;
-                      top: 0;
-                      right: 0;
-                      left: 0;
-                      bottom: 0;
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                      background-color: rgba($black, $alpha: 0.5);
-                      backdrop-filter: blur(1px);
-
-                      p {
-                          font-size: 1.25rem;
-                          font-weight: 700;
-                          color: rgba($white, 0.7);
-                          background-color: rgba($danger-color-2, $alpha: 0.25);
-                          border: 1px solid rgba($danger-color-2, $alpha: 0.25);
-                          padding: 1.5rem;
-                          border-radius: 2px;
-                      }
-                  }
-              }
-
-              .lottery-info {
-                  padding: 1rem 0.75rem;
-
-                  h4 {
-
-                      font-weight: 600;
-                      line-height: 1.25rem;
-                      font-size: 1rem;
-                      height: 2.5rem;
-                      margin-bottom: 0.75rem;
-                      overflow: hidden;
-                  }
-
-                  p,
-                  b {
-                      font-size: 0.875rem;
-                      margin-bottom: 0.25rem;
-                  }
-
-                  b {
-                      font-weight: 600;
-                  }
-              }
-
-              &:hover {
-                  background-color: $grey-800;
-              }
-
-              &:has(.closed) {
-                  border: 1px solid rgba($danger-color-2, $alpha: 0.5);
-
-                  &:hover {
-                      background-color: $background-color-2;
-                  }
-              }
-          }
-
-          .empty {
-              grid-column: span 4;
-              background-color: rgba($tertiary-color, $alpha: 0.05);
-              padding: 1rem;
-              border-radius: 0.25rem;
-
-              p {
-                  color: $tertiary-color;
-                  font-size: 0.875rem;
-              }
-          }
-
-          @include sm {
-              $lottery-size: 280px;
-              grid-template-columns: repeat(2, minmax(0, $lottery-size));
-
-              .lottery-image {
-                  width: $lottery-size !important;
-                  height: $lottery-size !important;
-              }
-
-          }
-
-          @include md {
-              $lottery-size: 280px;
-              grid-template-columns: repeat(3, minmax(0, $lottery-size));
-
-          }
-
-          @include lg {
-              $lottery-size: 280px;
-              grid-template-columns: repeat(4, minmax(0, $lottery-size));
-
-          }
-      }
-  }*/
 }
 .home #id_carousel {
   display: flex;
@@ -728,22 +694,30 @@
   margin: auto;
 }
 .home .section-lotteries .header-section {
-  font-weight: 600;
-  margin-bottom: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
 }
 .home .section-lotteries .lotteries {
   display: grid;
   gap: 0.75rem;
 }
 .home .section-lotteries .lotteries .lottery {
-  box-shadow: -4px 4px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: -4px 4px 0 hsl(0, 0%, 90%);
   overflow: hidden;
   text-decoration: none;
   height: fit-content;
   background-color: #FFFFFF;
   transition: all 0.1s;
-  border: 1px solid hsl(0, 0%, 20%);
+  border: 1px solid hsl(0, 0%, 60%);
   max-width: 480px;
+  /*
+  &:has(.closed) {
+      border: 1px solid rgba($danger-color-2, $alpha: 0.5);
+
+      &:hover {
+          background-color: $background-color-2;
+      }
+  }*/
 }
 .home .section-lotteries .lotteries .lottery .lottery-image {
   width: calc(100vw - 4rem);
@@ -752,29 +726,6 @@
   max-height: 480px;
   position: relative;
   border-bottom: 1px solid hsl(0, 0%, 90%);
-  /*
-  .closed {
-      position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-      bottom: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: rgba($black, $alpha: 0.5);
-      backdrop-filter: blur(1px);
-
-      p {
-          font-size: 1.25rem;
-          font-weight: 700;
-          color: rgba($white, 0.7);
-          background-color: rgba($danger-color-2, $alpha: 0.25);
-          border: 1px solid rgba($danger-color-2, $alpha: 0.25);
-          padding: 1.5rem;
-          border-radius: 2px;
-      }
-  }*/
 }
 .home .section-lotteries .lotteries .lottery .lottery-info {
   padding: 1rem 0.75rem;
@@ -795,14 +746,12 @@
 .home .section-lotteries .lotteries .lottery .lottery-info b {
   font-weight: 600;
 }
+.home .section-lotteries .lotteries .lottery .lottery-info .closed {
+  font-weight: 700;
+  color: hsl(0, 75%, 40%);
+}
 .home .section-lotteries .lotteries .lottery:hover {
   background-color: hsl(0, 0%, 98%);
-}
-.home .section-lotteries .lotteries .lottery:has(.closed) {
-  border: 1px solid rgba(149.634, 43.605, 33.966, 0.5);
-}
-.home .section-lotteries .lotteries .lottery:has(.closed):hover {
-  background-color: hsl(0, 0%, 85%);
 }
 @media (min-width: 768px) {
   .home .section-lotteries .lotteries {
@@ -829,20 +778,9 @@
   flex-direction: column;
   padding: 1rem;
   gap: 1rem;
-  background-color: hsl(0, 0%, 90%);
   max-width: 480px;
   margin: auto;
   min-height: 100vh;
-}
-.section-lottery .no-login {
-  border: 1px solid #108dd6;
-  padding: 0.75rem;
-  border-radius: 0.25rem;
-  font-size: 0.875rem;
-}
-.section-lottery .no-login a {
-  color: #108dd6;
-  font-weight: 600;
 }
 .section-lottery .lottery-image-tickets {
   display: flex;
@@ -867,7 +805,7 @@
 .section-lottery .lottery-image-tickets .lottery-tickets .tickets-empty {
   font-size: 0.875rem;
   padding: 0.75rem;
-  background-color: hsl(0, 0%, 20%);
+  background-color: hsl(0, 0%, 95%);
   border-radius: 0.25rem;
 }
 .section-lottery .lottery-image-tickets .lottery-tickets .tickets {
@@ -879,22 +817,30 @@
   width: 100%;
   padding: 0.5rem;
   border-radius: 0.25rem;
-  border: 1px solid hsl(0, 0%, 20%);
+  background-color: hsl(220, 75%, 50%);
+}
+.section-lottery .lottery-image-tickets .lottery-tickets .tickets .ticket p {
+  color: #FFFFFF;
   text-align: center;
   font-size: 0.875rem;
+  font-weight: 600;
 }
 .section-lottery .lottery-image-tickets .issues {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   padding: 0.75rem;
-  background-color: hsl(0, 0%, 15%);
+  background-color: hsl(0, 0%, 95%);
   border-radius: 0.25rem;
 }
 .section-lottery .lottery-image-tickets .issues .contact {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+.section-lottery .lottery-image-tickets .issues .contact svg * {
+  fill: hsl(0, 0%, 30%);
+  stroke: hsl(0, 0%, 30%);
 }
 .section-lottery .lottery-info {
   display: flex;
@@ -925,147 +871,140 @@
   font-size: 1rem;
   font-weight: 400;
 }
+.section-lottery .lottery-info .no-login {
+  border: 1px solid #108dd6;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+}
+.section-lottery .lottery-info .no-login a {
+  color: #108dd6;
+  font-weight: 600;
+}
+.section-lottery .lottery-info .lottery-closed {
+  border-radius: 0.25rem;
+}
+.section-lottery .lottery-info .lottery-closed p {
+  color: hsl(0, 75%, 40%);
+  font-size: 1rem;
+  font-weight: 700;
+}
 .section-lottery .lottery-info .div-order-create {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
-.section-lottery .lottery-info hr {
-  width: 100%;
-  border: none;
-  border-bottom: 1px solid hsl(0, 0%, 20%);
+.section-lottery .lottery-info .div-order-create .pending-order {
+  padding: 1.5rem;
+  border: 1px solid hsl(220, 75%, 30%);
 }
-.section-lottery .lottery-info .pending-order {
-  padding: 0.75rem;
-  border: 1px solid hsl(0, 0%, 40%);
-  background-color: hsl(0, 0%, 20%);
-  border-radius: 0.25rem;
-}
-.section-lottery .lottery-info .pending-order p {
-  color: hsl(0, 0%, 90%);
+.section-lottery .lottery-info .div-order-create .pending-order p {
+  color: hsl(220, 75%, 30%);
   font-weight: 600;
   font-size: 0.875rem;
+  text-align: center;
 }
-.section-lottery .lottery-info .payment-methods {
+.section-lottery .lottery-info .div-order-create .payment-methods {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.25rem;
 }
-.section-lottery .lottery-info .payment-methods .payment-method {
+.section-lottery .lottery-info .div-order-create .payment-methods .payment-method {
   cursor: pointer;
-  border-radius: 0.25rem;
-  border: 1px solid hsl(0, 0%, 30%);
+  border: 1px solid hsl(220, 75%, 50%);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
   padding: 0.75rem;
 }
-.section-lottery .lottery-info .payment-methods .payment-method img {
+.section-lottery .lottery-info .div-order-create .payment-methods .payment-method img {
   height: 32px;
   width: 32px;
 }
-.section-lottery .lottery-info .payment-methods .payment-method:hover {
-  background-color: hsl(0, 0%, 15%);
+.section-lottery .lottery-info .div-order-create .payment-methods .payment-method:hover {
+  background-color: hsl(0, 0%, 98%);
 }
-.section-lottery .lottery-info .form-quantity {
+.section-lottery .lottery-info .div-order-create .form-quantity {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.section-lottery .lottery-info .form-quantity label {
+.section-lottery .lottery-info .div-order-create .form-quantity label {
   font-weight: 600;
 }
-.section-lottery .lottery-info .form-quantity select {
+.section-lottery .lottery-info .div-order-create .form-quantity select {
   appearance: base-select;
   border: none;
   padding: 0;
 }
-.section-lottery .lottery-info .form-order-create {
+.section-lottery .lottery-info .div-order-create .form-order-create {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-.section-lottery .lottery-info .form-order-create .form-info {
-  background-color: hsl(0, 0%, 85%);
+.section-lottery .lottery-info .div-order-create .form-order-create .form-info {
+  background-color: #FFFFFF;
   padding: 1rem;
-  border-radius: 0.25rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  border: 1px solid hsl(0, 0%, 20%);
+  border: 1px solid hsl(220, 75%, 30%);
+  box-shadow: -4px 4px 0 hsl(0, 0%, 80%);
 }
-.section-lottery .lottery-info .form-order-create .form-info h5 {
+.section-lottery .lottery-info .div-order-create .form-order-create .form-info h5 {
   font-size: 1rem;
 }
-.section-lottery .lottery-info .form-order-create .form-info .info-field {
+.section-lottery .lottery-info .div-order-create .form-order-create .form-info .info-field {
   display: flex;
   justify-content: space-between;
   font-size: 0.875rem;
 }
-.section-lottery .lottery-info .form-order-create .form-input input,
-.section-lottery .lottery-info .form-order-create .form-input select {
+.section-lottery .lottery-info .div-order-create .form-order-create .form-input input,
+.section-lottery .lottery-info .div-order-create .form-order-create .form-input select {
   appearance: base-select;
   width: 100%;
-  border: 1px solid hsl(0, 0%, 70%);
+  border: 1px solid hsl(0, 0%, 60%);
   padding: 0.75rem;
-  border-radius: 0.25rem;
   font-size: 0.875rem;
 }
-.section-lottery .lottery-info .form-order-create .form-input .error {
+.section-lottery .lottery-info .div-order-create .form-order-create .form-input .error {
   margin-top: 0.25rem;
   grid-column: span 2;
 }
-.section-lottery .lottery-info .form-order-create .form-input .error p {
-  color: #C37068;
+.section-lottery .lottery-info .div-order-create .form-order-create .form-input .error p {
+  color: hsl(0, 75%, 30%);
 }
-.section-lottery .lottery-info .form-order-create .form-input:has(.error) input,
-.section-lottery .lottery-info .form-order-create .form-input:has(.error) select {
-  border: 1px solid #C37068;
+.section-lottery .lottery-info .div-order-create .form-order-create .form-input:has(.error) input,
+.section-lottery .lottery-info .div-order-create .form-order-create .form-input:has(.error) select {
+  border: 1px solid hsl(0, 75%, 30%);
 }
-.section-lottery .lottery-info .form-order-create .split-dni {
+.section-lottery .lottery-info .div-order-create .form-order-create .split-dni {
   display: grid;
   gap: 0.25rem;
   grid-template-columns: 1fr 3fr;
 }
-.section-lottery .lottery-info .form-order-create .info-pay {
+.section-lottery .lottery-info .div-order-create .form-order-create .info-pay {
   font-size: 0.875rem;
 }
-.section-lottery .lottery-info .form-order-create .button-pay {
+.section-lottery .lottery-info .div-order-create .form-order-create .button-pay {
   cursor: pointer;
   background-color: #108dd6;
+  color: #FFFFFF;
   border: none;
   border-radius: 0.25rem;
   padding: 0.75rem;
   font-weight: 600;
   font-size: 0.875rem;
 }
+.section-lottery .lottery-info hr {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid hsl(0, 0%, 70%);
+}
 .section-lottery .lottery-info .not-available {
   padding: 0.75rem;
-  background-color: hsl(0, 0%, 20%);
+  background-color: hsl(0, 0%, 95%);
   border-radius: 0.25rem;
-}
-.section-lottery .lottery-info .lottery-closed {
-  padding: 0.75rem;
-  background-color: rgba(195, 112, 104, 0.1);
-  border: 1px solid rgba(195, 112, 104, 0.4);
-  border-radius: 0.25rem;
-}
-.section-lottery .lottery-info .lottery-closed p {
-  color: #C37068;
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-.section-lottery .lottery-info .button-admin-option {
-  cursor: pointer;
-  border-radius: 0.25rem;
-  padding: 0.5rem 1rem;
-  border: 1px solid hsl(0, 0%, 30%);
-  background-color: hsl(0, 0%, 20%);
-  transition: all 0.2s;
-}
-.section-lottery .lottery-info .button-admin-option:hover {
-  background-color: hsl(0, 0%, 30%);
 }
 .section-lottery .form-lottery-update {
   display: flex;
@@ -1086,8 +1025,7 @@
 .section-lottery .form-lottery-update .form-field textarea {
   width: 100%;
   padding: 0.5rem;
-  border-radius: 0.25rem;
-  border: 1px solid hsl(0, 0%, 40%);
+  border: 1px solid hsl(0, 0%, 60%);
 }
 .section-lottery .form-lottery-update .form-image {
   display: flex;
@@ -1106,15 +1044,14 @@
 }
 .section-lottery .form-lottery-update .form-image input::file-selector-button {
   cursor: pointer;
-  background-color: #108dd6;
+  background-color: hsl(220, 75%, 50%);
   padding: 0.5rem;
   border: none;
-  border-radius: 0.25rem;
   color: #FFFFFF;
-  transition: all 0.2s;
+  transition: all 0.1s;
 }
 .section-lottery .form-lottery-update .form-image input::file-selector-button:hover {
-  background-color: #0e76b3;
+  background-color: hsl(220, 75%, 30%);
 }
 .section-lottery .form-lottery-update .form-image br {
   display: none;
@@ -1130,20 +1067,29 @@
   flex-direction: row;
 }
 .section-lottery .form-lottery-update .form-closed input {
-  color-scheme: dark;
   width: fit-content;
 }
 .section-lottery .form-lottery-update .btn-submit {
   cursor: pointer;
   border: none;
-  border-radius: 0.25rem;
   padding: 0.75rem;
-  background-color: #108dd6;
+  background-color: hsl(220, 75%, 50%);
   font-weight: 600;
-  transition: all 0.2s;
+  transition: all 0.1s;
+  color: #FFFFFF;
 }
 .section-lottery .form-lottery-update .btn-submit:hover {
-  background-color: #0e76b3;
+  background-color: hsl(220, 75%, 30%);
+}
+.section-lottery .button-admin-option {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border: 1px solid hsl(0, 0%, 50%);
+  background-color: hsl(0, 0%, 95%);
+  transition: all 0.1s;
+}
+.section-lottery .button-admin-option:hover {
+  background-color: hsl(0, 0%, 90%);
 }
 @media (min-width: 768px) {
   .section-lottery {
@@ -1171,7 +1117,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(51, 51, 51, 0.2);
+  background-color: rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(4px);
   z-index: 50;
 }
@@ -1183,13 +1129,12 @@
   padding: 1rem;
 }
 .modal-admin .admin-orders {
-  background-color: hsl(0, 0%, 15%);
-  padding: 1.25rem;
+  background-color: #FFFFFF;
+  padding: 2rem;
   position: relative;
-  border-radius: 0.25rem;
   width: 100%;
-  max-width: 480px;
-  border: 1px solid hsl(0, 0%, 30%);
+  max-width: 520px;
+  border: 1px solid hsl(0, 0%, 90%);
 }
 .modal-admin .admin-orders h4 {
   margin-bottom: 1rem;
@@ -1197,34 +1142,29 @@
 .modal-admin .admin-orders .btn-close {
   cursor: pointer;
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0.75rem;
+  right: 0.75rem;
   border: none;
   background-color: transparent;
-  padding: 2px;
+  padding: 4px;
   display: flex;
   border-radius: 2px;
 }
-.modal-admin .admin-orders .btn-close img {
-  height: 20px;
-  width: 20px;
-}
 .modal-admin .admin-orders .btn-close:hover {
-  background-color: hsl(0, 0%, 20%);
+  background-color: hsl(0, 0%, 95%);
 }
 .modal-admin .admin-orders .order-list-empty {
   padding: 1rem 0.75rem;
-  background-color: hsl(0, 0%, 30%);
+  background-color: hsl(0, 0%, 95%);
   border-radius: 0.25rem;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 .modal-admin .admin-orders .order-list-filter input {
   width: 100%;
   padding: 0.5rem;
-  border: 1px solid hsl(0, 0%, 30%);
+  border: 1px solid hsl(0, 0%, 70%);
   margin-bottom: 0.75rem;
-  border-radius: 0.25rem;
   font-size: 0.875rem;
 }
 .modal-admin .admin-orders .order-list {
@@ -1233,22 +1173,20 @@
   gap: 0.5rem;
   height: calc(100vh - 12rem);
   overflow: overlay;
-  padding-right: 0.25rem;
-  /* Track */
-  /* Handle */
+  padding-right: 0.5rem;
 }
 .modal-admin .admin-orders .order-list::-webkit-scrollbar {
   width: 4px;
 }
 .modal-admin .admin-orders .order-list::-webkit-scrollbar-track {
-  background: hsl(0, 0%, 20%);
+  background: hsl(0, 0%, 60%);
 }
 .modal-admin .admin-orders .order-list::-webkit-scrollbar-thumb {
-  background: hsl(0, 0%, 30%);
+  background: hsl(0, 0%, 50%);
 }
 .modal-admin .admin-orders .order-list .admin-order {
   padding: 0.75rem;
-  background-color: hsl(0, 0%, 20%);
+  background-color: hsl(0, 0%, 95%);
   border-radius: 0.25rem;
   display: flex;
   flex-direction: column;
@@ -1257,7 +1195,7 @@
 .modal-admin .admin-orders .order-list .admin-order hr {
   width: 100%;
   border: none;
-  border-bottom: 1px solid hsl(0, 0%, 40%);
+  border-bottom: 1px solid hsl(0, 0%, 70%);
   margin: 0;
 }
 .modal-admin .admin-orders .order-list .admin-order .order-header {
@@ -1298,11 +1236,10 @@
   gap: 0.25rem;
 }
 .modal-admin .admin-orders .order-list .admin-order .order-footer .status {
-  padding: 0.25rem 0.5rem;
+  padding: 0.375rem 0.5rem;
   color: #FFFFFF;
   font-weight: 600;
   font-size: 0.8125rem;
-  border-radius: 2px;
   text-wrap: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1325,7 +1262,7 @@
   text-align: center;
   font-size: 0.875rem;
   padding: 0.25rem;
-  border: 1px solid hsl(0, 0%, 30%);
+  border: 1px solid hsl(0, 0%, 60%);
   border-radius: 0.25rem;
 }
 .modal-admin .admin-orders .order-list .admin-order .buttons {
@@ -1336,26 +1273,654 @@
 .modal-admin .admin-orders .order-list .admin-order .buttons .btn {
   cursor: pointer;
   font-size: 0.8125rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 0.25rem;
-  background-color: hsl(0, 0%, 20%);
+  padding: 0.375rem 0.5rem;
   font-weight: 600;
+  border: none;
+  color: #FFFFFF;
 }
 .modal-admin .admin-orders .order-list .admin-order .buttons .btn-decline {
-  border: 1px solid #C37068;
-  color: #C37068;
+  background-color: hsl(0, 75%, 40%);
 }
 .modal-admin .admin-orders .order-list .admin-order .buttons .btn-decline:hover {
-  background-color: rgba(195, 112, 104, 0.1);
+  background-color: hsl(0, 75%, 30%);
 }
 .modal-admin .admin-orders .order-list .admin-order .buttons .btn-confirm {
-  border: 1px solid #68C379;
-  color: #68C379;
+  background-color: hsl(130, 75%, 30%);
 }
 .modal-admin .admin-orders .order-list .admin-order .buttons .btn-confirm:hover {
-  background-color: rgba(104, 195, 121, 0.1);
+  background-color: hsl(130, 75%, 40%);
 }
 
+/*
+.section-lottery {
+
+    .no-login {
+        border: 1px solid $info-color;
+        padding: 0.75rem;
+        font-size: 0.875rem;
+
+        a {
+            color: $info-color;
+            font-weight: 600
+        }
+    }
+
+    .lottery-image-tickets {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+
+        .lottery-image {
+            display: flex;
+            border-radius: 0.25rem;
+            overflow: hidden;
+
+            img {
+                width: calc(100vw - 2rem);
+                height: calc(100vw - 2rem);
+                max-width: calc(480px - 2rem);
+                max-height: calc(480px - 2rem);
+            }
+        }
+
+        .lottery-tickets {
+            h4 {
+                font-weight: 500;
+                margin-bottom: 0.5rem;
+            }
+
+            .tickets-empty {
+                font-size: 0.875rem;
+                padding: 0.75rem;
+                background-color: $grey-800;
+                border-radius: 0.25rem;
+            }
+
+            .tickets {
+                display: grid;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 0.25rem;
+
+                .ticket {
+                    width: 100%;
+                    padding: 0.5rem;
+                    border-radius: 0.25rem;
+                    border: 1px solid $grey-800;
+                    text-align: center;
+                    font-size: 0.875rem;
+                }
+            }
+        }
+
+        .issues {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 0.75rem;
+            background-color: $grey-850;
+            border-radius: 0.25rem;
+            .contact {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+        }
+    }
+
+    .lottery-info {
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+
+        h2 {
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        .lottery-info-field {
+            display: flex;
+            gap: 0.25rem;
+
+            .info-field-label {
+                font-weight: 600;
+            }
+        }
+
+        .div-price {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            .price {
+                font-size: 1.25rem;
+                font-weight: 600;
+            }
+
+            .ticket-1 {
+                font-size: 1rem;
+                font-weight: 400;
+            }
+        }
+
+        .div-order-create {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        hr {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid $grey-800;
+        }
+
+        .pending-order {
+            padding: 0.75rem;
+            border: 1px solid $grey-600;
+            background-color: $grey-800;
+            border-radius: 0.25rem;
+
+            p {
+                color: $grey-100;
+                font-weight: 600;
+                font-size: 0.875rem;
+
+            }
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.25rem;
+            .payment-method {
+                cursor: pointer;
+                border-radius: 0.25rem;
+                border: 1px solid $grey-700;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+                padding: 0.75rem;
+                img {
+                    height: 32px;
+                    width: 32px;
+                }
+                &:hover {
+                    background-color: $grey-850
+                }
+            }
+        }
+
+
+        .form-quantity {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            label {
+                font-weight: 600;
+            }
+
+            select {
+                appearance: base-select;
+                border: none;
+                padding: 0;
+            }
+        }
+
+        .form-order-create {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            .form-info {
+                background-color: $background-color-2;
+                padding: 1rem;
+                border-radius: 0.25rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+                border: 1px solid $grey-800;
+
+                h5 {
+                    font-size: 1rem;
+                }
+
+                .info-field {
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 0.875rem;
+                }
+            }
+
+            .form-input input,
+            .form-input select {
+                appearance: base-select;
+                width: 100%;
+                border: 1px solid $border-color;
+                padding: 0.75rem;
+                border-radius: 0.25rem;
+                font-size: 0.875rem;
+            }
+
+            .form-input {
+                .error {
+                    margin-top: 0.25rem;
+                    grid-column: span 2;
+
+                    p {
+                        color: $danger-color;
+                    }
+                }
+
+                &:has(.error) {
+
+                    input,
+                    select {
+                        border: 1px solid $danger-color;
+                    }
+                }
+            }
+
+            .split-dni {
+                display: grid;
+                gap: 0.25rem;
+                grid-template-columns: 1fr 3fr;
+            }
+
+            .info-pay {
+                font-size: 0.875rem;
+            }
+
+            .button-pay {
+                cursor: pointer;
+                background-color: $info-color;
+                border: none;
+                border-radius: 0.25rem;
+                padding: 0.75rem;
+                font-weight: 600;
+                font-size: 0.875rem;
+            }
+        }
+
+        .not-available {
+            padding: 0.75rem;
+            background-color: $grey-800;
+            border-radius: 0.25rem;
+        }
+
+        .lottery-closed {
+            padding: 0.75rem;
+            background-color: rgba($danger-color, $alpha: 0.1);
+            border: 1px solid rgba($danger-color, $alpha: 0.4);
+            border-radius: 0.25rem;
+            p {
+                color: $danger-color;
+                font-size: 0.875rem;
+                font-weight: 500;
+            }
+        }
+
+        // Admin
+        .button-admin-option {
+            cursor: pointer;
+            border-radius: 0.25rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid $grey-700;
+            background-color: $grey-800;
+            transition: all 0.2s;
+
+            &:hover {
+                background-color: $grey-700;
+            }
+        }
+    }
+
+    // Admin
+    .form-lottery-update {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+
+            label {
+                font-size: 0.875rem;
+                font-weight: 600;
+            }
+
+            input,
+            textarea {
+                width: 100%;
+                padding: 0.5rem;
+                border-radius: 0.25rem;
+                border: 1px solid $grey-600;
+            }
+        }
+
+        .form-image {
+            display: flex;
+            flex-direction: column;
+            font-size: 0;
+            color: transparent;
+            gap: 0.5rem;
+
+            a {
+                font-size: 0.875rem;
+            }
+
+            input {
+                border: none;
+                padding: 0;
+                font-size: 0.875rem;
+
+                &::file-selector-button {
+                    cursor: pointer;
+                    background-color: $info-color;
+                    padding: 0.5rem;
+                    border: none;
+                    border-radius: 0.25rem;
+                    color: $white;
+                    transition: all 0.2s;
+
+                    &:hover {
+                        background-color: $info-color-2;
+                    }
+                }
+            }
+
+            br {
+                display: none;
+            }
+        }
+
+        .form-description textarea {
+            font-size: 1.25rem;
+        }
+
+        .form-date {
+            color-scheme: dark;
+        }
+
+        .form-closed {
+            display: flex;
+            flex-direction: row;
+            input {
+                color-scheme: dark;
+                width: fit-content;
+            }
+        }
+
+        .btn-submit {
+            cursor: pointer;
+            border: none;
+            border-radius: 0.25rem;
+            padding: 0.75rem;
+            background-color: $info-color;
+            font-weight: 600;
+            transition: all 0.2s;
+            &:hover {
+                background-color: $info-color-2;
+            }
+        }
+    }
+
+
+    @include sm {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-width: $lg;
+
+        .lottery-image-tickets {
+
+            .lottery-image {
+
+                img {
+                    width: calc((100vw - 3rem) / 2);
+                    height: calc((100vw - 3rem) / 2);
+                    max-width: calc(($lg - 3rem) / 2);
+                    max-height: calc(($lg - 3rem) / 2);
+                }
+            }
+
+            .tickets {
+                grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+            }            
+        }
+        .payment-methods {
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        }
+    }
+}
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($grey-800, $alpha: 0.2);
+    backdrop-filter: blur(4px);
+    z-index: 50;
+}
+
+.modal-admin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+
+
+    .admin-orders {
+        background-color: $grey-850;
+        padding: 1.25rem;
+        position: relative;
+        border-radius: 0.25rem;
+        width: 100%;
+        max-width: 480px;
+        border: 1px solid $grey-700;
+
+        h4 {
+            margin-bottom: 1rem;
+        }
+
+        .btn-close {
+            cursor: pointer;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            border: none;
+            background-color: transparent;
+            padding: 2px;
+            display: flex;
+            border-radius: 2px;
+
+            img {
+                height: 20px;
+                width: 20px;
+            }
+
+            &:hover {
+                background-color: $grey-800;
+            }
+        }
+
+        .order-list-empty {
+            padding: 1rem 0.75rem;
+            background-color: $grey-700;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .order-list-filter input{
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid $grey-700;
+            margin-bottom: 0.75rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+        }
+
+        .order-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            height: calc(100vh - 12rem);
+            overflow: overlay;
+            padding-right: 0.25rem;
+
+            &::-webkit-scrollbar {
+                width: 4px;
+            }
+            &::-webkit-scrollbar-track {
+                background: $grey-800;
+            }
+            &::-webkit-scrollbar-thumb {
+                background: $grey-700;
+            }
+            .admin-order {
+                padding: 0.75rem;
+                background-color: $grey-800;
+                border-radius: 0.25rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+
+                hr {
+                    width: 100%;
+                    border: none;
+                    border-bottom: 1px solid $grey-600;
+                    margin: 0;
+                }
+
+                .order-header {
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 1rem;
+
+                    .order-email {
+                        font-size: 0.875rem;
+                    }
+
+                    .order-quantity {
+                        font-size: 0.875rem;
+                        font-weight: 600;
+                    }
+                }
+
+
+                .order-info {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 0.5rem;
+                    align-items: center;
+
+                    .payment-method {
+                        font-size: 0.875rem;
+                        font-weight: 600;
+                    }
+
+                    .label {
+                        font-weight: 600;
+                        font-size: 0.8125rem;
+                    }
+
+                    .field,
+                    .date {
+                        text-align: end;
+                        font-size: 0.8125rem;
+                    }
+                }
+
+                .order-footer {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 0.25rem;
+
+                    .status {
+                        padding: 0.25rem 0.5rem;
+                        color: $white;
+                        font-weight: 600;
+                        font-size: 0.8125rem;
+                        border-radius: 2px;
+                        text-wrap: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+
+                    .status-0 {
+                        background-color: $warning-color;
+                    }
+
+                    .status-1 {
+                        background-color: $success-color-2;
+                    }
+
+                    .status-2 {
+                        background-color: $danger-color-2;
+                    }
+
+                }
+
+                .admin-tickets {
+                    display: grid;
+                    grid-template-columns: repeat(5, minmax(0, 1fr));
+                    gap: 0.25rem;
+
+                    .ticket {
+                        text-align: center;
+                        font-size: 0.875rem;
+                        padding: 0.25rem;
+                        border: 1px solid $grey-700;
+                        border-radius: 0.25rem;
+                    }
+                }
+
+                .buttons {
+                    display: flex;
+                    justify-content: end;
+                    gap: 0.25rem;
+
+                    .btn {
+                        cursor: pointer;
+                        font-size: 0.8125rem;
+                        padding: 0.25rem 0.75rem;
+                        border-radius: 0.25rem;
+                        background-color: $grey-800;
+                        font-weight: 600;
+
+                    }
+
+                    .btn-decline {
+                        border: 1px solid $danger-color;
+                        color: $danger-color;
+
+                        &:hover {
+                            background-color: rgba($danger-color, $alpha: 0.1);
+                        }
+                    }
+
+                    .btn-confirm {
+                        border: 1px solid $success-color;
+                        color: $success-color;
+
+                        &:hover {
+                            background-color: rgba($success-color, $alpha: 0.1);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+*/
 * {
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
@@ -1386,7 +1951,7 @@ button {
 }
 
 input, select, textarea {
-  background-color: hsl(0, 0%, 90%);
+  background-color: transparent;
   resize: none;
 }
 

@@ -17,9 +17,18 @@ $grey-90: hsl(0, 0%, 90%);
 $grey-95: hsl(0, 0%, 95%);
 $grey-98: hsl(0, 0%, 98%);
 
-
 $red-30: hsl(0, 75%, 30%);
 $red-40: hsl(0, 75%, 40%);
+
+$blue-30: hsl(220, 75%, 30%);
+$blue-50: hsl(220, 75%, 50%);
+
+$green-30: hsl(130, 75%, 30%);
+$green-40: hsl(130, 75%, 40%);
+
+$color1: $blue-30;
+$color1-alt: $blue-50;
+
 
 
 /*  Delete */
@@ -31,7 +40,7 @@ $background-color-2: hsl(0, 0%, 85%);
 $background-color-3: hsl(0, 0%, 80%);
 $border-color: hsl(0, 0%, 70%);
 
-$danger-color: #C37068;
+$danger-color: $red-30;
 $danger-color-2: hsl(5, 63%, 36%);
 $success-color: #68C379;
 $success-color-2: #268337;

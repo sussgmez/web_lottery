@@ -2,22 +2,649 @@
 @use '../responsive' as *;
 
 
-
-// Section lottery 
 .section-lottery {
     display: flex;
     flex-direction: column;
     padding: 1rem;
     gap: 1rem;
-    background-color: $background-color;
     max-width: 480px;
     margin: auto;
     min-height: 100vh;
 
+    .lottery-image-tickets {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+
+        .lottery-image {
+            display: flex;
+            border-radius: 0.25rem;
+            overflow: hidden;
+
+            img {
+                width: calc(100vw - 2rem);
+                height: calc(100vw - 2rem);
+                max-width: calc(480px - 2rem);
+                max-height: calc(480px - 2rem);
+            }
+        }
+
+        .lottery-tickets {
+            h4 {
+                font-weight: 500;
+                margin-bottom: 0.5rem;
+            }
+
+            .tickets-empty {
+                font-size: 0.875rem;
+                padding: 0.75rem;
+                background-color: $grey-95;
+                border-radius: 0.25rem;
+            }
+
+            .tickets {
+                display: grid;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 0.25rem;
+
+                .ticket {
+                    width: 100%;
+                    padding: 0.5rem;
+                    border-radius: 0.25rem;
+                    background-color: $color1-alt;
+
+                    p {
+                        color: $white;
+                        text-align: center;
+                        font-size: 0.875rem;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+
+        .issues {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 0.75rem;
+            background-color: $grey-95;
+            border-radius: 0.25rem;
+
+            .contact {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+
+                svg * {
+                    fill: $grey-30;
+                    stroke: $grey-30;
+                }
+            }
+        }
+    }
+
+    .lottery-info {
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+
+        h2 {
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        .lottery-info-field {
+            display: flex;
+            gap: 0.25rem;
+
+            .info-field-label {
+                font-weight: 600;
+            }
+        }
+
+        .div-price {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            .price {
+                font-size: 1.25rem;
+                font-weight: 600;
+            }
+
+            .ticket-1 {
+                font-size: 1rem;
+                font-weight: 400;
+            }
+        }
+
+        .no-login {
+            border: 1px solid $info-color;
+            padding: 0.75rem;
+            font-size: 0.875rem;
+
+            a {
+                color: $info-color;
+                font-weight: 600
+            }
+        }
+
+        .lottery-closed {
+            border-radius: 0.25rem;
+
+            p {
+                color: $red-40;
+                font-size: 1rem;
+                font-weight: 700;
+            }
+        }
+
+        .div-order-create {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+
+            .pending-order {
+                padding: 1.5rem;
+                border: 1px solid $color1;
+
+                p {
+                    color: $color1;
+                    font-weight: 600;
+                    font-size: 0.875rem;
+                    text-align: center;
+
+                }
+            }
+
+
+            .payment-methods {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.25rem;
+
+                .payment-method {
+                    cursor: pointer;
+                    border: 1px solid $color1-alt;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 1rem;
+                    padding: 0.75rem;
+
+                    img {
+                        height: 32px;
+                        width: 32px;
+                    }
+
+                    &:hover {
+                        background-color: $grey-98
+                    }
+                }
+            }
+
+
+            .form-quantity {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                label {
+                    font-weight: 600;
+                }
+
+                select {
+                    appearance: base-select;
+                    border: none;
+                    padding: 0;
+                }
+            }
+
+            .form-order-create {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+
+                .form-info {
+                    background-color: $white;
+                    padding: 1rem;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.75rem;
+                    border: 1px solid $color1;
+                    box-shadow: -4px 4px 0 $grey-80;
+
+                    h5 {
+                        font-size: 1rem;
+                    }
+
+                    .info-field {
+                        display: flex;
+                        justify-content: space-between;
+                        font-size: 0.875rem;
+                    }
+                }
+
+                .form-input input,
+                .form-input select {
+                    appearance: base-select;
+                    width: 100%;
+                    border: 1px solid $grey-60;
+                    padding: 0.75rem;
+                    font-size: 0.875rem;
+                }
+
+                .form-input {
+                    .error {
+                        margin-top: 0.25rem;
+                        grid-column: span 2;
+
+                        p {
+                            color: $danger-color;
+                        }
+                    }
+
+                    &:has(.error) {
+
+                        input,
+                        select {
+                            border: 1px solid $danger-color;
+                        }
+                    }
+                }
+
+                .split-dni {
+                    display: grid;
+                    gap: 0.25rem;
+                    grid-template-columns: 1fr 3fr;
+                }
+
+                .info-pay {
+                    font-size: 0.875rem;
+                }
+
+                .button-pay {
+                    cursor: pointer;
+                    background-color: $info-color;
+                    color: $white;
+                    border: none;
+                    border-radius: 0.25rem;
+                    padding: 0.75rem;
+                    font-weight: 600;
+                    font-size: 0.875rem;
+                }
+            }
+
+        }
+
+        hr {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid $grey-70;
+        }
+
+        .not-available {
+            padding: 0.75rem;
+            background-color: $grey-95;
+            border-radius: 0.25rem;
+        }
+    }
+
+    .form-lottery-update {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+
+            label {
+                font-size: 0.875rem;
+                font-weight: 600;
+            }
+
+            input,
+            textarea {
+                width: 100%;
+                padding: 0.5rem;
+                border: 1px solid $grey-60;
+            }
+        }
+
+        .form-image {
+            display: flex;
+            flex-direction: column;
+            font-size: 0;
+            color: transparent;
+            gap: 0.5rem;
+
+            a {
+                font-size: 0.875rem;
+            }
+
+            input {
+                border: none;
+                padding: 0;
+                font-size: 0.875rem;
+
+                &::file-selector-button {
+                    cursor: pointer;
+                    background-color: $color1-alt;
+                    padding: 0.5rem;
+                    border: none;
+                    color: $white;
+                    transition: all 0.1s;
+
+                    &:hover {
+                        background-color: $color1;
+                    }
+                }
+            }
+
+            br {
+                display: none;
+            }
+        }
+
+        .form-description textarea {
+            font-size: 1.25rem;
+        }
+
+        .form-date {
+            color-scheme: dark;
+        }
+
+        .form-closed {
+            display: flex;
+            flex-direction: row;
+
+            input {
+                width: fit-content;
+            }
+        }
+
+        .btn-submit {
+            cursor: pointer;
+            border: none;
+            padding: 0.75rem;
+            background-color: $color1-alt;
+            font-weight: 600;
+            transition: all 0.1s;
+            color: $white;
+
+            &:hover {
+                background-color: $color1;
+            }
+        }
+    }
+
+    .button-admin-option {
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        border: 1px solid $grey-50;
+        background-color: $grey-95;
+        transition: all 0.1s;
+
+        &:hover {
+            background-color: $grey-90;
+        }
+    }
+
+
+    @include sm {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-width: $lg;
+
+        .lottery-image-tickets {
+
+            .lottery-image {
+
+                img {
+                    width: calc((100vw - 3rem) / 2);
+                    height: calc((100vw - 3rem) / 2);
+                    max-width: calc(($lg - 3rem) / 2);
+                    max-height: calc(($lg - 3rem) / 2);
+                }
+            }
+
+            .tickets {
+                grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+            }
+        }
+
+        .payment-methods {
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        }
+    }
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($black, $alpha: 0.1);
+    backdrop-filter: blur(4px);
+    z-index: 50;
+}
+
+.modal-admin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+
+
+    .admin-orders {
+        background-color: $white;
+        padding: 2rem;
+        position: relative;
+        width: 100%;
+        max-width: 520px;
+        border: 1px solid $grey-90;
+
+        h4 {
+            margin-bottom: 1rem;
+        }
+
+        .btn-close {
+            cursor: pointer;
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            border: none;
+            background-color: transparent;
+            padding: 4px;
+            display: flex;
+            border-radius: 2px;
+
+            &:hover {
+                background-color: $grey-95;
+            }
+        }
+
+        .order-list-empty {
+            padding: 1rem 0.75rem;
+            background-color: $grey-95;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .order-list-filter input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid $grey-70;
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+        }
+
+        .order-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            height: calc(100vh - 12rem);
+            overflow: overlay;
+            padding-right: 0.5rem;
+
+            &::-webkit-scrollbar {
+                width: 4px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background: $grey-60;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: $grey-50;
+            }
+
+            .admin-order {
+                padding: 0.75rem;
+                background-color: $grey-95;
+                border-radius: 0.25rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+
+                hr {
+                    width: 100%;
+                    border: none;
+                    border-bottom: 1px solid $grey-70;
+                    margin: 0;
+                }
+
+                .order-header {
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 1rem;
+
+                    .order-email {
+                        font-size: 0.875rem;
+                    }
+
+                    .order-quantity {
+                        font-size: 0.875rem;
+                        font-weight: 600;
+                    }
+                }
+
+
+                .order-info {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 0.5rem;
+                    align-items: center;
+
+                    .payment-method {
+                        font-size: 0.875rem;
+                        font-weight: 600;
+                    }
+
+                    .label {
+                        font-weight: 600;
+                        font-size: 0.8125rem;
+                    }
+
+                    .field,
+                    .date {
+                        text-align: end;
+                        font-size: 0.8125rem;
+                    }
+                }
+
+                .order-footer {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 0.25rem;
+
+                    .status {
+                        padding: 0.375rem 0.5rem;
+                        color: $white;
+                        font-weight: 600;
+                        font-size: 0.8125rem;
+                        text-wrap: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+
+                    .status-0 {
+                        background-color: $warning-color;
+                    }
+
+                    .status-1 {
+                        background-color: $success-color-2;
+                    }
+
+                    .status-2 {
+                        background-color: $danger-color-2;
+                    }
+
+                }
+
+                .admin-tickets {
+                    display: grid;
+                    grid-template-columns: repeat(5, minmax(0, 1fr));
+                    gap: 0.25rem;
+
+                    .ticket {
+                        text-align: center;
+                        font-size: 0.875rem;
+                        padding: 0.25rem;
+                        border: 1px solid $grey-60;
+                        border-radius: 0.25rem;
+                    }
+                }
+
+                .buttons {
+                    display: flex;
+                    justify-content: end;
+                    gap: 0.25rem;
+
+                    .btn {
+                        cursor: pointer;
+                        font-size: 0.8125rem;
+                        padding: 0.375rem 0.5rem;
+                        font-weight: 600;
+                        border: none;
+                        color: $white;
+                    }
+
+                    .btn-decline {
+                        background-color: $red-40;
+
+                        &:hover {
+                            background-color: $red-30;
+                        }
+                    }
+
+                    .btn-confirm {
+                        background-color: $green-30;
+
+                        &:hover {
+                            background-color: $green-40;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/*
+.section-lottery {
+
     .no-login {
         border: 1px solid $info-color;
         padding: 0.75rem;
-        border-radius: 0.25rem;
         font-size: 0.875rem;
 
         a {
@@ -41,7 +668,6 @@
                 height: calc(100vw - 2rem);
                 max-width: calc(480px - 2rem);
                 max-height: calc(480px - 2rem);
-
             }
         }
 
@@ -269,7 +895,6 @@
             padding: 0.75rem;
             background-color: $grey-800;
             border-radius: 0.25rem;
-
         }
 
         .lottery-closed {
@@ -501,18 +1126,12 @@
             &::-webkit-scrollbar {
                 width: 4px;
             }
-
-            /* Track */
             &::-webkit-scrollbar-track {
                 background: $grey-800;
             }
-
-            /* Handle */
             &::-webkit-scrollbar-thumb {
                 background: $grey-700;
             }
-
-
             .admin-order {
                 padding: 0.75rem;
                 background-color: $grey-800;
@@ -649,3 +1268,4 @@
         }
     }
 }
+*/

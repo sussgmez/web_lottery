@@ -2,20 +2,19 @@
   <a class="lottery" href="{% url 'lottery' lottery.pk %}">
     <div class="lottery-image">
       <img src="{{ lottery.image.url }}" alt="" />
-      {% if lottery.closed %}
-        <div class="closed">
-          <p>Finalizado</p>
-        </div>
-      {% endif %}
     </div>
     <div class="lottery-info">
       <h4>{{ lottery.description }}</h4>
+      {% if lottery.closed %}
+        <p class="closed">Finalizado</p>
+      {% else %}
       <p>
-        <b>{{ lottery.price|floatformat:".2f" }} $ x 1</b>
+        <b>{{ lottery.price|floatformat:'.2f' }} $ x 1</b>
       </p>
-      <p>
-        <b>Fecha de cierre:</b> {{ lottery.closing_date|date:'d/m/Y' }}
-      </p>
+      {% endif %}
+        <p>
+          <b>Fecha de cierre:</b> {{ lottery.closing_date|date:'d/m/Y' }}
+        </p>
     </div>
   </a>
 {% empty %}

@@ -9,8 +9,9 @@
     justify-content: space-between;
     align-items: center;
     z-index: 20;
-    background-color: $red-30;
-    padding: 1.25rem 1rem;
+    background-color: $color1;
+    background: linear-gradient(0.875turn, $color1, $color1-alt);
+    padding: 1rem;
 
     .brand {
         &>a {
@@ -38,11 +39,11 @@
         right: 0;
         left: 0;
         flex-direction: column;
-        gap: 0.25rem;
+        gap: 0.5rem;
         z-index: 10;
         border-bottom: 1px solid $grey-70;
-        background-color: $grey-95;
-        padding: 0.25rem;
+        background-color: $color1;
+        padding: 0.75rem;
         overflow: hidden;
 
         .nav-link,
@@ -52,8 +53,6 @@
             gap: 0.5rem;
             transition: all 0.1s;
             cursor: pointer;
-            box-shadow: 0 0 4px $grey-85;
-            border: 1px solid $grey-80;
             border-radius: 0.25rem;
             background-color: $white;
             padding: 1rem;
@@ -69,16 +68,13 @@
                 stroke: $black;
             }
 
-            &:hover {
-                box-shadow: 0 0 4px $grey-70;
-            }
         }
 
         #id_menu_options {
             display: flex;
             flex-direction: column;
-            gap: 0.25rem;
-            margin: 0.25rem 0 0 0.75rem;
+            gap: 0.5rem;
+            margin: 0.5rem 0 0 1rem;
 
             .menu-option {
                 border: 1px solid $grey-70;

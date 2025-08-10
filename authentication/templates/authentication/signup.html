@@ -15,25 +15,36 @@
         <h4>Prepárate para ganar increíbles premios</h4>
       </div>
       <div class="form-fields">
-        <h3>Registrarse</h3>
-        <label class="label" for="id_email">Email</label>
-        {{ form.email }}
+        <div class="form-field">
+          <label class="label" for="id_email">Email</label>
+          {{ form.email }}
+        </div>
 
-        <label class="label" for="id_first_name">Nombre</label>
-        {{ form.first_name }}
+        <div class="form-field">
+          <label class="label" for="id_first_name">Nombre</label>
+          {{ form.first_name }}
+        </div>
+          
+        <div class="form-field">
+          <label class="label" for="id_last_name">Apellido</label>
+          {{ form.last_name }}
+        </div>
 
-        <label class="label" for="id_last_name">Apellido</label>
-        {{ form.last_name }}
+        <div class="form-field">
+          <label class="label" for="id_password1">Contraseña</label>
+          {{ form.password1 }}
+        </div>
 
-        <label class="label" for="id_password1">Contraseña</label>
-        {{ form.password1 }}
+        <div class="form-field">
+          <label class="label" for="id_password2">Confirmar contraseña</label>
+          {{ form.password2 }}
+        </div>
 
-        <label class="label" for="id_password2">Confirmar contraseña</label>
-        {{ form.password2 }}
-
-        <label class="label" for="id_phone_number">Nro. de teléfono</label>
-        <div class="input-phone-number">
-          {{ form.phone_number }}
+        <div class="form-field">
+          <label class="label" for="id_phone_number">Nro. de teléfono</label>
+          <div class="input-phone-number">
+            {{ form.phone_number }}
+          </div>
         </div>
 
 
@@ -56,13 +67,14 @@
             {% endif %}
           {% endfor %}
         </div>
-
-        <button class="button">Registrarse</button>
-        <small>Ya tienes una cuenta?, <a href="{% url 'login' %}"><b>iniciar sesión</b></a></small>
+        <button class="btn-submit">Registrarse</button>
+      </div>
+      <div>
+        <p>Ya tienes una cuenta?, <a href="{% url 'login' %}">iniciar sesión</a></p>
       </div>
     </form>
     <div class="background-login">
-      <img src="{% static 'img/background-login.png' %}" alt="" />
+      <img src="{% static 'img/background-login.jpg' %}" alt="" />
     </div>
   </div>
 {% endblock %}
